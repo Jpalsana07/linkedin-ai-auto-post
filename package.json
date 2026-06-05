@@ -1,0 +1,29 @@
+{
+  "name": "linkedin-ai-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Daily LinkedIn post generator that runs on GitHub Actions cron.",
+  "type": "module",
+  "engines": {
+    "bun": ">=1.2.0"
+  },
+  "scripts": {
+    "generate": "bun run src/index.ts",
+    "generate:dry": "DRY_RUN=true bun run src/index.ts",
+    "auth:linkedin": "bun run scripts/linkedin-auth.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check src tests",
+    "format": "biome format --write src tests"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.40.0",
+    "@google/genai": "^0.7.0",
+    "openai": "^4.77.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.7.2"
+  }
+}

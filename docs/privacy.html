@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — LinkedIn AI Agent</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fg: #1a1a1a;
+        --muted: #555;
+        --bg: #fff;
+        --accent: #0a66c2;
+        --border: #e5e5e5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #e8e8e8;
+          --muted: #a0a0a0;
+          --bg: #111;
+          --border: #2a2a2a;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+        line-height: 1.65;
+        color: var(--fg);
+        background: var(--bg);
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 6rem;
+        font-size: 17px;
+      }
+      h1 { font-size: 2rem; margin: 0 0 0.25rem; letter-spacing: -0.02em; }
+      h2 { font-size: 1.25rem; margin: 2.5rem 0 0.5rem; letter-spacing: -0.01em; }
+      p, ul { margin: 0.75rem 0; }
+      ul { padding-left: 1.25rem; }
+      li { margin: 0.35rem 0; }
+      a { color: var(--accent); }
+      .meta { color: var(--muted); margin: 0 0 2rem; font-size: 0.95rem; }
+      .nav { margin-bottom: 2rem; font-size: 0.95rem; }
+      .nav a { text-decoration: none; }
+      hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+      code { background: rgba(127, 127, 127, 0.15); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.9em; }
+    </style>
+  </head>
+  <body>
+    <div class="nav"><a href="./index.html">← Back to project</a></div>
+
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective date: 2026-06-04</p>
+
+    <p>
+      This privacy policy describes how the LinkedIn AI Agent project (the
+      &ldquo;App&rdquo;) handles data. The App is an open-source automation tool
+      that generates one LinkedIn post per day using an LLM and publishes it to
+      the authenticated user&rsquo;s own LinkedIn account via LinkedIn&rsquo;s
+      official Posts API.
+    </p>
+
+    <h2>Who this policy is for</h2>
+    <p>
+      The App is built for individual operators running their own instance of
+      the open-source code from
+      <a href="https://github.com/Jpalsana07/linkedin-ai-auto-post" rel="noopener noreferrer">the project repository</a>.
+      Each operator authorizes the App against their own LinkedIn account and
+      is the sole user and beneficiary of that instance.
+    </p>
+
+    <h2>What data the App accesses</h2>
+    <ul>
+      <li>
+        <strong>LinkedIn identity</strong> via OpenID Connect: your unique
+        member identifier (the <code>sub</code> claim, used to build your
+        <code>urn:li:person:&lt;id&gt;</code>), your name, and your locale.
+      </li>
+      <li>
+        <strong>LinkedIn posting permission</strong> via the
+        <code>w_member_social</code> scope: used solely to publish posts to
+        your own LinkedIn feed.
+      </li>
+      <li>
+        <strong>OAuth tokens</strong> (access token and, if your app is
+        approved for it, refresh token): stored as environment variables /
+        GitHub Secrets controlled exclusively by you. The App authors do not
+        have access to your tokens.
+      </li>
+      <li>
+        <strong>Post history</strong>: a local <code>data/history.json</code>
+        file inside your own repository, used to avoid duplicate or
+        similar-sounding posts. This data never leaves your repository.
+      </li>
+    </ul>
+
+    <h2>What the App does NOT do</h2>
+    <ul>
+      <li>Does not collect, store, or transmit your data to any third-party server operated by the App authors.</li>
+      <li>Does not read your LinkedIn connections, messages, posts, or any data outside the scopes listed above.</li>
+      <li>Does not sell, share, or monetize any user data in any form.</li>
+      <li>Does not use your data to train AI models.</li>
+      <li>Does not interact with other users&rsquo; LinkedIn accounts. Posts are published only to the authenticated operator&rsquo;s own profile.</li>
+    </ul>
+
+    <h2>Third parties</h2>
+    <p>
+      To generate post text, the App sends a prompt to an LLM provider chosen
+      by the operator: OpenAI, Anthropic, or Google. The prompt may include
+      excerpts of the operator&rsquo;s recent posts (from
+      <code>data/history.json</code>) to help avoid repetition. No LinkedIn
+      OAuth tokens are sent to these providers. Each provider&rsquo;s own
+      privacy policy governs how they handle that data.
+    </p>
+
+    <h2>Data retention</h2>
+    <p>
+      All persisted data lives inside the operator&rsquo;s own GitHub
+      repository or local filesystem. Operators control retention by editing
+      or deleting <code>data/history.json</code> and
+      <code>data/generated-posts/</code>. Revoking the App&rsquo;s LinkedIn
+      access from your
+      <a href="https://www.linkedin.com/mypreferences/d/data-permissions" rel="noopener noreferrer">LinkedIn data permissions page</a>
+      immediately invalidates the OAuth tokens.
+    </p>
+
+    <h2>Security</h2>
+    <p>
+      OAuth tokens are stored exclusively as environment variables or
+      encrypted GitHub Secrets controlled by the operator. The App uses
+      LinkedIn&rsquo;s official OAuth 2.0 authorization-code flow with CSRF
+      state verification. The App makes no network calls outside of: the
+      chosen LLM provider&rsquo;s API endpoint and
+      <code>api.linkedin.com</code>.
+    </p>
+
+    <h2>Children</h2>
+    <p>
+      The App is not directed at children under 16 and does not knowingly
+      collect data from them.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      Any changes to this policy will be published at this URL and committed
+      to the project repository. Material changes will update the effective
+      date above.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy can be raised as a GitHub issue on the
+      project repository, or sent to the email address listed on the
+      operator&rsquo;s LinkedIn Developer App.
+    </p>
+
+    <hr />
+    <p class="meta">
+      This policy applies to the open-source App as published. Operators who
+      modify the code and run derivative versions are responsible for their
+      own data handling practices.
+    </p>
+  </body>
+</html>
