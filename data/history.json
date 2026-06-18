@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "date": "2026-06-18T15:08:36.404Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "92b107321b506ad2",
+    "content": "Our agent hallucinated a refund.\n\nWe had built a support bot on LangChain to handle order issues.\nIt worked in staging.\nIt failed on day 3 in production.\n\nOne user asked for a partial refund on a $48 order.\nThe agent replied with confidence, approved $120, and wrote a fake policy citation.\nOur logs showed 17 similar attempts over the next hour.\n\nWe first blamed the model.\nThen we tried a bigger model, tighter prompts, and a second verification step.\n\nNone of it fixed the core issue.\n\nThe real problem was simpler:\nthe agent had write access before it had proof.\n\nIt could read the order system, reason about the case, and act.\nBut there was no hard boundary between suggestion and execution.\nOne bad tool call was enough.\n\nWe changed one thing:\nthe agent could draft a refund request, but Stripe approvals moved behind a human gate.\n\nThe next week, refund errors dropped to zero.\n\nMy lesson from that outage:\nAI agents are not broken because they think poorly.\nThey break when we let them act with more confidence than our systems can justify.\n\nWhere do you draw the line between agent autonomy and human approval?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-18T15:15:16.421Z",
+    "topic": "Software Architecture",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "937fac36dca89dea",
+    "content": "Simple architecture beats clever architecture.\n\nI learned that the hard way on a backend rewrite.\n\nWe had 14 services, gRPC between teams, and a beautiful diagram in Miro.\nIt looked like a senior engineer had painted it.\n\nThen one small change took 11 days to ship.\n\nThe bottleneck wasn’t code.\nIt was coordination, versioning, and everyone being afraid to touch the seams.\n\nWe cut it down to 3 services and moved two workflows back into a single Rails app.\nNot because microservices are bad.\nBecause our team was too small for the shape we’d built.\n\nDeploys dropped from 6 steps to 1.\nOn-call pages fell by 40% in the next month.\n\nThe contrarian part:\narchitecture is not a trophy for maturity.\nIt’s a cost you pay every day.\n\nThe strongest argument for complexity is scale.\nSometimes that’s true.\n\nBut most teams I’ve seen don’t need more boundaries.\nThey need fewer places to fail.\n\nWhat architecture choice looked smart on paper and slowed you down in practice?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
+  }
+]

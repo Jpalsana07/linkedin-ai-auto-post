@@ -2,7 +2,12 @@ import { refreshAccessToken } from "../auth/linkedin-oauth.ts";
 import type { GeneratedPost, PublishResult, Publisher } from "../types/index.ts";
 
 const POSTS_ENDPOINT = "https://api.linkedin.com/rest/posts";
-const LINKEDIN_API_VERSION = "202402";
+/**
+ * LinkedIn rotates API versions monthly and supports the last ~12 months.
+ * Bump this every ~6 months to stay safely within the window.
+ * Latest supported versions: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
+ */
+const LINKEDIN_API_VERSION = "202506";
 
 export interface LinkedInPublisherConfig {
   /** The user's person URN, e.g. `urn:li:person:abc123`. Required as `author` on every post. */
