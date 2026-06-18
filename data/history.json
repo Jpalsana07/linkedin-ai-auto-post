@@ -18,5 +18,15 @@
     "content": "Simple architecture beats clever architecture.\n\nI learned that the hard way on a backend rewrite.\n\nWe had 14 services, gRPC between teams, and a beautiful diagram in Miro.\nIt looked like a senior engineer had painted it.\n\nThen one small change took 11 days to ship.\n\nThe bottleneck wasn’t code.\nIt was coordination, versioning, and everyone being afraid to touch the seams.\n\nWe cut it down to 3 services and moved two workflows back into a single Rails app.\nNot because microservices are bad.\nBecause our team was too small for the shape we’d built.\n\nDeploys dropped from 6 steps to 1.\nOn-call pages fell by 40% in the next month.\n\nThe contrarian part:\narchitecture is not a trophy for maturity.\nIt’s a cost you pay every day.\n\nThe strongest argument for complexity is scale.\nSometimes that’s true.\n\nBut most teams I’ve seen don’t need more boundaries.\nThey need fewer places to fail.\n\nWhat architecture choice looked smart on paper and slowed you down in practice?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-18T15:22:36.829Z",
+    "topic": "Startup Lessons",
+    "pillar": "Founder and Career",
+    "angle": "mistake-and-lesson",
+    "contentHash": "b920d3cf87460a86",
+    "content": "We shipped a broken migration.\n\nIt touched 18,000 customer records in one night.\n\nThe script looked fine in staging.\nIn production, one missing WHERE clause started rewriting the wrong rows.\n\nSupport lit up at 2:13 a.m.\nFinance froze refunds.\nEngineering spent 11 hours restoring backups from Postgres and re-running jobs by hand.\n\nThe cost was not just the incident.\nWe lost 3 days of roadmap time and a customer who had trusted us with their billing data.\n\nThe mistake wasn’t “moving too fast.”\nIt was shipping a change that could not prove it was safe before it touched real data.\n\nThat one still follows me.\n\nNow, before any migration goes live, I want a dry run, a row count, and a rollback plan that a tired person can execute at 2 a.m.\n\nThe lesson: if a change can corrupt trust, the burden is on the code to prove it deserves prod.\n\nWhat’s the worst production mistake that changed how you ship?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
