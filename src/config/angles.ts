@@ -15,32 +15,32 @@ export const ANGLES: readonly Angle[] = [
   {
     name: "postmortem",
     instruction:
-      "Frame this as a postmortem of a specific failure. Open with what broke, then what you tried, then the actual root cause, then the lesson. Include at least one named tool or specific number (latency, cost, count, time).",
+      "Frame this as a postmortem of a specific failure. In the first 3 lines, set the scene in plain English: what were you building, who was it for, and what went wrong. Only THEN go into what you tried, the actual root cause, and the lesson. Every technical term gets a 3–6 word inline gloss. A non-engineer should be able to summarize the post in one sentence.",
   },
   {
     name: "contrarian-take",
     instruction:
-      "Take a contrarian position against the dominant narrative on this topic. Open with the hot take in one short line. Back it with one piece of concrete evidence or a real story. Acknowledge the strongest counterargument before closing.",
+      "Take a contrarian position against the dominant narrative on this topic. State the hot take in one short line. Before getting technical, spend 1–2 lines explaining the dominant view in plain English (so the reader knows what you're pushing against). Back the take with one concrete story or number. Acknowledge the strongest counterargument before closing.",
   },
   {
     name: "mistake-and-lesson",
     instruction:
-      "Open with a concrete mistake you (or a team) made. Be specific — what was shipped, what broke, what it cost. Then the lesson, in one sentence. Avoid generic 'I learned to be humble' wrap-ups.",
+      "Open with a concrete mistake you (or a team) made. In the first 2–3 lines, make sure the reader knows what was at stake — what you were trying to do and why it mattered — before you describe what went wrong. Then the lesson, in one plain sentence. Avoid generic 'I learned to be humble' wrap-ups.",
   },
   {
     name: "tool-comparison",
     instruction:
-      "Compare two specific tools, frameworks, or approaches that solve the same problem. Name them. Use real numbers (benchmarks, cost, dev time). Pick a winner and say why. Avoid 'it depends' wishy-washy endings.",
+      "Compare two specific tools, frameworks, or approaches that solve the same problem. Name them. In the first 2 lines, explain in plain English WHAT problem these tools solve, so the reader cares about the comparison. Use real numbers (benchmarks, cost, dev time). Pick a winner and say why. Avoid 'it depends' wishy-washy endings.",
   },
   {
     name: "build-in-public",
     instruction:
-      "Frame as a real shipping update: what you shipped this week, what metric moved, what's broken. Use specific numbers. No vague 'making progress' language — name the actual feature and the actual number.",
+      "Frame as a real shipping update. In the first 2 lines, remind the reader what you're building and who it's for — many readers will be seeing this project for the first time. Then: what you shipped this week, what metric moved, what's broken. Use specific numbers. No vague 'making progress' language.",
   },
   {
     name: "tradeoff-breakdown",
     instruction:
-      "Pick one architectural or technical decision. Lay out the tradeoff in one short paragraph. Show which side you chose and the specific reason — usually a constraint most people miss. Close with where this tradeoff might not apply.",
+      "Pick one architectural or technical decision. First, explain in plain English what the decision is about and why it matters (2–3 lines, no jargon). Then lay out the tradeoff in one short paragraph. Show which side you chose and the specific reason — usually a constraint most people miss. Close with where this tradeoff might not apply.",
   },
 ];
 
