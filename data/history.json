@@ -28,5 +28,15 @@
     "content": "We shipped a broken migration.\n\nIt touched 18,000 customer records in one night.\n\nThe script looked fine in staging.\nIn production, one missing WHERE clause started rewriting the wrong rows.\n\nSupport lit up at 2:13 a.m.\nFinance froze refunds.\nEngineering spent 11 hours restoring backups from Postgres and re-running jobs by hand.\n\nThe cost was not just the incident.\nWe lost 3 days of roadmap time and a customer who had trusted us with their billing data.\n\nThe mistake wasn’t “moving too fast.”\nIt was shipping a change that could not prove it was safe before it touched real data.\n\nThat one still follows me.\n\nNow, before any migration goes live, I want a dry run, a row count, and a rollback plan that a tired person can execute at 2 a.m.\n\nThe lesson: if a change can corrupt trust, the burden is on the code to prove it deserves prod.\n\nWhat’s the worst production mistake that changed how you ship?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-19T08:43:12.980Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "f2f7e87f14757377",
+    "content": "I stopped trusting vibe checks.\n\nWe were building an AI support bot, and the real problem was simple: how do we tell if it’s actually helping people, or just sounding confident?\n\nThat meant comparing two eval tools: LangSmith, the tracing and testing tool from LangChain, and OpenAI Evals, OpenAI’s benchmark runner.\n\nLangSmith was faster to set up.\nWe had traces on the same day, and could see exactly where answers drifted across 200 customer tickets.\n\nOpenAI Evals was stricter.\nIt took longer to wire in, but it forced us to write clean test cases and score the model the same way every run.\n\nAfter 2 weeks, the winner was clear.\n\nLangSmith helped us debug.\nOpenAI Evals helped us decide.\n\nWhen we needed one source of truth for whether a change was better or worse, OpenAI Evals won.\nIt was less pretty, but more honest.\n\nThe lesson: use the tool that makes bad news obvious.\nPretty dashboards are nice.\nRepeatable scores keep you from fooling yourself.\n\nWhich eval tool has saved you from a false win?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
