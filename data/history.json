@@ -38,5 +38,15 @@
     "content": "I stopped trusting vibe checks.\n\nWe were building an AI support bot, and the real problem was simple: how do we tell if it’s actually helping people, or just sounding confident?\n\nThat meant comparing two eval tools: LangSmith, the tracing and testing tool from LangChain, and OpenAI Evals, OpenAI’s benchmark runner.\n\nLangSmith was faster to set up.\nWe had traces on the same day, and could see exactly where answers drifted across 200 customer tickets.\n\nOpenAI Evals was stricter.\nIt took longer to wire in, but it forced us to write clean test cases and score the model the same way every run.\n\nAfter 2 weeks, the winner was clear.\n\nLangSmith helped us debug.\nOpenAI Evals helped us decide.\n\nWhen we needed one source of truth for whether a change was better or worse, OpenAI Evals won.\nIt was less pretty, but more honest.\n\nThe lesson: use the tool that makes bad news obvious.\nPretty dashboards are nice.\nRepeatable scores keep you from fooling yourself.\n\nWhich eval tool has saved you from a false win?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-20T07:10:50.129Z",
+    "topic": "React Shipping Stories",
+    "pillar": "Architecture and Stack",
+    "angle": "build-in-public",
+    "contentHash": "bcd00489dcb24151",
+    "content": "We shipped the dashboard again.\n\nIt’s a React app for small ops teams who live in spreadsheets all day.\n\nThis week I rebuilt the slowest screen, the one that opens before the morning standup and decides whether people trust the product.\n\nI cut the first load from 4.8 seconds to 1.9.\n\nThe change was boring in the best way.\n\nI split one huge React component into smaller pieces, moved the heaviest chart behind a lazy load, and swapped a couple of “just render everything” habits for plain old loading states.\n\nThe weird part: the app looked almost the same.\n\nBut the behavior changed fast.\n\nSupport tickets about “the page froze” dropped from 11 last week to 3 this week.\n\nWhat’s still broken?\n\nOur filter bar is still doing too much work on every keystroke, and on older laptops you can feel it.\n\nThat’s the part I’m fixing next.\n\nThe lesson: users don’t care how elegant your React code feels.\n\nThey care about whether the screen appears before they give up.\n\nWhat’s the slowest screen you’ve ever had to make feel fast?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
