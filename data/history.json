@@ -48,5 +48,15 @@
     "content": "We shipped the dashboard again.\n\nIt’s a React app for small ops teams who live in spreadsheets all day.\n\nThis week I rebuilt the slowest screen, the one that opens before the morning standup and decides whether people trust the product.\n\nI cut the first load from 4.8 seconds to 1.9.\n\nThe change was boring in the best way.\n\nI split one huge React component into smaller pieces, moved the heaviest chart behind a lazy load, and swapped a couple of “just render everything” habits for plain old loading states.\n\nThe weird part: the app looked almost the same.\n\nBut the behavior changed fast.\n\nSupport tickets about “the page froze” dropped from 11 last week to 3 this week.\n\nWhat’s still broken?\n\nOur filter bar is still doing too much work on every keystroke, and on older laptops you can feel it.\n\nThat’s the part I’m fixing next.\n\nThe lesson: users don’t care how elegant your React code feels.\n\nThey care about whether the screen appears before they give up.\n\nWhat’s the slowest screen you’ve ever had to make feel fast?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-21T08:13:29.006Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "4738288d682f80dd",
+    "content": "MCP looked simple.\n\nWe were wiring an AI assistant to our internal tools.\nThe goal was basic: let it read tickets, check docs, and draft replies without a human copy-pasting everything.\n\nThe decision was where to keep the context.\nMCP, the model context protocol, is the standard way a bot can ask for tools and data.\nContext engineering is how you decide what the model actually sees.\n\nThe tradeoff was speed versus safety.\n\nIf we sent everything, the assistant felt smarter.\nIt also got slower, cost more, and started mixing old details with fresh ones.\nIf we sent too little, it missed the one line in a ticket that changed the answer.\n\nWe chose narrow context plus better retrieval.\nRetrieval means fetching only the most relevant info.\nThat cut average response time from 8 seconds to 2.3 seconds, and the model stopped “helpfully” using stale notes.\n\nThe constraint most people miss is attention, not capability.\nA model can only reason well about what fits in front of it.\n\nThis tradeoff does not hold when the task is exploratory, like research or debugging a messy incident.\nThen wider context can be worth the noise.\n\nWhat do you optimize first when wiring an AI to real tools: breadth or precision?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
