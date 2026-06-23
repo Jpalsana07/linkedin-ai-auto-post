@@ -68,5 +68,15 @@
     "content": "My metrics post embarrassed me.\n\nI was building a SaaS dashboard for founders.\nIt tracked signups, trials, and paid conversions.\nThen I shared weekly numbers publicly, and the story got ugly.\n\nThe traffic looked healthy.\nThe pipeline looked alive.\nBut 82% of signups never touched the product again.\n\nI blamed the funnel at first.\nSo I rewired the onboarding, changed the email sequence, and added a mixpanel event tracker — a tool that logs user actions — to every screen.\n\nNothing moved.\n\nThe real problem was simpler.\nI had been measuring curiosity, not commitment.\nA blog reader clicking a pricing page made the dashboard look good.\nA real customer opening the app twice told the truth.\n\nThat was the postmortem:\nmy build-in-public metrics were rewarding vanity, not traction.\n\nThe lesson I keep coming back to is this:\nif a metric makes you feel busy instead of honest, it is probably lying to you.\n\nWhat metric have you seen look impressive while hiding the real story?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-23T07:01:49.289Z",
+    "topic": "Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "4fb11098c7eef998",
+    "content": "Next.js is overrated in prod.\n\nThe dominant story is simple:\nuse Next.js, ship faster, let the framework handle the hard parts.\n\nThat sounds right until your app gets real traffic.\nThen you start caring about cache behavior, server costs, and pages that look fine in dev but feel sticky in production.\n\nWe learned this on a B2B app with about 40,000 monthly visits.\nA single product page was taking 1.8 seconds to become useful because of server-side rendering on every request.\nNot broken.\nJust expensive in the wrong way.\n\nWe moved that page to static generation plus a small client fetch.\nSame design.\nSame copy.\nSame users.\n\nThe page dropped under 400 ms.\nOur AWS bill fell by 27% that month.\n\nMy contrarian take:\nNext.js is great for speed of building, not always speed of running.\n\nThe strongest counterargument is real:\nfor teams with small apps, tight deadlines, and mixed frontend skills, Next.js is still one of the best defaults.\nI agree.\n\nBut once traffic, latency, and cloud cost matter, the framework stops being the answer and starts being the tradeoff.\n\nThe lesson:\npick your stack for what it will cost you at scale, not how pleasant it feels on day one.\n\nWhat’s your least favorite production tradeoff with Next.js?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
