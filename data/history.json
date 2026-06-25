@@ -88,5 +88,15 @@
     "content": "Our agent sent 47 wrong emails.\n\nWe were building a support assistant to answer customer tickets and save the team time.\nIt had access to billing notes, order history, and our help docs.\nOne bad reply could confuse a real customer and create more work for support.\n\nThe bug was not the model.\nIt was trust.\n\nWe let the agent draft an email, then only checked if the text sounded polite.\nIt sounded great.\nIt also invented a shipping policy that did not exist.\n\nThe fix was boring, and it worked.\nWe made the agent quote the exact source line for every factual claim.\nNo source, no send.\n\nAfter that, the false answers dropped fast.\nIn one week, the error rate fell from 18% to 2%.\n\nThe lesson: if an agent can act on the world, it needs proof, not confidence.\n\nWhere do you draw the line between letting an agent speak freely and making it show its work?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-25T06:58:52.159Z",
+    "topic": "TypeScript Pitfalls",
+    "pillar": "Architecture and Stack",
+    "angle": "tool-comparison",
+    "contentHash": "2aeb2ace065599ce",
+    "content": "TypeScript made two lies\n\nWe were building a checkout flow, and the bug was simple: cart data said one thing, the API expected another.\n\nTwo tools could have caught it before prod: TypeScript and Zod, the runtime shape checker.\n\nTypeScript is great at compile time, which means it helps while you’re writing code.\n\nZod checks at runtime, which means it verifies the data after it arrives from an API, form, or webhook.\n\nWe had 18 files with “safe” types that looked perfect in the editor.\n\nThen a Stripe webhook sent a field as null instead of string, and the app crashed anyway.\n\nThat’s the pitfall: TypeScript can only protect the code it sees.\n\nIt cannot trust the outside world.\n\nZod slowed us down by maybe 30 minutes to add schemas, but it saved a full day of debugging the next time a payload drifted.\n\nTypeScript was still essential.\n\nBut for anything crossing a network boundary, Zod won.\n\nMy lesson: static types are for your code, runtime validation is for reality.\n\nWhich side have you trusted too much, the editor or the data?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
