@@ -98,5 +98,15 @@
     "content": "TypeScript made two lies\n\nWe were building a checkout flow, and the bug was simple: cart data said one thing, the API expected another.\n\nTwo tools could have caught it before prod: TypeScript and Zod, the runtime shape checker.\n\nTypeScript is great at compile time, which means it helps while you’re writing code.\n\nZod checks at runtime, which means it verifies the data after it arrives from an API, form, or webhook.\n\nWe had 18 files with “safe” types that looked perfect in the editor.\n\nThen a Stripe webhook sent a field as null instead of string, and the app crashed anyway.\n\nThat’s the pitfall: TypeScript can only protect the code it sees.\n\nIt cannot trust the outside world.\n\nZod slowed us down by maybe 30 minutes to add schemas, but it saved a full day of debugging the next time a payload drifted.\n\nTypeScript was still essential.\n\nBut for anything crossing a network boundary, Zod won.\n\nMy lesson: static types are for your code, runtime validation is for reality.\n\nWhich side have you trusted too much, the editor or the data?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-26T07:05:39.003Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "17cab87db13fd48b",
+    "content": "This week, the bot got quieter.\n\nI’m building an LLM support assistant for a SaaS team.\nIt answers customer questions from help docs and past tickets.\n\nLast week, it was fast but sloppy.\nThis week, I shipped a stricter retrieval layer, which is the part that finds the right source text before the model answers.\n\nThat changed one number that mattered:\nwrong-answer rate dropped from 18% to 6%.\n\nI used OpenAI for generation and Postgres for stored tickets.\nPostgres is our database, the place we keep records.\n\nThe win looked clean on a chart.\nThe messy part was obvious in Slack.\n\nThe bot now says “I don’t know” more often.\nThat sounds worse until you watch support agents.\nThey trust a cautious answer.\nThey do not trust a confident guess.\n\nWhat’s still broken?\nLatency jumped from 1.8 seconds to 3.4 seconds on long questions.\nThe model is waiting on a second search pass, and some replies still miss old tickets with weird wording.\n\nSo the lesson this week is simple:\nin production, a slower honest answer beats a fast fake one.\n\nWhat would you ship first: speed, or trust?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
