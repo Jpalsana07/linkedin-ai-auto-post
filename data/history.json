@@ -108,5 +108,15 @@
     "content": "This week, the bot got quieter.\n\nI’m building an LLM support assistant for a SaaS team.\nIt answers customer questions from help docs and past tickets.\n\nLast week, it was fast but sloppy.\nThis week, I shipped a stricter retrieval layer, which is the part that finds the right source text before the model answers.\n\nThat changed one number that mattered:\nwrong-answer rate dropped from 18% to 6%.\n\nI used OpenAI for generation and Postgres for stored tickets.\nPostgres is our database, the place we keep records.\n\nThe win looked clean on a chart.\nThe messy part was obvious in Slack.\n\nThe bot now says “I don’t know” more often.\nThat sounds worse until you watch support agents.\nThey trust a cautious answer.\nThey do not trust a confident guess.\n\nWhat’s still broken?\nLatency jumped from 1.8 seconds to 3.4 seconds on long questions.\nThe model is waiting on a second search pass, and some replies still miss old tickets with weird wording.\n\nSo the lesson this week is simple:\nin production, a slower honest answer beats a fast fake one.\n\nWhat would you ship first: speed, or trust?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-27T06:40:33.155Z",
+    "topic": "Freelancing with Numbers",
+    "pillar": "Founder and Career",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "66845954242b25e3",
+    "content": "I priced work wrong.\n\nI was freelancing on a 6-week client build.\nThe question was simple: charge by the hour, or charge one fixed price.\n\nThat choice changes everything.\nHourly is safer when the scope is blurry.\nFixed price is cleaner when the client wants a clear outcome.\n\nI chose fixed price on purpose.\n\nThe tradeoff was real.\nIf I got fast, I kept the upside.\nIf I got surprised, I ate the cost.\n\nWhat most people miss is cash flow.\nHourly can look better on paper.\nBut clients pay slower when they feel every extra meeting.\nA fixed quote with a 50% upfront payment gave me predictability, and predictability mattered more than squeezing every extra dollar.\n\nThat mattered because I was solo.\nNo buffer.\nNo team to absorb a 2-week delay.\n\nThe lesson: pick the pricing model that protects the constraint you actually have, not the one that sounds fairest.\n\nIf you’ve freelanced, when did you choose certainty over upside?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
