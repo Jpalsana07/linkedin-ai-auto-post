@@ -118,5 +118,15 @@
     "content": "I priced work wrong.\n\nI was freelancing on a 6-week client build.\nThe question was simple: charge by the hour, or charge one fixed price.\n\nThat choice changes everything.\nHourly is safer when the scope is blurry.\nFixed price is cleaner when the client wants a clear outcome.\n\nI chose fixed price on purpose.\n\nThe tradeoff was real.\nIf I got fast, I kept the upside.\nIf I got surprised, I ate the cost.\n\nWhat most people miss is cash flow.\nHourly can look better on paper.\nBut clients pay slower when they feel every extra meeting.\nA fixed quote with a 50% upfront payment gave me predictability, and predictability mattered more than squeezing every extra dollar.\n\nThat mattered because I was solo.\nNo buffer.\nNo team to absorb a 2-week delay.\n\nThe lesson: pick the pricing model that protects the constraint you actually have, not the one that sounds fairest.\n\nIf you’ve freelanced, when did you choose certainty over upside?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-28T07:12:23.696Z",
+    "topic": "LLM Cost Optimization",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "697c6af3562f7a52",
+    "content": "One prompt cost $18.\n\nI was building an internal support bot for a fintech team.\nIt answered employee questions from policy docs, and the bill jumped after launch.\n\nThe bot felt smart.\nThe invoices did not.\n\nWe were sending every question to GPT-4o, OpenAI’s general model, plus the full chat history on each turn.\nThat meant a simple “How do I reset my password?” was carrying 20 previous messages, three pasted policy pages, and a lot of wasted tokens.\n\nTokens are the chunks of text a model reads.\nMore chunks means more cost.\n\nI tried caching answers in Redis, a fast memory store.\nHelped a little.\n\nI tried shrinking the context window, the amount of text the model sees.\nHelped more.\n\nThe real problem was upstream.\nWe had no routing layer, the step that picks the cheapest model for the job.\n\nPassword resets did not need GPT-4o.\nThey needed a smaller model and a clean lookup against the policy index, the searchable doc list.\n\nAfter that change, our average response dropped from $0.42 to $0.06.\nSame bot.\nSame users.\nDifferent bill.\n\nThe lesson: don’t optimize prompts first.\nOptimize what asks the model to think at all.\n\nWhat’s the most expensive “simple” AI feature you’ve seen ship?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
