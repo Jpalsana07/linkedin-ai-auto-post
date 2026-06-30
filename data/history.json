@@ -138,5 +138,15 @@
     "content": "Node.js is not the problem.\n\nThe hot take: your team is probably using it badly.\n\nThe dominant story is simple: Node.js is for startups, then you \"graduate\" to something safer when traffic grows.\nThat sounds neat.\nIt also made us overcomplicate a service that only needed to stay fast, cheap, and easy to change.\n\nWe had one API on Node 18 serving about 2.3 million requests a day.\nThe latency spikes were real, but the root cause was not Node.\nIt was 14 different middlewares, too much JSON copying, and a queue that nobody owned.\n\nWe trimmed the stack.\nRemoved 6 middlewares.\nStopped parsing the same payload twice.\nKept the process boring.\n\np95 latency dropped from 480ms to 140ms in a week.\n\nThe strongest argument against this is fair: Node can fall over when you mix heavy CPU work with lots of traffic.\nThat is true.\nIf your app is doing image processing or long-running computation, Node is the wrong fit.\n\nBut most \"Node doesn’t scale\" stories I’ve seen were really \"our architecture didn’t scale.\"\n\nThe lesson: scale the system before you blame the language.\n\nWhat’s the real bottleneck you’ve seen blamed on Node?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-06-30T07:06:10.677Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "b3f9b7bc4116b687",
+    "content": "I trusted the wrong memory.\n\nWe were building an AI agent to help our support team answer refund requests.\nIf it worked, it would save hours a day and keep angry customers from waiting.\n\nThe agent kept sounding confident.\nIt even had access to the right policy docs.\n\nBut it still made up details.\n\nThe mistake was simple:\nI treated the model like a person who could remember the rules.\nIt isn’t.\n\nAn agent is only as good as the instructions, tools, and checks around it.\nWithout a hard source of truth, it will fill gaps with something that sounds right.\n\nWe fixed it by forcing every refund answer through one live policy lookup before the reply.\nAfter that change, the bad answers dropped to almost zero.\n\nThe lesson I keep relearning:\ndon’t ask an agent to remember what it can read.\n\nWhat’s a place you’ve seen AI sound right and still get it wrong?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
