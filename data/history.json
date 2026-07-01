@@ -148,5 +148,15 @@
     "content": "I trusted the wrong memory.\n\nWe were building an AI agent to help our support team answer refund requests.\nIf it worked, it would save hours a day and keep angry customers from waiting.\n\nThe agent kept sounding confident.\nIt even had access to the right policy docs.\n\nBut it still made up details.\n\nThe mistake was simple:\nI treated the model like a person who could remember the rules.\nIt isn’t.\n\nAn agent is only as good as the instructions, tools, and checks around it.\nWithout a hard source of truth, it will fill gaps with something that sounds right.\n\nWe fixed it by forcing every refund answer through one live policy lookup before the reply.\nAfter that change, the bad answers dropped to almost zero.\n\nThe lesson I keep relearning:\ndon’t ask an agent to remember what it can read.\n\nWhat’s a place you’ve seen AI sound right and still get it wrong?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-01T07:52:32.280Z",
+    "topic": "PostgreSQL Lessons",
+    "pillar": "Architecture and Stack",
+    "angle": "tool-comparison",
+    "contentHash": "e7ddc8f62b0f1f58",
+    "content": "We had 18 million rows.\nPostgres was slowing down search.\n\nThe question was simple:\ndo we add a GIN index or cache the results in Redis?\n\nGIN indexes in PostgreSQL are built for searching inside data.\nThink tags, text, JSON fields, and “find me anything containing this.”\n\nRedis is an in-memory cache.\nThink “keep the answer on a sticky note” for fast repeat reads.\n\nWe tested both on the same endpoint.\n\nGIN got the query from 420 ms to 38 ms.\nRedis got repeated reads to 4 ms.\nBut Redis also added a second system, cache invalidation, and 2 days of edge cases.\n\nGIN took one migration.\nNo new service.\nNo stale data.\nNo extra code path to debug at 2 a.m.\n\nWe picked GIN.\n\nThe lesson: if Postgres can answer the question well enough, keep the work inside Postgres.\nA second system should earn its place, not just look faster in a benchmark.\n\nWhat’s the best case you’ve seen for keeping search inside Postgres?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
