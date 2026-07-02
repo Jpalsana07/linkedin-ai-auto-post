@@ -158,5 +158,15 @@
     "content": "We had 18 million rows.\nPostgres was slowing down search.\n\nThe question was simple:\ndo we add a GIN index or cache the results in Redis?\n\nGIN indexes in PostgreSQL are built for searching inside data.\nThink tags, text, JSON fields, and “find me anything containing this.”\n\nRedis is an in-memory cache.\nThink “keep the answer on a sticky note” for fast repeat reads.\n\nWe tested both on the same endpoint.\n\nGIN got the query from 420 ms to 38 ms.\nRedis got repeated reads to 4 ms.\nBut Redis also added a second system, cache invalidation, and 2 days of edge cases.\n\nGIN took one migration.\nNo new service.\nNo stale data.\nNo extra code path to debug at 2 a.m.\n\nWe picked GIN.\n\nThe lesson: if Postgres can answer the question well enough, keep the work inside Postgres.\nA second system should earn its place, not just look faster in a benchmark.\n\nWhat’s the best case you’ve seen for keeping search inside Postgres?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-02T06:52:53.524Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "9cd85724c450cf82",
+    "content": "The evals finally caught it.\n\nI’m building an AI support copilot for a small SaaS team.\n\nThe goal is simple: help agents answer faster without making up facts.\n\nThis week I shipped an eval set of 120 real customer questions, plus a grading script in Python that scores each reply for correctness, tone, and hallucinations.\n\nBefore that, we were guessing.\n\nA change looked good in a demo, then failed on the weird edge cases customers actually ask.\n\nAfter the evals, one model jumped from 68% to 84% on answer quality.\n\nThat number sounds good until you see the gap:\nit still missed refund policy questions and kept giving confident but wrong account steps.\n\nThe broken part is not the model alone.\n\nIt’s our eval coverage.\n\nWe had plenty of “happy path” questions and almost no angry, messy, half-written tickets from real users.\n\nSo the lesson this week was clear:\nif you only test the easy cases, your AI will look smart right up until it meets a customer.\n\nWhat do you think is harder to catch early: wrong answers, or confident wrong answers?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
