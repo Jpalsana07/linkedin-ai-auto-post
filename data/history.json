@@ -178,5 +178,15 @@
     "content": "I almost shipped the shortcut.\n\nWe were building onboarding for a small SaaS.\nEvery new user had to connect Stripe, import data, and finish setup fast.\n\nThe choice was simple on paper:\nbuild one flexible flow now,\nor split it into 3 separate steps.\n\nThe flexible version looked cleaner.\nOne screen, fewer buttons, less code.\n\nBut the tradeoff was hidden.\nIf anything failed, users would lose the whole flow.\nAnd in the first week, 31% of signups were coming from people on weak laptops and shaky Wi‑Fi.\n\nSo I chose the boring option.\nThree steps.\nMore clicks.\nLess chance of a half-finished setup getting wiped out.\n\nThat decision cost us polish.\nIt saved us from support tickets we would have spent months untangling.\n\nThe lesson I keep relearning:\nthe best architecture is often the one that survives bad internet, tired users, and rushed decisions.\n\nThat tradeoff doesn’t apply when the task is truly tiny.\nIf the whole job takes 30 seconds, friction matters more than failure recovery.\n\nWhat tradeoff do you think founders ignore most when they’re trying to make a product feel “simple”?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-04T06:31:57.092Z",
+    "topic": "Software Architecture",
+    "pillar": "Architecture and Stack",
+    "angle": "postmortem",
+    "contentHash": "a749b3876ab80434",
+    "content": "The checkout app crashed Friday.\n\nWe were building a payment flow for a small e-commerce client.\nTheir customers were stuck at the final step, and every failed checkout meant lost orders.\n\nThe frontend looked fine.\nThe API looked fine.\nBut every few minutes, the whole flow would hang for 30 seconds and then fail.\n\nWe blamed Stripe first.\nThen the database.\nThen the network.\n\nThe root cause was boring: one service was doing too much.\nThe monolith — one big app with shared responsibilities — was handling login, cart updates, payment validation, and receipt emails in the same request path.\n\nA slow email call was blocking the payment response.\n\nWe moved receipt sending to a queue — a background line for delayed work — and split payment validation into its own service.\nThe next deploy cut checkout latency from 8.4 seconds to 1.1 seconds.\n\nWhat I learned: when one user action depends on too many jobs finishing at once, the whole product feels broken.\n\nSimple architecture is not about being clever.\nIt is about making the critical path — the steps that must finish now — as short as possible.\n\nWhich part of a product do you think is most often doing too much work?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
