@@ -188,5 +188,15 @@
     "content": "The checkout app crashed Friday.\n\nWe were building a payment flow for a small e-commerce client.\nTheir customers were stuck at the final step, and every failed checkout meant lost orders.\n\nThe frontend looked fine.\nThe API looked fine.\nBut every few minutes, the whole flow would hang for 30 seconds and then fail.\n\nWe blamed Stripe first.\nThen the database.\nThen the network.\n\nThe root cause was boring: one service was doing too much.\nThe monolith — one big app with shared responsibilities — was handling login, cart updates, payment validation, and receipt emails in the same request path.\n\nA slow email call was blocking the payment response.\n\nWe moved receipt sending to a queue — a background line for delayed work — and split payment validation into its own service.\nThe next deploy cut checkout latency from 8.4 seconds to 1.1 seconds.\n\nWhat I learned: when one user action depends on too many jobs finishing at once, the whole product feels broken.\n\nSimple architecture is not about being clever.\nIt is about making the critical path — the steps that must finish now — as short as possible.\n\nWhich part of a product do you think is most often doing too much work?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-05T06:52:52.870Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "448b7c86a26f9b8a",
+    "content": "MCP is not the bottleneck.\n\nEveryone keeps talking like the model is brilliant and the missing piece is just better tools.\nOr better context.\nOr a smarter way to wire everything together.\n\nI built a small support bot with Claude and MCP, the Model Context Protocol that lets an AI call tools in a standard way.\nThe bot could search tickets, pull orders, and draft replies.\n\nIt still sounded lost.\n\nThe problem was not access.\nIt was what I was feeding it, and when.\n\nI spent 2 days shrinking a 14-page context dump into 6 short facts the bot actually needed.\nSame tools.\nSame model.\nFar better answers.\n\nThat was the moment context engineering clicked for me:\nmost AI failures are not “the bot can’t do it.”\nThey’re “the bot was given the wrong shape of information.”\n\nThe strongest counterargument is real: MCP matters because it stops every team from building custom glue for every app.\nThat is true.\nStandard plumbing is useful.\n\nBut once the pipes work, the hard part is still deciding what goes through them.\n\nLess context, better chosen, beats more context every time.\n\nWhat’s the most useful thing you’ve seen an AI ignore because it was buried in too much context?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
