@@ -198,5 +198,15 @@
     "content": "MCP is not the bottleneck.\n\nEveryone keeps talking like the model is brilliant and the missing piece is just better tools.\nOr better context.\nOr a smarter way to wire everything together.\n\nI built a small support bot with Claude and MCP, the Model Context Protocol that lets an AI call tools in a standard way.\nThe bot could search tickets, pull orders, and draft replies.\n\nIt still sounded lost.\n\nThe problem was not access.\nIt was what I was feeding it, and when.\n\nI spent 2 days shrinking a 14-page context dump into 6 short facts the bot actually needed.\nSame tools.\nSame model.\nFar better answers.\n\nThat was the moment context engineering clicked for me:\nmost AI failures are not “the bot can’t do it.”\nThey’re “the bot was given the wrong shape of information.”\n\nThe strongest counterargument is real: MCP matters because it stops every team from building custom glue for every app.\nThat is true.\nStandard plumbing is useful.\n\nBut once the pipes work, the hard part is still deciding what goes through them.\n\nLess context, better chosen, beats more context every time.\n\nWhat’s the most useful thing you’ve seen an AI ignore because it was buried in too much context?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-06T07:58:39.305Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "810c997e47b6b6c7",
+    "content": "We let the agent send money alone.\n\nIt was a support workflow for refunds.\nThe stakes were real: if it worked, we could cut response time from hours to minutes.\n\nFor 3 days, it looked fine.\nThen a customer got the same refund twice.\n\nThe bug was not the model.\nIt was us assuming one good answer meant one safe action.\n\nThe agent used OpenAI for reasoning and Stripe for payments.\nStripe is the payment processor.\n\nWe had a tool schema — the menu of actions the bot can take — and it had only one rule: “issue refund.”\nNo idempotency key, which is a unique stamp that prevents duplicate actions.\nNo human check on money-moving steps.\n\nSo when the request retried after a timeout, the second run looked identical.\nThe bot was “correct.”\nThe system was not.\n\nWe added a simple gate after that:\nthe agent could draft the refund,\nbut a person had to approve the final charge.\n\nThat single change cut duplicate refunds to zero.\n\nThe lesson: an agent is not reliable just because each step sounds reasonable.\nIt has to be safe when the same step happens twice.\n\nWhere have you seen a system look correct on the first pass and still fail in the real world?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
