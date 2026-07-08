@@ -218,5 +218,15 @@
     "content": "React Router won the week.\n\nWe needed one UI to let people browse products, open a cart, and keep the browser back button working like a normal website.\n\nThe choice was React Router or Next.js App Router, and we had 3 days to ship.\n\nReact Router is the classic library for page changes inside React apps.\nNext.js App Router is the newer routing system built into Next.js, the React web framework.\n\nReact Router gave us freedom, but it also gave us more work.\nWe had to wire data loading, loading states, and error screens by hand.\n\nNext.js App Router handled those pieces for us.\nServer rendering, nested layouts, and route-level loading came built in.\n\nThat saved us about 2 days on the first release.\nIt also cut one ugly bug: a blank screen during slow network calls that had shown up 14 times in testing.\n\nThe lesson was simple:\nIf the app is mostly pages and forms, pick the router that removes work, not the one that gives you the most control.\n\nWe shipped with Next.js App Router.\n\nWhich side do you trust more when speed matters: more control or fewer moving parts?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-08T06:09:36.741Z",
+    "topic": "Startup Lessons",
+    "pillar": "Founder and Career",
+    "angle": "build-in-public",
+    "contentHash": "708c37d61e57f9dc",
+    "content": "I’m building an AI triage tool for support teams.\nIt helps small teams answer customer tickets faster.\n\nThis week I shipped the first inbox import, so a team can pull in 1,247 old tickets and see them in one place.\nThat mattered because nobody wants to test a support tool on fake data.\n\nThe good news: first response time dropped from 14 minutes to 4 minutes in our test queue.\nThe bad news: 19% of imported threads lost their internal notes.\nThat means the agent sees the customer story, but not the private context the team used to rely on.\n\nI spent two days blaming the importer.\n\nIt turned out the real issue was simpler.\nI was treating every message like the same kind of message.\nA customer reply, an internal note, and a system event are not the same thing.\nIf you flatten them too early, you lose the thread.\n\nSo the lesson this week was blunt:\nshipping fast only helps if you preserve the shape of the real thing.\n\nWhat’s the hardest part of keeping real-world context intact when you build?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
