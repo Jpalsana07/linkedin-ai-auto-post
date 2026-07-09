@@ -228,5 +228,15 @@
     "content": "I’m building an AI triage tool for support teams.\nIt helps small teams answer customer tickets faster.\n\nThis week I shipped the first inbox import, so a team can pull in 1,247 old tickets and see them in one place.\nThat mattered because nobody wants to test a support tool on fake data.\n\nThe good news: first response time dropped from 14 minutes to 4 minutes in our test queue.\nThe bad news: 19% of imported threads lost their internal notes.\nThat means the agent sees the customer story, but not the private context the team used to rely on.\n\nI spent two days blaming the importer.\n\nIt turned out the real issue was simpler.\nI was treating every message like the same kind of message.\nA customer reply, an internal note, and a system event are not the same thing.\nIf you flatten them too early, you lose the thread.\n\nSo the lesson this week was blunt:\nshipping fast only helps if you preserve the shape of the real thing.\n\nWhat’s the hardest part of keeping real-world context intact when you build?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-09T07:02:06.398Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "ccf2fb7eda142dfc",
+    "content": "One cache saved us.\n\nWe were shipping an LLM feature that answered customer questions inside our app.\n\nThe scary part wasn’t the model.\nIt was the bill and the lag.\n\nEvery reply had to feel fast, but every prompt to GPT-4o Mini meant another paid API call.\nAt 8,000 requests a day, small delays turned into angry users and a very real monthly tab.\n\nThe decision was simple to describe:\ndo we cache full answers, or only cache the “retrieval” step — the part that fetches the source facts before the model writes a reply?\n\nFull-answer caching is cheaper.\nIt also goes stale fast when product docs change.\nRetrieval caching is less dramatic, but it keeps the facts fresh and still cuts most of the work.\n\nWe chose retrieval caching.\n\nWhy?\nBecause our support docs changed 3–5 times a week.\nA stale answer with a fast response is still a bad answer.\n\nSo we cached the facts, not the finished sentence.\n\nThe lesson: when you can’t afford to be wrong, cache the part that changes least.\n\nThis tradeoff breaks down if your content barely changes, or if you need exact repeatability for compliance.\n\nWhat would you cache first in an LLM app: the answer, or the facts?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
