@@ -238,5 +238,15 @@
     "content": "One cache saved us.\n\nWe were shipping an LLM feature that answered customer questions inside our app.\n\nThe scary part wasn’t the model.\nIt was the bill and the lag.\n\nEvery reply had to feel fast, but every prompt to GPT-4o Mini meant another paid API call.\nAt 8,000 requests a day, small delays turned into angry users and a very real monthly tab.\n\nThe decision was simple to describe:\ndo we cache full answers, or only cache the “retrieval” step — the part that fetches the source facts before the model writes a reply?\n\nFull-answer caching is cheaper.\nIt also goes stale fast when product docs change.\nRetrieval caching is less dramatic, but it keeps the facts fresh and still cuts most of the work.\n\nWe chose retrieval caching.\n\nWhy?\nBecause our support docs changed 3–5 times a week.\nA stale answer with a fast response is still a bad answer.\n\nSo we cached the facts, not the finished sentence.\n\nThe lesson: when you can’t afford to be wrong, cache the part that changes least.\n\nThis tradeoff breaks down if your content barely changes, or if you need exact repeatability for compliance.\n\nWhat would you cache first in an LLM app: the answer, or the facts?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-10T06:58:43.106Z",
+    "topic": "Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "postmortem",
+    "contentHash": "ede5972cd06ae72d",
+    "content": "Next.js looked fine in staging.\n\nWe were building a customer portal for 4,000 paid users, and the first real traffic wave made pages stall for 11 seconds.\n\nThe homepage loaded.\nThen the dashboard went blank.\n\nWe had shipped it on Next.js 14, using server components (rendered on the server) and an API route (a backend endpoint) for every widget.\n\nOn my laptop, it felt instant.\n\nIn production, one slow database query held the whole page open.\nThe server was waiting to finish everything before sending HTML, so the browser had nothing to show.\n\nWe tried bigger instances first.\nWrong fix.\n\nThe real problem was that we had mixed “nice to have” data with “must show now” data in the same request.\nOne stock chart and one notification count were blocking the whole customer page.\n\nWe split the page.\nThe shell rendered first.\nThe expensive parts loaded after, with Suspense (a loading boundary) and cached data in Redis (a fast memory store).\n\nLatency dropped from 11 seconds to 1.8.\nSupport tickets fell the same week.\n\nThe lesson: in production, speed is not about making everything faster.\nIt’s about deciding what can wait.\n\nWhat do you think should render first when a page is under pressure?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
