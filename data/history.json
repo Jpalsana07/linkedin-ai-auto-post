@@ -248,5 +248,15 @@
     "content": "Next.js looked fine in staging.\n\nWe were building a customer portal for 4,000 paid users, and the first real traffic wave made pages stall for 11 seconds.\n\nThe homepage loaded.\nThen the dashboard went blank.\n\nWe had shipped it on Next.js 14, using server components (rendered on the server) and an API route (a backend endpoint) for every widget.\n\nOn my laptop, it felt instant.\n\nIn production, one slow database query held the whole page open.\nThe server was waiting to finish everything before sending HTML, so the browser had nothing to show.\n\nWe tried bigger instances first.\nWrong fix.\n\nThe real problem was that we had mixed “nice to have” data with “must show now” data in the same request.\nOne stock chart and one notification count were blocking the whole customer page.\n\nWe split the page.\nThe shell rendered first.\nThe expensive parts loaded after, with Suspense (a loading boundary) and cached data in Redis (a fast memory store).\n\nLatency dropped from 11 seconds to 1.8.\nSupport tickets fell the same week.\n\nThe lesson: in production, speed is not about making everything faster.\nIt’s about deciding what can wait.\n\nWhat do you think should render first when a page is under pressure?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-11T05:56:11.924Z",
+    "topic": "LLM Cost Optimization",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "f620c9c5e0ff79a1",
+    "content": "Cheap prompts are a false economy.\n\nThe popular advice is simple:\nsend less text, use a smaller model, and the bill will drop.\n\nThat helped us for a while.\n\nThen we shipped an AI support workflow and the token bill still hit $4,800 in one month.\nMost of the cost was not the prompt.\nIt was repeated retries, long chat histories, and bad routing to the wrong model.\n\nWe stopped obsessing over prompt length.\nInstead, we used LangChain, a tool for chaining model steps, to route easy tickets to a smaller model and reserve the expensive one for messy cases.\n\nCost dropped 37%.\nResponse quality stayed flat.\n\nThe lesson: LLM cost is usually a systems problem, not a prompt problem.\n\nThe strongest counterargument is real:\nsometimes prompt trimming is the fastest win, especially when you are early and the usage is tiny.\n\nI still trim prompts when it is easy.\n\nBut if your bill keeps climbing, look at the shape of the workflow before you start shaving words.\n\nWhere have you seen the real cost hide: the prompt, or the system around it?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
