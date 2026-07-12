@@ -258,5 +258,15 @@
     "content": "Cheap prompts are a false economy.\n\nThe popular advice is simple:\nsend less text, use a smaller model, and the bill will drop.\n\nThat helped us for a while.\n\nThen we shipped an AI support workflow and the token bill still hit $4,800 in one month.\nMost of the cost was not the prompt.\nIt was repeated retries, long chat histories, and bad routing to the wrong model.\n\nWe stopped obsessing over prompt length.\nInstead, we used LangChain, a tool for chaining model steps, to route easy tickets to a smaller model and reserve the expensive one for messy cases.\n\nCost dropped 37%.\nResponse quality stayed flat.\n\nThe lesson: LLM cost is usually a systems problem, not a prompt problem.\n\nThe strongest counterargument is real:\nsometimes prompt trimming is the fastest win, especially when you are early and the usage is tiny.\n\nI still trim prompts when it is easy.\n\nBut if your bill keeps climbing, look at the shape of the workflow before you start shaving words.\n\nWhere have you seen the real cost hide: the prompt, or the system around it?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-12T06:15:58.552Z",
+    "topic": "SaaS Build-in-Public Metrics",
+    "pillar": "Founder and Career",
+    "angle": "mistake-and-lesson",
+    "contentHash": "aa194bdab18fbd81",
+    "content": "I hid our revenue numbers.\n\nWe were building a SaaS in public,\nand I thought the point was to look confident while we found product-market fit.\n\nSo I posted screenshots of signups,\nbut left out churn, refunds, and the ugly weeks.\n\nThe problem was simple:\npeople could see momentum, but not truth.\n\nInside the team, it got worse.\nWe started optimizing for the numbers that looked good in screenshots.\nMore trials.\nMore top-of-funnel.\nLess attention on who actually stuck around.\n\nWhen we finally shared the full picture in Notion,\na simple doc tool,\nthe story changed fast.\n\nOne month later, the team stopped asking,\n“How do we make this look better?”\nand started asking,\n“How do we make this worth paying for?”\n\nThe lesson I keep coming back to:\nif you build in public, publish the numbers that can hurt you.\n\nThat’s the only version that teaches you what the market is really saying.\n\nWhat metric would you be most tempted to hide?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
