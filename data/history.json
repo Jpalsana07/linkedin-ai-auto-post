@@ -268,5 +268,15 @@
     "content": "I hid our revenue numbers.\n\nWe were building a SaaS in public,\nand I thought the point was to look confident while we found product-market fit.\n\nSo I posted screenshots of signups,\nbut left out churn, refunds, and the ugly weeks.\n\nThe problem was simple:\npeople could see momentum, but not truth.\n\nInside the team, it got worse.\nWe started optimizing for the numbers that looked good in screenshots.\nMore trials.\nMore top-of-funnel.\nLess attention on who actually stuck around.\n\nWhen we finally shared the full picture in Notion,\na simple doc tool,\nthe story changed fast.\n\nOne month later, the team stopped asking,\n“How do we make this look better?”\nand started asking,\n“How do we make this worth paying for?”\n\nThe lesson I keep coming back to:\nif you build in public, publish the numbers that can hurt you.\n\nThat’s the only version that teaches you what the market is really saying.\n\nWhat metric would you be most tempted to hide?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-13T06:34:53.158Z",
+    "topic": "TypeScript Pitfalls",
+    "pillar": "Architecture and Stack",
+    "angle": "tool-comparison",
+    "contentHash": "ce92ee1dfe9c0cac",
+    "content": "Zod saved our forms.\n\nTypeScript was supposed to catch bad data, but the bugs still slipped through.\nWe were building a checkout flow, and one wrong email or empty amount could block real money.\n\nI compared Zod and Yup.\n\nBoth validate user input.\nBoth let you define rules like “this field is required” or “this number must be positive.”\n\nBut Zod gave us something TypeScript could actually use.\nIts schemas infer types automatically, which meant fewer hand-written interfaces and fewer places for drift.\n\nWith Yup, we kept writing the shape twice.\nThat extra duplication cost us about 2 days on the first form, then another bug showed up when the frontend and backend disagreed on a field name.\n\nAfter switching to Zod, we removed around 140 lines of duplicate type code and cut validation bugs to zero for that flow.\n\nMy lesson: when the problem is “the code and the rules keep drifting apart,” pick the tool that makes one source of truth unavoidable.\n\nWhat’s your go-to when you want TypeScript to stop guessing and start enforcing?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
