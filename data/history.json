@@ -278,5 +278,15 @@
     "content": "Zod saved our forms.\n\nTypeScript was supposed to catch bad data, but the bugs still slipped through.\nWe were building a checkout flow, and one wrong email or empty amount could block real money.\n\nI compared Zod and Yup.\n\nBoth validate user input.\nBoth let you define rules like “this field is required” or “this number must be positive.”\n\nBut Zod gave us something TypeScript could actually use.\nIts schemas infer types automatically, which meant fewer hand-written interfaces and fewer places for drift.\n\nWith Yup, we kept writing the shape twice.\nThat extra duplication cost us about 2 days on the first form, then another bug showed up when the frontend and backend disagreed on a field name.\n\nAfter switching to Zod, we removed around 140 lines of duplicate type code and cut validation bugs to zero for that flow.\n\nMy lesson: when the problem is “the code and the rules keep drifting apart,” pick the tool that makes one source of truth unavoidable.\n\nWhat’s your go-to when you want TypeScript to stop guessing and start enforcing?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-14T05:43:10.358Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "623406efa442ab3e",
+    "content": "This week’s agent passed 73 tests.\n\nI’m building an AI assistant for support teams.\nIt reads messy customer threads and drafts replies for human review.\n\nLast Monday, it was helping with 4 tickets a day.\nBy Friday, it was handling 31.\n\nThe thing I shipped this week was a tighter tool schema — the menu of actions the bot can take — plus better memory around customer history.\n\nThat moved draft approval rate from 58% to 81%.\n\nBut it also exposed a new mess:\nthe agent still hallucinates order numbers when a thread has screenshots and forwarded emails in the same conversation.\n\nI spent two hours chasing one bad reply.\nThe root cause was simple: I trusted the model to “understand” the inbox layout.\nIt doesn’t.\nIt needs the layout spelled out every time.\n\nThat’s the lesson I keep relearning:\nagents get better when the job is narrower, not when the prompt is longer.\n\nWhat would you narrow first if your agent kept guessing wrong?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
