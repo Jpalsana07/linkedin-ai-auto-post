@@ -298,5 +298,15 @@
     "content": "We stopped sharing one Node process.\n\nThat sounded boring.\nIt saved our API.\n\nAt 40k requests a minute, one slow image resize could freeze the whole app.\nA customer would click “checkout,” and their page would sit behind someone else’s export job.\n\nThe decision was simple: keep web traffic and background jobs separate.\n\nThe tradeoff was real.\nOne codebase is easier to ship.\nTwo processes mean more moving parts, more deploys, and a little more ops work.\n\nWe chose separation because our worst bottleneck was not code size.\nIt was queue starvation — when background work eats the workers your users need right now.\n\nSo we ran the API in Node.js and pushed heavy jobs into BullMQ, the Redis-based job queue.\nThat let us keep checkout fast even when a batch import ran for 12 minutes.\n\nThe lesson: when users are waiting, protect the path they touch first.\nEverything else can be slower.\n\nIf you were splitting one Node app today, what would you isolate first?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-16T05:57:45.906Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "7efc4c68e5ca454f",
+    "content": "Our evals lied to us.\n\nWe were building an AI support assistant for a fintech team.\nIt answered customer questions and suggested next steps.\nIn staging, it looked solid.\nIn production, it gave 1 wrong answer out of 20, and that one answer was about money.\n\nWe had used an eval set, which is a small test pack of example questions, to grade the model before launch.\nThe score was 94%.\n\nSo we pushed.\n\nThe problem was the eval set.\nIt was full of clean, obvious questions from our team.\nReal users wrote messy things like “why did I get charged twice?” and “I already refunded this, now what?”\n\nThose cases needed context from two systems, not one.\nOur tool schema, the menu of actions the bot can take, only covered the billing app.\nIt never checked the ledger.\n\nWe rebuilt the evals around real support tickets.\nWe added 312 cases from Zendesk, the customer support tool.\nThe score dropped to 71%.\n\nThat was the first honest number we had.\n\nThe lesson: if your evals don’t look like reality, they are not quality control.\nThey are theater.\n\nWhat’s the most misleading test you’ve seen teams trust?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
