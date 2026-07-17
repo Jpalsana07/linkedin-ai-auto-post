@@ -308,5 +308,15 @@
     "content": "Our evals lied to us.\n\nWe were building an AI support assistant for a fintech team.\nIt answered customer questions and suggested next steps.\nIn staging, it looked solid.\nIn production, it gave 1 wrong answer out of 20, and that one answer was about money.\n\nWe had used an eval set, which is a small test pack of example questions, to grade the model before launch.\nThe score was 94%.\n\nSo we pushed.\n\nThe problem was the eval set.\nIt was full of clean, obvious questions from our team.\nReal users wrote messy things like “why did I get charged twice?” and “I already refunded this, now what?”\n\nThose cases needed context from two systems, not one.\nOur tool schema, the menu of actions the bot can take, only covered the billing app.\nIt never checked the ledger.\n\nWe rebuilt the evals around real support tickets.\nWe added 312 cases from Zendesk, the customer support tool.\nThe score dropped to 71%.\n\nThat was the first honest number we had.\n\nThe lesson: if your evals don’t look like reality, they are not quality control.\nThey are theater.\n\nWhat’s the most misleading test you’ve seen teams trust?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-17T05:57:58.175Z",
+    "topic": "Freelancing with Numbers",
+    "pillar": "Founder and Career",
+    "angle": "contrarian-take",
+    "contentHash": "af05b98c54d891a5",
+    "content": "Freelancers love hiding rates.\n\nThe market says: don’t talk numbers until the client is hooked.\nKeep your price flexible.\nLet the call “build trust.”\n\nI used to do that.\n\nThen I started putting a number in the first email.\nNot a full quote.\nJust a range: $8k to $12k for the first project.\n\nOne client disappeared.\n\nThree replied faster than ever.\nOne said, “Thank you for being direct.”\nWe closed in 6 days.\n\nThe contrarian take:\nnumbers do not scare good clients away.\nThey scare away the people shopping for a bargain.\n\nThe strongest counterargument is real:\nif you name a price too early, you can anchor yourself too low.\nI’ve done that too.\n\nBut vague pricing costs more.\nIt burns hours on calls, invites scope creep, and turns a simple project into a negotiation.\n\nThe lesson I keep relearning:\nclarity is a filter.\n\nWhat number do you think should come first in a freelance conversation?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
