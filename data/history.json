@@ -318,5 +318,15 @@
     "content": "Freelancers love hiding rates.\n\nThe market says: don’t talk numbers until the client is hooked.\nKeep your price flexible.\nLet the call “build trust.”\n\nI used to do that.\n\nThen I started putting a number in the first email.\nNot a full quote.\nJust a range: $8k to $12k for the first project.\n\nOne client disappeared.\n\nThree replied faster than ever.\nOne said, “Thank you for being direct.”\nWe closed in 6 days.\n\nThe contrarian take:\nnumbers do not scare good clients away.\nThey scare away the people shopping for a bargain.\n\nThe strongest counterargument is real:\nif you name a price too early, you can anchor yourself too low.\nI’ve done that too.\n\nBut vague pricing costs more.\nIt burns hours on calls, invites scope creep, and turns a simple project into a negotiation.\n\nThe lesson I keep relearning:\nclarity is a filter.\n\nWhat number do you think should come first in a freelance conversation?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-18T05:39:32.844Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "2aedf15eb303bd45",
+    "content": "We shipped the wrong context.\n\nWe were building an MCP server to let our support bot read tickets, fetch order data, and draft replies.\nIt had to cut first-response time for a queue that handled 4,000 tickets a week.\n\nThe model looked smart in demos.\nThen it started pulling the wrong customer history and mixing up two people with the same first name.\n\nThe bug wasn’t the model.\nIt was our context engineering — the way we chose, trimmed, and labeled the information the model saw.\n\nWe had sent everything.\nToo much chat history, too many fields, no clear priority.\nThe bot was guessing what mattered.\n\nOnce we changed the context to send only the last relevant ticket, the order ID, and one sentence of intent, the replies got boring in the best way.\nAccurate.\nFast.\nConsistent.\n\nThe lesson: with MCP, the model is rarely the problem.\nBad context turns a capable assistant into a confident liar.\n\nWhat context do you think teams should stop sending first?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
