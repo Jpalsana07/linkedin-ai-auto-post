@@ -328,5 +328,15 @@
     "content": "We shipped the wrong context.\n\nWe were building an MCP server to let our support bot read tickets, fetch order data, and draft replies.\nIt had to cut first-response time for a queue that handled 4,000 tickets a week.\n\nThe model looked smart in demos.\nThen it started pulling the wrong customer history and mixing up two people with the same first name.\n\nThe bug wasn’t the model.\nIt was our context engineering — the way we chose, trimmed, and labeled the information the model saw.\n\nWe had sent everything.\nToo much chat history, too many fields, no clear priority.\nThe bot was guessing what mattered.\n\nOnce we changed the context to send only the last relevant ticket, the order ID, and one sentence of intent, the replies got boring in the best way.\nAccurate.\nFast.\nConsistent.\n\nThe lesson: with MCP, the model is rarely the problem.\nBad context turns a capable assistant into a confident liar.\n\nWhat context do you think teams should stop sending first?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-19T06:10:51.472Z",
+    "topic": "PostgreSQL Lessons",
+    "pillar": "Architecture and Stack",
+    "angle": "tool-comparison",
+    "contentHash": "cfe245b0696bbb30",
+    "content": "We picked the wrong Postgres tool.\n\nWe needed faster reads on a product page.\nNot a new database.\nJust a way to answer the same question 10,000 times without making Postgres sweat.\n\nThe two candidates were Redis and pgvector.\n\nRedis is a memory store, so it keeps hot data in RAM for very fast access.\npgvector is a PostgreSQL extension for similarity search, which means finding “close enough” items by comparing embeddings, or number lists that represent meaning.\n\nRedis was faster on paper.\nSingle-digit millisecond reads.\nBut it meant another service, another cache to warm, and another place for stale data to hide.\n\npgvector was slower.\nOur queries landed around 40 ms.\nBut it lived next to the data, used one backup system, and shipped in 2 days instead of 2 weeks.\n\nThat mattered more than speed.\n\nThe lesson: choose the tool that removes moving parts first.\nPerformance is nice.\nOperational simplicity keeps the system alive when the page gets hammered at 9 a.m.\n\nWe kept pgvector and deleted the Redis experiment.\n\nWhat’s a case where the slower Postgres-native option beat the “faster” tool for you?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
