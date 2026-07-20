@@ -338,5 +338,15 @@
     "content": "We picked the wrong Postgres tool.\n\nWe needed faster reads on a product page.\nNot a new database.\nJust a way to answer the same question 10,000 times without making Postgres sweat.\n\nThe two candidates were Redis and pgvector.\n\nRedis is a memory store, so it keeps hot data in RAM for very fast access.\npgvector is a PostgreSQL extension for similarity search, which means finding “close enough” items by comparing embeddings, or number lists that represent meaning.\n\nRedis was faster on paper.\nSingle-digit millisecond reads.\nBut it meant another service, another cache to warm, and another place for stale data to hide.\n\npgvector was slower.\nOur queries landed around 40 ms.\nBut it lived next to the data, used one backup system, and shipped in 2 days instead of 2 weeks.\n\nThat mattered more than speed.\n\nThe lesson: choose the tool that removes moving parts first.\nPerformance is nice.\nOperational simplicity keeps the system alive when the page gets hammered at 9 a.m.\n\nWe kept pgvector and deleted the Redis experiment.\n\nWhat’s a case where the slower Postgres-native option beat the “faster” tool for you?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-20T06:29:10.862Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "eb7ffea7180a015e",
+    "content": "I’m building an AI support agent.\n\nIt’s for a small SaaS team that answers customer tickets.\n\nThis week I shipped retries, tool timeouts, and a hard stop after 3 failed actions.\n\nBefore that, the agent would wander.\n\nIt could draft a good reply, then try to check billing, then get stuck waiting on a slow API rate limit — the max requests a service allows — and burn the whole run.\n\nAfter the update, the success rate on real tickets went from 61% to 84%.\n\nAverage response time dropped from 18 seconds to 9.\n\nThat sounds great until you hit the broken part.\n\nThe agent is still brittle on messy tickets with two asks in one message.\n\nIf a customer says “refund me and reset my password,” it often solves one and drops the other.\n\nThe lesson is simple: reliability is not making the agent smarter.\n\nIt’s making failure smaller, faster, and easier to notice.\n\nThat’s the part I keep shipping now.\n\nWhat would you fix first: the agent’s memory, its tool calls, or its fallback behavior?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
