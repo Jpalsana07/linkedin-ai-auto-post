@@ -348,5 +348,15 @@
     "content": "I’m building an AI support agent.\n\nIt’s for a small SaaS team that answers customer tickets.\n\nThis week I shipped retries, tool timeouts, and a hard stop after 3 failed actions.\n\nBefore that, the agent would wander.\n\nIt could draft a good reply, then try to check billing, then get stuck waiting on a slow API rate limit — the max requests a service allows — and burn the whole run.\n\nAfter the update, the success rate on real tickets went from 61% to 84%.\n\nAverage response time dropped from 18 seconds to 9.\n\nThat sounds great until you hit the broken part.\n\nThe agent is still brittle on messy tickets with two asks in one message.\n\nIf a customer says “refund me and reset my password,” it often solves one and drops the other.\n\nThe lesson is simple: reliability is not making the agent smarter.\n\nIt’s making failure smaller, faster, and easier to notice.\n\nThat’s the part I keep shipping now.\n\nWhat would you fix first: the agent’s memory, its tool calls, or its fallback behavior?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-21T06:09:13.109Z",
+    "topic": "Software Architecture",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "8e8e3dffc52ed8d8",
+    "content": "We split the database.\n\nOur product had one app, one codebase, and one growing bottleneck.\nCustomer data and billing data kept fighting each other.\n\nThe question was simple:\nkeep everything in one Postgres database, or separate the two systems?\n\nOne database is easier at first.\nOne place to query.\nOne backup.\nOne mental model for the team.\n\nBut shared databases create hidden coupling.\nA slow billing report can make customer pages feel sluggish.\nA schema change for invoices can break a harmless profile update.\n\nWe chose to split them.\nCustomer data stayed in the main Postgres database.\nBilling moved to its own Postgres instance, with a small sync job between them.\n\nThat choice cost us more ops work.\nTwo backups.\nTwo sets of alerts.\nA little more code.\n\nBut it removed the constraint we kept missing:\nbilling had unpredictable spikes at month end.\nThose spikes did not care that the rest of the app was fine.\n\nThe lesson is simple:\nwhen two parts of a product fail on different rhythms, separate them before they start hurting each other.\n\nThis tradeoff does not apply when the system is small, or when the team cannot support extra operational work yet.\n\nWhere would you keep the database shared, even if it felt risky?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
