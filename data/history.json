@@ -358,5 +358,15 @@
     "content": "We split the database.\n\nOur product had one app, one codebase, and one growing bottleneck.\nCustomer data and billing data kept fighting each other.\n\nThe question was simple:\nkeep everything in one Postgres database, or separate the two systems?\n\nOne database is easier at first.\nOne place to query.\nOne backup.\nOne mental model for the team.\n\nBut shared databases create hidden coupling.\nA slow billing report can make customer pages feel sluggish.\nA schema change for invoices can break a harmless profile update.\n\nWe chose to split them.\nCustomer data stayed in the main Postgres database.\nBilling moved to its own Postgres instance, with a small sync job between them.\n\nThat choice cost us more ops work.\nTwo backups.\nTwo sets of alerts.\nA little more code.\n\nBut it removed the constraint we kept missing:\nbilling had unpredictable spikes at month end.\nThose spikes did not care that the rest of the app was fine.\n\nThe lesson is simple:\nwhen two parts of a product fail on different rhythms, separate them before they start hurting each other.\n\nThis tradeoff does not apply when the system is small, or when the team cannot support extra operational work yet.\n\nWhere would you keep the database shared, even if it felt risky?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-22T06:07:29.580Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "db730e5dcaca8eb4",
+    "content": "The bot sounded confident.\n\nWe were building an internal LLM assistant for a support team of 40 people.\n\nIt answered tickets fast, until one Monday it confidently invented a refund policy that didn’t exist.\n\nWe had wired it to a retrieval system — a search box for documents — and assumed that was enough.\n\nIt wasn’t.\n\nThe model was getting old policy docs, a stale FAQ, and one half-written note from Slack.\n\nThe real failure wasn’t the model.\n\nIt was our context.\n\nWe treated all sources like they were equally trustworthy, so the bot mixed official policy with random chatter.\n\nWe fixed it by labeling sources, adding freshness checks, and blocking Slack notes unless a human approved them.\n\nAfter that, the hallucinations dropped from 17 a day to 2.\n\nThe lesson: an LLM in production is only as good as the information you let it see.\n\nIf you feed it noise, it will answer with confidence anyway.\n\nWhat source would you trust first if a bot had to answer for your team?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
