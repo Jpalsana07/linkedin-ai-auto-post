@@ -368,5 +368,15 @@
     "content": "The bot sounded confident.\n\nWe were building an internal LLM assistant for a support team of 40 people.\n\nIt answered tickets fast, until one Monday it confidently invented a refund policy that didn’t exist.\n\nWe had wired it to a retrieval system — a search box for documents — and assumed that was enough.\n\nIt wasn’t.\n\nThe model was getting old policy docs, a stale FAQ, and one half-written note from Slack.\n\nThe real failure wasn’t the model.\n\nIt was our context.\n\nWe treated all sources like they were equally trustworthy, so the bot mixed official policy with random chatter.\n\nWe fixed it by labeling sources, adding freshness checks, and blocking Slack notes unless a human approved them.\n\nAfter that, the hallucinations dropped from 17 a day to 2.\n\nThe lesson: an LLM in production is only as good as the information you let it see.\n\nIf you feed it noise, it will answer with confidence anyway.\n\nWhat source would you trust first if a bot had to answer for your team?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-23T06:13:20.668Z",
+    "topic": "Career Inflection Moments",
+    "pillar": "Founder and Career",
+    "angle": "contrarian-take",
+    "contentHash": "d34df1b4dd4eb837",
+    "content": "My worst career move paid off.\n\nPeople say the big jump is quitting fast.\nBurn the bridge. Bet on yourself. Reset the clock.\n\nI believed that too.\n\nSo I left a safe product job at 29 for a startup that looked like a rocket ship.\nIt had 12 people, a messy roadmap, and one very loud investor.\n\nThree months later, the company stalled.\nI was suddenly the person explaining why the “dream role” had turned into a layoff conversation.\n\nThat sting changed how I think about career inflection moments.\n\nThe best moves are not always the boldest ones.\nSometimes they are the ones that keep optionality alive while everyone else is chasing drama.\n\nI took a smaller title after that.\nLess shiny.\nMore boring.\nBut it gave me 18 months to learn sales, sit in customer calls, and build a network that later helped me land my next founder role.\n\nThe strongest counterargument is real:\nsome jobs are toxic, and waiting too long can cost you years.\n\nI still think the lesson holds.\n\nDon’t optimize for the story you can tell on LinkedIn.\nOptimize for the set of doors your next move keeps open.\n\nWhat career move looked small at the time but changed everything later?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
