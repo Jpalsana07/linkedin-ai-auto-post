@@ -378,5 +378,15 @@
     "content": "My worst career move paid off.\n\nPeople say the big jump is quitting fast.\nBurn the bridge. Bet on yourself. Reset the clock.\n\nI believed that too.\n\nSo I left a safe product job at 29 for a startup that looked like a rocket ship.\nIt had 12 people, a messy roadmap, and one very loud investor.\n\nThree months later, the company stalled.\nI was suddenly the person explaining why the “dream role” had turned into a layoff conversation.\n\nThat sting changed how I think about career inflection moments.\n\nThe best moves are not always the boldest ones.\nSometimes they are the ones that keep optionality alive while everyone else is chasing drama.\n\nI took a smaller title after that.\nLess shiny.\nMore boring.\nBut it gave me 18 months to learn sales, sit in customer calls, and build a network that later helped me land my next founder role.\n\nThe strongest counterargument is real:\nsome jobs are toxic, and waiting too long can cost you years.\n\nI still think the lesson holds.\n\nDon’t optimize for the story you can tell on LinkedIn.\nOptimize for the set of doors your next move keeps open.\n\nWhat career move looked small at the time but changed everything later?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-24T06:06:54.202Z",
+    "topic": "React Shipping Stories",
+    "pillar": "Architecture and Stack",
+    "angle": "mistake-and-lesson",
+    "contentHash": "6d9a495f6c3e4ec6",
+    "content": "React had a 400ms hitch.\n\nWe were shipping a checkout flow in React.\nThe page looked fine in dev.\nOn a real phone, the button lagged just enough to feel broken.\n\nWe had spent 3 weeks polishing the design system.\nNew cards, animated drawers, prettier empty states.\nNone of it mattered when the first tap felt slow.\n\nThe bug was not one big thing.\nIt was 18 tiny rerenders from a parent component that owned too much state.\nEvery keystroke in one field forced half the page to repaint.\n\nWe fixed it by moving that state down and memoizing the expensive list.\nReact.memo means “skip work if props didn’t change.”\nThe lag dropped from 400ms to 40ms.\n\nThat was the whole lesson:\nin React, pretty UI does not save bad state boundaries.\n\nIf a screen feels slow, I now ask one question first:\nwho owns this state, and why?\n\nWhat state boundary have you seen quietly ruin a good interface?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
