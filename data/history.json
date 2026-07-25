@@ -388,5 +388,15 @@
     "content": "React had a 400ms hitch.\n\nWe were shipping a checkout flow in React.\nThe page looked fine in dev.\nOn a real phone, the button lagged just enough to feel broken.\n\nWe had spent 3 weeks polishing the design system.\nNew cards, animated drawers, prettier empty states.\nNone of it mattered when the first tap felt slow.\n\nThe bug was not one big thing.\nIt was 18 tiny rerenders from a parent component that owned too much state.\nEvery keystroke in one field forced half the page to repaint.\n\nWe fixed it by moving that state down and memoizing the expensive list.\nReact.memo means “skip work if props didn’t change.”\nThe lag dropped from 400ms to 40ms.\n\nThat was the whole lesson:\nin React, pretty UI does not save bad state boundaries.\n\nIf a screen feels slow, I now ask one question first:\nwho owns this state, and why?\n\nWhat state boundary have you seen quietly ruin a good interface?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-25T05:58:48.319Z",
+    "topic": "LLM Cost Optimization",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "5c1b76fe57fea124",
+    "content": "GPT-4o was too expensive.\n\nWe had a customer support feature that answered 10,000 questions a day.\nThe problem wasn’t quality.\nIt was the bill.\n\nSo I tested two ways to cut LLM costs: OpenAI GPT-4o mini and Anthropic Claude Haiku 3.\nBoth are smaller models built for cheaper, faster responses.\nBoth can handle basic Q&A.\nOnly one made sense for us.\n\nI wired them into the same prompt, same retrieval setup, same test set of 500 real support tickets.\nGPT-4o mini averaged 280 ms and cost us about $18 per million tokens.\nClaude Haiku 3 was faster at 190 ms and came in closer to $8 per million tokens.\n\nHaiku won.\n\nWhy?\nBecause our use case was simple: short answers, high volume, low drama.\nThe speed was nice.\nThe lower token cost was the real win.\n\nThe lesson: when the job is repetitive, pick the cheaper model that clears the bar.\nDon’t pay premium prices for words your users skim.\n\nWhat’s the most expensive AI choice you’ve seen made for a simple task?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
