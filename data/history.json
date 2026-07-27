@@ -408,5 +408,15 @@
     "content": "48 hours changed everything.\n\nI’m building an AI agent for customer support teams.\nThis week, it started handling real tickets from a small pilot customer.\n\nWe shipped a tighter tool schema — the menu of actions the bot can take — so it could stop guessing and start doing.\nIt can now look up order status, refund a charge, and hand off to a human with the right context.\n\nThe big win: first-response time dropped from 11 minutes to 42 seconds.\nThat mattered more than any demo.\n\nWhat broke?\nThe agent still gets trapped on messy edge cases.\nIf a customer mixes two problems in one message, it sometimes picks the wrong action and needs a reset.\nWe saw that in 17% of test conversations this week.\n\nThe lesson is simple:\nagents get useful when they can do fewer things very reliably.\n\nThat’s the part people skip.\nThey want the bot to feel smart.\nCustomers just want the problem solved fast.\n\nWhat would you trust an agent to do first in support?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-27T06:46:24.091Z",
+    "topic": "Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "e622e62b6c6c9782",
+    "content": "We chose SSR.\n\nOur Next.js app had one job: load fast for first-time visitors and still feel alive after that.\n\nThat meant deciding where the page should be built.\n\nWith Next.js, you can render pages on the server before they hit the browser.\nOr you can ship more JavaScript and let the browser do the work.\n\nThe tradeoff is simple.\nSSR (server-side rendering, HTML made on the server) gives you faster first paint and better SEO.\nClient-heavy pages feel snappier after load, but they often ship a bigger bundle and wait longer before anything useful appears.\n\nWe chose SSR for the homepage and product pages.\n\nWhy?\n\nBecause our biggest constraint wasn’t developer speed.\nIt was a 2.1 second median load time on mobile, and half our traffic came from people on flaky connections.\n\nThat constraint changed the decision.\n\nA prettier app that loads late still loses the sale.\n\nSo we accepted a little more server complexity to keep the first screen fast.\n\nThat tradeoff does not always apply.\nIf your app is mostly behind login, or your users live inside it for hours, client-side rendering can be the better call.\n\nThe lesson: optimize for the moment the user cares most about.\n\nWhat do you bias toward in Next.js: faster first paint or richer client-side behavior?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
