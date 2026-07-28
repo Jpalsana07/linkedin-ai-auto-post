@@ -418,5 +418,15 @@
     "content": "We chose SSR.\n\nOur Next.js app had one job: load fast for first-time visitors and still feel alive after that.\n\nThat meant deciding where the page should be built.\n\nWith Next.js, you can render pages on the server before they hit the browser.\nOr you can ship more JavaScript and let the browser do the work.\n\nThe tradeoff is simple.\nSSR (server-side rendering, HTML made on the server) gives you faster first paint and better SEO.\nClient-heavy pages feel snappier after load, but they often ship a bigger bundle and wait longer before anything useful appears.\n\nWe chose SSR for the homepage and product pages.\n\nWhy?\n\nBecause our biggest constraint wasn’t developer speed.\nIt was a 2.1 second median load time on mobile, and half our traffic came from people on flaky connections.\n\nThat constraint changed the decision.\n\nA prettier app that loads late still loses the sale.\n\nSo we accepted a little more server complexity to keep the first screen fast.\n\nThat tradeoff does not always apply.\nIf your app is mostly behind login, or your users live inside it for hours, client-side rendering can be the better call.\n\nThe lesson: optimize for the moment the user cares most about.\n\nWhat do you bias toward in Next.js: faster first paint or richer client-side behavior?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-28T06:05:59.771Z",
+    "topic": "Startup Lessons",
+    "pillar": "Founder and Career",
+    "angle": "postmortem",
+    "contentHash": "eeb2d91080bb1a9d",
+    "content": "The launch page broke on day one.\n\nWe were building a simple signup flow for small businesses.\nIt was supposed to turn trial users into paying customers.\nInstead, 38% of people dropped off before the first form loaded.\n\nAt first, I blamed the design.\nThen I blamed the copy.\nThen I spent two weeks moving buttons, trimming fields, and rewriting every headline.\n\nNothing moved.\n\nThe postmortem was painful because the bug was boring.\nOur analytics script was blocking the page.\nAnalytics means the code that tracks visits and clicks.\nOne third-party tag from Segment, the customer data tool, was delaying the whole experience by 1.2 seconds.\n\nWe removed it from the critical path.\nCritical path means the steps that must happen first.\nConversion jumped 19% the next week.\n\nThe lesson I keep coming back to:\nif users disappear before they see your product, the problem is usually not your product.\n\nWhat’s the most expensive “it’s probably the design” mistake you’ve seen?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
