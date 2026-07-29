@@ -428,5 +428,15 @@
     "content": "The launch page broke on day one.\n\nWe were building a simple signup flow for small businesses.\nIt was supposed to turn trial users into paying customers.\nInstead, 38% of people dropped off before the first form loaded.\n\nAt first, I blamed the design.\nThen I blamed the copy.\nThen I spent two weeks moving buttons, trimming fields, and rewriting every headline.\n\nNothing moved.\n\nThe postmortem was painful because the bug was boring.\nOur analytics script was blocking the page.\nAnalytics means the code that tracks visits and clicks.\nOne third-party tag from Segment, the customer data tool, was delaying the whole experience by 1.2 seconds.\n\nWe removed it from the critical path.\nCritical path means the steps that must happen first.\nConversion jumped 19% the next week.\n\nThe lesson I keep coming back to:\nif users disappear before they see your product, the problem is usually not your product.\n\nWhat’s the most expensive “it’s probably the design” mistake you’ve seen?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-29T06:10:56.703Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "667cd4fdc8812efb",
+    "content": "Evals are overrated.\n\nMost teams think they need a perfect scorecard before they ship.\nA giant spreadsheet. A thousand labeled examples. A scoreboard nobody trusts.\n\nI used to think that too.\n\nThen I watched a small support bot go live with 27 hand-written eval cases in LangSmith, the test dashboard for AI apps.\nNot 2,000.\n27.\n\nWe were trying to catch one ugly failure: the bot confidently giving refunds for orders it never saw.\nThe first eval set missed it.\nThe second one, built from real customer chats, caught it in 20 minutes.\n\nThat changed how I think about evals.\n\nThe best eval is not the most complete one.\nIt is the one that matches the failure you actually fear.\n\nYes, a stronger argument exists: without broad coverage, you can miss weird edge cases and fool yourself with a tiny test set.\nThat is real.\nBut if your evals are too abstract to reflect a real user mistake, they become theater.\n\nThe lesson: start with the sharpest failure, not the prettiest framework.\n\nWhat failure would you build your first eval around?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
