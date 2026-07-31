@@ -448,5 +448,15 @@
     "content": "One TypeScript type passed review.\n\nIt hid a billing bug for 11 days.\n\nWe were shipping a checkout flow in Next.js for a small SaaS, and the goal was simple: stop failed payments before month-end close.\n\nThe code looked safe.\nTypeScript said the request was a PaymentIntent, which is Stripe’s payment object.\n\nIt wasn’t.\n\nA missing field got widened to any, so a branch that should have failed in tests kept compiling and shipped.\nWe found it after 37 customers hit a retry loop and support tickets piled up.\n\nThe painful part was that the code felt “typed.”\nThat false sense of safety is the trap.\n\nTypeScript does not protect you from bad assumptions.\nIt only protects the shapes you actually describe.\n\nThe lesson: if a value crosses a boundary, validate it at the edge, not later in the app.\n\nWhat’s the TypeScript bug that looked safest right before it bit you?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-07-31T06:26:51.048Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "a5a60a4724d1ed2a",
+    "content": "MCP beat our prompt glue.\n\nWe were building an internal assistant that could read docs, search tickets, and draft replies.\nThe problem was simple: the model kept forgetting which tools existed, and our prompts kept growing.\n\nWe tried two approaches.\n\nFirst: hand-rolled context engineering.\nThat means we stuffed the right instructions, tool names, and examples into the prompt ourselves.\nIt took 2 weeks, and every new tool meant another brittle prompt edit.\n\nThen we switched to MCP, the Model Context Protocol.\nThat’s a standard way to let the model discover tools instead of us hardcoding every path.\nWe had it wired to Slack, GitHub, and our docs search in 3 days.\n\nThe difference showed up fast.\nPrompt size dropped by 38%.\nTool-call failures fell from 11% to 2%.\nAnd onboarding a new tool stopped being a rewrite.\n\nMy winner is MCP.\n\nNot because prompts are bad.\nBecause context engineering should shape the conversation, not become the product.\n\nThe lesson: when the problem is tool sprawl, pick the standard that makes tools easy to add.\n\nWhere have you seen custom prompt glue survive longer than it should?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
