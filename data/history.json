@@ -458,5 +458,15 @@
     "content": "MCP beat our prompt glue.\n\nWe were building an internal assistant that could read docs, search tickets, and draft replies.\nThe problem was simple: the model kept forgetting which tools existed, and our prompts kept growing.\n\nWe tried two approaches.\n\nFirst: hand-rolled context engineering.\nThat means we stuffed the right instructions, tool names, and examples into the prompt ourselves.\nIt took 2 weeks, and every new tool meant another brittle prompt edit.\n\nThen we switched to MCP, the Model Context Protocol.\nThat’s a standard way to let the model discover tools instead of us hardcoding every path.\nWe had it wired to Slack, GitHub, and our docs search in 3 days.\n\nThe difference showed up fast.\nPrompt size dropped by 38%.\nTool-call failures fell from 11% to 2%.\nAnd onboarding a new tool stopped being a rewrite.\n\nMy winner is MCP.\n\nNot because prompts are bad.\nBecause context engineering should shape the conversation, not become the product.\n\nThe lesson: when the problem is tool sprawl, pick the standard that makes tools easy to add.\n\nWhere have you seen custom prompt glue survive longer than it should?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-01T06:12:06.495Z",
+    "topic": "SaaS Build-in-Public Metrics",
+    "pillar": "Founder and Career",
+    "angle": "build-in-public",
+    "contentHash": "fa92fd98d0c8f366",
+    "content": "This week’s SaaS update.\n\nI’m building a tiny invoicing app for freelance designers.\n\nThis week I shipped Stripe checkout, CSV export, and a cleaner onboarding flow.\n\nWe sent the first public version to 37 people.\n\nSignup-to-first-invoice moved from 18% to 31%.\n\nThat sounds good until you look at the broken part.\n\n11 people started onboarding and quit at the same screen:\nthe “connect your account” step.\n\nThat step is the tax form of the product.\nNobody hates the app.\nThey hate the moment where work feels like work.\n\nI also learned something from the numbers:\npeople who exported a CSV were 3x more likely to come back the next day.\n\nSo the lesson for me this week is simple:\ndon’t celebrate signups before you fix the first annoying step.\n\nGrowth usually hides in the place where people almost gave up.\n\nWhat’s the first screen in your product that quietly loses people?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
