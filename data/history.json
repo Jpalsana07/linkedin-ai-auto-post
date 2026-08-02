@@ -468,5 +468,15 @@
     "content": "This week’s SaaS update.\n\nI’m building a tiny invoicing app for freelance designers.\n\nThis week I shipped Stripe checkout, CSV export, and a cleaner onboarding flow.\n\nWe sent the first public version to 37 people.\n\nSignup-to-first-invoice moved from 18% to 31%.\n\nThat sounds good until you look at the broken part.\n\n11 people started onboarding and quit at the same screen:\nthe “connect your account” step.\n\nThat step is the tax form of the product.\nNobody hates the app.\nThey hate the moment where work feels like work.\n\nI also learned something from the numbers:\npeople who exported a CSV were 3x more likely to come back the next day.\n\nSo the lesson for me this week is simple:\ndon’t celebrate signups before you fix the first annoying step.\n\nGrowth usually hides in the place where people almost gave up.\n\nWhat’s the first screen in your product that quietly loses people?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-02T06:15:31.573Z",
+    "topic": "Node.js at Scale",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "a81846ef33f2eea4",
+    "content": "One queue changed everything.\n\nWe were running a Node.js API that had to serve checkout, emails, and a few slow reports.\nIf one request got stuck, the whole server felt it.\n\nThe decision was simple: do we process work immediately inside the request, or send it to BullMQ, a background job queue?\n\nImmediate work is easy to reason about.\nThe user clicks, the server does the thing, the response comes back.\n\nBut at scale, that means every slow task competes with live traffic.\nA 2-second PDF export can sit next to a 50-millisecond checkout call and make both feel broken.\n\nWe chose the queue.\n\nNot because queues are elegant.\nBecause our real constraint was bursty traffic, not code style.\n\nAt peak, we saw 300+ jobs pile up in under a minute.\nWith BullMQ, checkout stayed fast even when reports lagged behind by 10 minutes.\nThat delay was acceptable.\nA slow payment flow was not.\n\nThe lesson: protect the user-facing path first, even if the back office gets messier.\n\nThis tradeoff does not apply when the work must finish before the user can move on, like a bank transfer or a password reset.\n\nWhere have you seen a background queue save the day, and where did it just add complexity?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
