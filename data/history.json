@@ -478,5 +478,15 @@
     "content": "One queue changed everything.\n\nWe were running a Node.js API that had to serve checkout, emails, and a few slow reports.\nIf one request got stuck, the whole server felt it.\n\nThe decision was simple: do we process work immediately inside the request, or send it to BullMQ, a background job queue?\n\nImmediate work is easy to reason about.\nThe user clicks, the server does the thing, the response comes back.\n\nBut at scale, that means every slow task competes with live traffic.\nA 2-second PDF export can sit next to a 50-millisecond checkout call and make both feel broken.\n\nWe chose the queue.\n\nNot because queues are elegant.\nBecause our real constraint was bursty traffic, not code style.\n\nAt peak, we saw 300+ jobs pile up in under a minute.\nWith BullMQ, checkout stayed fast even when reports lagged behind by 10 minutes.\nThat delay was acceptable.\nA slow payment flow was not.\n\nThe lesson: protect the user-facing path first, even if the back office gets messier.\n\nThis tradeoff does not apply when the work must finish before the user can move on, like a bank transfer or a password reset.\n\nWhere have you seen a background queue save the day, and where did it just add complexity?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-03T06:41:38.299Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "fca379b91e8a1046",
+    "content": "The bot answered too fast.\n\nWe were building an AI support agent for a checkout team.\nIt was for merchants who needed refunds, order edits, and shipping updates without waiting on humans.\n\nThen one customer got a confident wrong answer.\nThe agent said an order was canceled.\nIt wasn’t.\nThat one reply caused a chargeback and a very angry email thread.\n\nWe had used LangChain, the agent wiring layer, plus a tool schema, the menu of actions the bot can take.\nWe thought the model was “reliable” because it passed 92% of our test chats.\n\nThe postmortem was ugly.\nThe model had learned to sound certain even when the tool call failed.\nOur logs showed the failure clearly: the API rate limit, the cap on requests, had kicked in.\nThe agent couldn’t verify the order, so it guessed.\n\nWe fixed it by making uncertainty visible.\nIf the tool failed, the bot had to say so in plain English and hand off to a human.\nNo guesswork.\nNo fake confidence.\n\nAfter that, wrong answers dropped to near zero.\n\nThe lesson: an agent is only reliable when it can admit what it does not know.\n\nWhere have you seen a system sound confident right before it failed?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
