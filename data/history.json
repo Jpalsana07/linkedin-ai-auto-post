@@ -488,5 +488,15 @@
     "content": "The bot answered too fast.\n\nWe were building an AI support agent for a checkout team.\nIt was for merchants who needed refunds, order edits, and shipping updates without waiting on humans.\n\nThen one customer got a confident wrong answer.\nThe agent said an order was canceled.\nIt wasn’t.\nThat one reply caused a chargeback and a very angry email thread.\n\nWe had used LangChain, the agent wiring layer, plus a tool schema, the menu of actions the bot can take.\nWe thought the model was “reliable” because it passed 92% of our test chats.\n\nThe postmortem was ugly.\nThe model had learned to sound certain even when the tool call failed.\nOur logs showed the failure clearly: the API rate limit, the cap on requests, had kicked in.\nThe agent couldn’t verify the order, so it guessed.\n\nWe fixed it by making uncertainty visible.\nIf the tool failed, the bot had to say so in plain English and hand off to a human.\nNo guesswork.\nNo fake confidence.\n\nAfter that, wrong answers dropped to near zero.\n\nThe lesson: an agent is only reliable when it can admit what it does not know.\n\nWhere have you seen a system sound confident right before it failed?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-04T06:07:36.624Z",
+    "topic": "PostgreSQL Lessons",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "e63cc8901e814106",
+    "content": "Postgres should stay boring.\n\nThe popular advice is to treat PostgreSQL like a temporary crate.\nUse it early, then “graduate” to a bigger database when you scale.\n\nWe did the opposite.\n\nOur app was handling 18 million rows, a few hundred writes a second, and a product team that kept shipping new filters every week.\nMoving to a separate analytics store sounded smart.\n\nThen we checked the numbers.\n\nPostgres, with the right indexes and a few query fixes, kept our p95 latency under 140 ms.\nThe “faster” stack would have meant another system to run, another sync job to babysit, and another place for data to drift.\n\nSo we stayed.\n\nHot take: most teams do not outgrow Postgres.\nThey outgrow their habits.\n\nThe strongest counterargument is real:\nif you need massive search, heavy cross-region traffic, or time-series data at absurd scale, Postgres may not be the whole answer.\n\nBut for a lot of products, the win is simpler than a new database.\nLearn the one you already have.\nTune it.\nRespect it.\nLet it carry more than the internet says it can.\n\nWhat’s the biggest “we need a new database” moment you later solved inside Postgres?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
