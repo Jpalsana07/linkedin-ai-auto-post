@@ -498,5 +498,15 @@
     "content": "Postgres should stay boring.\n\nThe popular advice is to treat PostgreSQL like a temporary crate.\nUse it early, then “graduate” to a bigger database when you scale.\n\nWe did the opposite.\n\nOur app was handling 18 million rows, a few hundred writes a second, and a product team that kept shipping new filters every week.\nMoving to a separate analytics store sounded smart.\n\nThen we checked the numbers.\n\nPostgres, with the right indexes and a few query fixes, kept our p95 latency under 140 ms.\nThe “faster” stack would have meant another system to run, another sync job to babysit, and another place for data to drift.\n\nSo we stayed.\n\nHot take: most teams do not outgrow Postgres.\nThey outgrow their habits.\n\nThe strongest counterargument is real:\nif you need massive search, heavy cross-region traffic, or time-series data at absurd scale, Postgres may not be the whole answer.\n\nBut for a lot of products, the win is simpler than a new database.\nLearn the one you already have.\nTune it.\nRespect it.\nLet it carry more than the internet says it can.\n\nWhat’s the biggest “we need a new database” moment you later solved inside Postgres?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-05T06:04:18.393Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "59e04f8ba8e9738c",
+    "content": "We shipped a bad answer.\n\nI was rolling out an LLM to write support replies for a product used by 20,000 customers.\nThe goal was simple: cut first-response time from 12 minutes to under 2, without making people feel ignored.\n\nThe model looked great in tests.\nThen it hit real tickets.\n\nIt kept sounding confident on refund cases, even when it was wrong.\nOne reply told a customer to wait 7 days for a payment that had already cleared.\nThat one mistake turned a 30-second draft into a 3-email escalation.\n\nOur problem was not the model.\nIt was that we treated a language model like a finished product instead of a draft with a memory problem.\n\nWe had to add a human review step for any message touching money, deadlines, or account access.\nAfter that, the bot could handle the easy 80%, and people only touched the risky 20%.\n\nThe lesson: in production, speed is useless if the system can’t know when it should stop talking.\n\nWhat kind of AI mistake do you think deserves a human by default?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
