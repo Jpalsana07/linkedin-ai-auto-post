@@ -508,5 +508,15 @@
     "content": "We shipped a bad answer.\n\nI was rolling out an LLM to write support replies for a product used by 20,000 customers.\nThe goal was simple: cut first-response time from 12 minutes to under 2, without making people feel ignored.\n\nThe model looked great in tests.\nThen it hit real tickets.\n\nIt kept sounding confident on refund cases, even when it was wrong.\nOne reply told a customer to wait 7 days for a payment that had already cleared.\nThat one mistake turned a 30-second draft into a 3-email escalation.\n\nOur problem was not the model.\nIt was that we treated a language model like a finished product instead of a draft with a memory problem.\n\nWe had to add a human review step for any message touching money, deadlines, or account access.\nAfter that, the bot could handle the easy 80%, and people only touched the risky 20%.\n\nThe lesson: in production, speed is useless if the system can’t know when it should stop talking.\n\nWhat kind of AI mistake do you think deserves a human by default?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-06T06:07:51.370Z",
+    "topic": "Freelancing with Numbers",
+    "pillar": "Founder and Career",
+    "angle": "tool-comparison",
+    "contentHash": "5dc0cea4308712c5",
+    "content": "$200, or 20 hours?\n\nI was choosing how to price a freelance project for a small client.\nThe real problem was simple: I needed a clean number before the call ended.\n\nI tested two ways to do it.\n\nGoogle Sheets was my old method.\nFast, free, and honest.\nI could build a quote in 15 minutes, but I still had to remember every line item, tax, and revision rule myself.\n\nHarvest Forecast was the other option.\nA scheduling tool that turns hours into money.\nIt took me 2 hours to set up, but it showed me projected revenue, capacity, and what one extra week of work would cost.\n\nFor one project, Sheets underpriced me by $1,800.\nNot because I was bad at math.\nBecause it made the easy thing visible and the expensive thing invisible.\n\nHarvest Forecast won.\n\nMy lesson: when money is involved, the better tool is the one that makes the hidden cost obvious.\n\nWhat tool changed the way you priced your work?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
