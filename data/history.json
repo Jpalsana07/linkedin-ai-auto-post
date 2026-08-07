@@ -518,5 +518,15 @@
     "content": "$200, or 20 hours?\n\nI was choosing how to price a freelance project for a small client.\nThe real problem was simple: I needed a clean number before the call ended.\n\nI tested two ways to do it.\n\nGoogle Sheets was my old method.\nFast, free, and honest.\nI could build a quote in 15 minutes, but I still had to remember every line item, tax, and revision rule myself.\n\nHarvest Forecast was the other option.\nA scheduling tool that turns hours into money.\nIt took me 2 hours to set up, but it showed me projected revenue, capacity, and what one extra week of work would cost.\n\nFor one project, Sheets underpriced me by $1,800.\nNot because I was bad at math.\nBecause it made the easy thing visible and the expensive thing invisible.\n\nHarvest Forecast won.\n\nMy lesson: when money is involved, the better tool is the one that makes the hidden cost obvious.\n\nWhat tool changed the way you priced your work?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-07T05:08:51.582Z",
+    "topic": "LLM Cost Optimization",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "0aaa32e7c0fa3082",
+    "content": "Built for support teams.\n\nI’m shipping an AI assistant that answers internal product questions before they ping an engineer.\n\nThis week I cut our LLM spend by 41%.\n\nThe change was simple on paper:\nwe stopped sending every user message to GPT-4o and added a cheap route first.\n\nIf the question was about pricing, docs, or a known bug, a smaller model handled it.\nOnly messy edge cases went to the bigger model.\n\nI used OpenAI’s API and a tiny rules layer.\nThe rules layer — a set of if/then checks — took 80 lines of code.\n\nWhat broke:\nsome long, emotional customer messages got misrouted.\nThe cheap model saw “refund” and missed the real issue.\nThat created 17 bad handoffs in one day.\n\nSo the lesson this week was clear:\ncost optimization only works when you protect the hard cases, not when you squeeze everything through the cheapest path.\n\nI’d rather spend $0.03 on the right answer than save $0.02 and make support slower.\n\nWhat would you protect first when cutting LLM costs?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
