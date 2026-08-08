@@ -528,5 +528,15 @@
     "content": "Built for support teams.\n\nI’m shipping an AI assistant that answers internal product questions before they ping an engineer.\n\nThis week I cut our LLM spend by 41%.\n\nThe change was simple on paper:\nwe stopped sending every user message to GPT-4o and added a cheap route first.\n\nIf the question was about pricing, docs, or a known bug, a smaller model handled it.\nOnly messy edge cases went to the bigger model.\n\nI used OpenAI’s API and a tiny rules layer.\nThe rules layer — a set of if/then checks — took 80 lines of code.\n\nWhat broke:\nsome long, emotional customer messages got misrouted.\nThe cheap model saw “refund” and missed the real issue.\nThat created 17 bad handoffs in one day.\n\nSo the lesson this week was clear:\ncost optimization only works when you protect the hard cases, not when you squeeze everything through the cheapest path.\n\nI’d rather spend $0.03 on the right answer than save $0.02 and make support slower.\n\nWhat would you protect first when cutting LLM costs?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-08T04:32:20.114Z",
+    "topic": "Software Architecture",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "7c04d70f67f85130",
+    "content": "One table, or three?\n\nWe were building a billing system for a small SaaS.\nEvery subscription, refund, and failed payment had to be recorded correctly.\nIf we got it wrong, we’d lose money or send the wrong email.\n\nThe decision was simple on paper:\nkeep everything in one PostgreSQL table, or split it into separate tables for payments, invoices, and events.\n\nOne table is easier to query.\nYou can see the whole story in one place.\nThree tables feel cleaner at first.\nEach one has fewer columns, and each team can own its own piece.\n\nWe chose one table.\n\nNot because it was elegant.\nBecause the hidden cost was joins at read time.\nOur support team needed answers in under 2 seconds, and they were searching by customer email, date, and payment state all day.\nWith three tables, every lookup became a tiny scavenger hunt.\n\nThe lesson:\npick the shape that matches how people will search, not how tidy it looks in a diagram.\n\nThat tradeoff changes if the data gets huge, or if each part has a truly different life cycle.\nThen splitting can be worth it.\n\nWhat would you optimize for first: cleaner tables or faster answers?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
