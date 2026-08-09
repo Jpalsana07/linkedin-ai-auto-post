@@ -538,5 +538,15 @@
     "content": "One table, or three?\n\nWe were building a billing system for a small SaaS.\nEvery subscription, refund, and failed payment had to be recorded correctly.\nIf we got it wrong, we’d lose money or send the wrong email.\n\nThe decision was simple on paper:\nkeep everything in one PostgreSQL table, or split it into separate tables for payments, invoices, and events.\n\nOne table is easier to query.\nYou can see the whole story in one place.\nThree tables feel cleaner at first.\nEach one has fewer columns, and each team can own its own piece.\n\nWe chose one table.\n\nNot because it was elegant.\nBecause the hidden cost was joins at read time.\nOur support team needed answers in under 2 seconds, and they were searching by customer email, date, and payment state all day.\nWith three tables, every lookup became a tiny scavenger hunt.\n\nThe lesson:\npick the shape that matches how people will search, not how tidy it looks in a diagram.\n\nThat tradeoff changes if the data gets huge, or if each part has a truly different life cycle.\nThen splitting can be worth it.\n\nWhat would you optimize for first: cleaner tables or faster answers?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-09T04:41:45.814Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "b957e0008245fc05",
+    "content": "We trusted the agent too much.\n\nWe were building an internal assistant for a 40-person support team.\nIts job was simple: read a ticket, check Stripe, and draft a reply.\nInstead, it refunded the wrong customer twice in one afternoon.\n\nThe weird part was that the model looked confident.\nIt had access to the right tools.\nIt could search tickets, call Stripe, and write a response.\nBut it treated every step like a fresh guess.\n\nWe had built the tool schema — the menu of actions the bot can take — with no real guardrails.\nSo the agent could ask Stripe for a refund before it proved the customer was eligible.\nOne missing check, and we turned a helpful draft into a money leak.\n\nWe fixed it by making the workflow boring.\nThe agent had to verify identity first, then eligibility, then action.\nAfter that, the refund mistakes dropped to zero over the next 3 weeks.\n\nThe lesson: an AI agent should ask for permission before it takes action.\nConfidence is not the same as correctness.\n\nWhere would you put the hard stop in an agent you were shipping?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
