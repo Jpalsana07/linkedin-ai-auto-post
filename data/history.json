@@ -558,5 +558,15 @@
     "content": "Ship less React.\n\nMost teams think shipping faster means more components, more state, more clever abstractions.\n\nI used to believe that too.\n\nThen I watched a dashboard grow to 47 React files for one simple workflow.\nA sales rep had to click through three screens just to update one field.\n\nThe bug wasn’t React.\nIt was our habit of turning every UI into a mini app.\n\nWe rebuilt it with plain forms, fewer routes, and one shared data fetch.\nThe page got 38% faster to load.\nSupport tickets for that flow dropped by half in 2 weeks.\n\nMy hot take: React is best when it stays small and boring.\n\nThe strongest counterargument is real.\nIf your app is a rich product with live collaboration, drag and drop, or complex client-side state, React is still the right tool.\n\nBut most products aren’t that.\nMost products need a screen that loads, tells the truth, and gets out of the way.\n\nThe lesson: don’t use React to prove you can build complexity.\nUse it to make the simplest path easy.\n\nWhen has a “simple” React page quietly caused the biggest mess?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-11T04:45:15.004Z",
+    "topic": "Career Inflection Moments",
+    "pillar": "Founder and Career",
+    "angle": "mistake-and-lesson",
+    "contentHash": "343ecf946061b496",
+    "content": "I missed the promotion.\n\nWe were rebuilding our internal review process so 40 people could move faster.\nMy job was simple: make career decisions feel fair, not random.\n\nI thought I had enough data.\nPeer feedback, manager notes, self reviews.\n\nThen the VP asked why one engineer had been passed over twice.\nI pulled up the packet and realized the problem.\n\nThe strongest work was buried in 14 pages of context.\nThe actual decision was hidden in a paragraph nobody read.\n\nWe had built a process that looked thorough and still failed the person it was meant to help.\n\nI cut the packet to one page.\nThree signals only.\nWhat changed, what was hard, what impact it had.\n\nThe next review cycle took 20 minutes instead of an hour.\nAnd managers finally stopped arguing about formatting and started arguing about evidence.\n\nThe lesson: if a career process is too hard to read, it is too hard to trust.\n\nWhat’s the most broken career process you’ve seen, and what made it fail?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
