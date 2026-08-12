@@ -568,5 +568,15 @@
     "content": "I missed the promotion.\n\nWe were rebuilding our internal review process so 40 people could move faster.\nMy job was simple: make career decisions feel fair, not random.\n\nI thought I had enough data.\nPeer feedback, manager notes, self reviews.\n\nThen the VP asked why one engineer had been passed over twice.\nI pulled up the packet and realized the problem.\n\nThe strongest work was buried in 14 pages of context.\nThe actual decision was hidden in a paragraph nobody read.\n\nWe had built a process that looked thorough and still failed the person it was meant to help.\n\nI cut the packet to one page.\nThree signals only.\nWhat changed, what was hard, what impact it had.\n\nThe next review cycle took 20 minutes instead of an hour.\nAnd managers finally stopped arguing about formatting and started arguing about evidence.\n\nThe lesson: if a career process is too hard to read, it is too hard to trust.\n\nWhat’s the most broken career process you’ve seen, and what made it fail?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-12T05:10:26.616Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "3906e2b313f5d44f",
+    "content": "Evals saved our demo.\n\nWe were shipping an AI support assistant, and the question was simple:\nwhich answers were actually good, and which ones just sounded confident?\n\nI tried two tools for AI evals:\nLangSmith, the tracing and test UI, and\nOpenAI Evals, the prompt test harness.\n\nLangSmith got us moving fast.\nWe could inspect 200 real conversations, tag failures, and see exactly where the assistant drifted.\nGreat for debugging.\nGreat for sharing with the team.\n\nOpenAI Evals was lighter.\nIt let us score a prompt against a fixed set of cases in under an hour.\nBut once we wanted custom labels, side-by-side reviews, and messy real-world examples, it started feeling cramped.\n\nWe spent 3 days with both.\n\nThe winner was LangSmith.\n\nNot because it was fancier.\nBecause evals only matter when they match the real product, not a clean benchmark.\n\nThat was the lesson:\nthe best eval tool is the one that makes bad behavior obvious to humans.\n\nWhich tool has made your AI mistakes impossible to ignore?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
