@@ -578,5 +578,15 @@
     "content": "Evals saved our demo.\n\nWe were shipping an AI support assistant, and the question was simple:\nwhich answers were actually good, and which ones just sounded confident?\n\nI tried two tools for AI evals:\nLangSmith, the tracing and test UI, and\nOpenAI Evals, the prompt test harness.\n\nLangSmith got us moving fast.\nWe could inspect 200 real conversations, tag failures, and see exactly where the assistant drifted.\nGreat for debugging.\nGreat for sharing with the team.\n\nOpenAI Evals was lighter.\nIt let us score a prompt against a fixed set of cases in under an hour.\nBut once we wanted custom labels, side-by-side reviews, and messy real-world examples, it started feeling cramped.\n\nWe spent 3 days with both.\n\nThe winner was LangSmith.\n\nNot because it was fancier.\nBecause evals only matter when they match the real product, not a clean benchmark.\n\nThat was the lesson:\nthe best eval tool is the one that makes bad behavior obvious to humans.\n\nWhich tool has made your AI mistakes impossible to ignore?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-13T05:14:07.508Z",
+    "topic": "Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "build-in-public",
+    "contentHash": "58be49e6766ba99e",
+    "content": "Next.js got real traffic.\n\nI’m building a customer portal for small B2B teams.\nThis week, real users started clicking around it.\n\nWe shipped the first production pass in Next.js 14.\nThe biggest change was moving the dashboard from client-side rendering to server components, which means the page arrives with less JavaScript and feels faster on weak laptops.\n\nLighthouse went from 61 to 89.\nFirst load dropped by 1.8 seconds.\n\nThat part felt great.\n\nWhat’s still broken is more honest.\nOne report page still flashes a blank state for a split second.\nAnd our caching strategy is not stable yet, so some pages are fresh and some are weirdly stale.\n\nI used to treat shipping like a finish line.\nThis week reminded me it’s more like turning knobs while people are already using the thing.\n\nThe lesson: in production, a stack choice only matters when it changes what users feel.\n\nWhat’s the first Next.js tradeoff you’d make differently after shipping to real users?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
