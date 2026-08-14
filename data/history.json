@@ -588,5 +588,15 @@
     "content": "Next.js got real traffic.\n\nI’m building a customer portal for small B2B teams.\nThis week, real users started clicking around it.\n\nWe shipped the first production pass in Next.js 14.\nThe biggest change was moving the dashboard from client-side rendering to server components, which means the page arrives with less JavaScript and feels faster on weak laptops.\n\nLighthouse went from 61 to 89.\nFirst load dropped by 1.8 seconds.\n\nThat part felt great.\n\nWhat’s still broken is more honest.\nOne report page still flashes a blank state for a split second.\nAnd our caching strategy is not stable yet, so some pages are fresh and some are weirdly stale.\n\nI used to treat shipping like a finish line.\nThis week reminded me it’s more like turning knobs while people are already using the thing.\n\nThe lesson: in production, a stack choice only matters when it changes what users feel.\n\nWhat’s the first Next.js tradeoff you’d make differently after shipping to real users?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-14T05:10:57.735Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "6c521ea0005009aa",
+    "content": "MCP changed our design.\n\nWe were building an AI support agent.\nThe question was simple: give the model everything, or only what it asks for?\n\nMCP, the Model Context Protocol, is a standard way for an app to expose tools and data to an AI.\nContext engineering is the work of deciding what information the model sees, and when.\n\nThe tempting path was to stuff the prompt with customer data, docs, and 12 tools.\nThat felt powerful.\nIt also made answers slower, noisier, and harder to debug.\n\nWe chose the smaller path.\n3 tools.\nA tighter context window.\nAnd one rule: the model had to ask before it got more data.\n\nThat meant a few extra round trips.\nBut it cut our prompt size by 68% and made failures obvious.\nWhen the bot was wrong, we could see whether it chose the wrong tool or the right tool with bad input.\n\nThe lesson: give AI less by default, not because it is weak, but because clarity beats completeness.\n\nThis tradeoff matters less if your task is fully local, like summarizing one document.\nIt matters more when the AI can touch customer data, money, or actions you have to explain later.\n\nWhere have you seen “more context” make the system worse?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
