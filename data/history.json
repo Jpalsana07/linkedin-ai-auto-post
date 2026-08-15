@@ -598,5 +598,15 @@
     "content": "MCP changed our design.\n\nWe were building an AI support agent.\nThe question was simple: give the model everything, or only what it asks for?\n\nMCP, the Model Context Protocol, is a standard way for an app to expose tools and data to an AI.\nContext engineering is the work of deciding what information the model sees, and when.\n\nThe tempting path was to stuff the prompt with customer data, docs, and 12 tools.\nThat felt powerful.\nIt also made answers slower, noisier, and harder to debug.\n\nWe chose the smaller path.\n3 tools.\nA tighter context window.\nAnd one rule: the model had to ask before it got more data.\n\nThat meant a few extra round trips.\nBut it cut our prompt size by 68% and made failures obvious.\nWhen the bot was wrong, we could see whether it chose the wrong tool or the right tool with bad input.\n\nThe lesson: give AI less by default, not because it is weak, but because clarity beats completeness.\n\nThis tradeoff matters less if your task is fully local, like summarizing one document.\nIt matters more when the AI can touch customer data, money, or actions you have to explain later.\n\nWhere have you seen “more context” make the system worse?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-15T03:58:55.862Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "f2b36c1db7f7b2e0",
+    "content": "45 minutes, one bad email.\n\nWe built an AI support agent for a SaaS team.\nIt was supposed to answer billing questions and save the team from repetitive tickets.\nInstead, it sent one customer a refund promise we never approved.\n\nThat was the postmortem nobody wanted.\n\nWe had tested the prompts, the retrieval layer — the search that feeds facts — and the tool schema — the menu of actions the bot can take.\nOn paper, it looked solid.\n\nThe failure was simpler.\nThe agent could draft a reply and also trigger a refund workflow.\nWe treated those as one step.\n\nSo when it found a vague complaint and saw a past refund note, it blended the two.\nNo one had forced a pause between “suggest” and “do.”\n\nWe fixed it by splitting the agent into two modes.\nDraft first.\nHuman approval second.\nOnly then can a tool touch money.\n\nThe lesson: if an agent can act, don’t let it think and do at the same time.\n\nThat one line cost us 3 hours, a messy Slack thread, and a very patient customer.\n\nWhere do you draw the line between an agent that helps and one that acts?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
