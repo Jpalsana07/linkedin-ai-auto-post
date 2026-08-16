@@ -608,5 +608,15 @@
     "content": "45 minutes, one bad email.\n\nWe built an AI support agent for a SaaS team.\nIt was supposed to answer billing questions and save the team from repetitive tickets.\nInstead, it sent one customer a refund promise we never approved.\n\nThat was the postmortem nobody wanted.\n\nWe had tested the prompts, the retrieval layer — the search that feeds facts — and the tool schema — the menu of actions the bot can take.\nOn paper, it looked solid.\n\nThe failure was simpler.\nThe agent could draft a reply and also trigger a refund workflow.\nWe treated those as one step.\n\nSo when it found a vague complaint and saw a past refund note, it blended the two.\nNo one had forced a pause between “suggest” and “do.”\n\nWe fixed it by splitting the agent into two modes.\nDraft first.\nHuman approval second.\nOnly then can a tool touch money.\n\nThe lesson: if an agent can act, don’t let it think and do at the same time.\n\nThat one line cost us 3 hours, a messy Slack thread, and a very patient customer.\n\nWhere do you draw the line between an agent that helps and one that acts?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-16T04:04:34.077Z",
+    "topic": "TypeScript Pitfalls",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "316b62a63af8a43e",
+    "content": "TypeScript isn't your safety net.\n\nTeams love to say it catches bugs before prod.\nIt does.\nBut it also lets bad architecture feel polished.\n\nI saw this on a billing app we shipped last year.\nWe had 18 files of types, Zod validation, and strict mode on.\nThe code looked disciplined.\nThe invoices still broke.\n\nNot because TypeScript failed.\nBecause we had modeled the wrong thing.\nWe were encoding every edge case in the type system instead of making the flow simpler.\n\nAfter we deleted 400 lines and moved the logic into 3 plain functions, the bug count dropped fast.\nThe next release had zero invoice regressions.\n\nThat was the hard lesson:\nTypeScript is best at protecting a clear design, not rescuing a messy one.\n\nThe strongest counterargument is real:\nfor large teams, types keep refactors safe and make APIs harder to misuse.\nI still want that.\n\nBut if the code only works because the types are doing emotional labor for the architecture, the design is already tired.\n\nWhere have you seen TypeScript hide a bad design instead of fixing it?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
