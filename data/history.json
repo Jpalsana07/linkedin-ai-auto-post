@@ -618,5 +618,15 @@
     "content": "TypeScript isn't your safety net.\n\nTeams love to say it catches bugs before prod.\nIt does.\nBut it also lets bad architecture feel polished.\n\nI saw this on a billing app we shipped last year.\nWe had 18 files of types, Zod validation, and strict mode on.\nThe code looked disciplined.\nThe invoices still broke.\n\nNot because TypeScript failed.\nBecause we had modeled the wrong thing.\nWe were encoding every edge case in the type system instead of making the flow simpler.\n\nAfter we deleted 400 lines and moved the logic into 3 plain functions, the bug count dropped fast.\nThe next release had zero invoice regressions.\n\nThat was the hard lesson:\nTypeScript is best at protecting a clear design, not rescuing a messy one.\n\nThe strongest counterargument is real:\nfor large teams, types keep refactors safe and make APIs harder to misuse.\nI still want that.\n\nBut if the code only works because the types are doing emotional labor for the architecture, the design is already tired.\n\nWhere have you seen TypeScript hide a bad design instead of fixing it?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-17T04:07:54.634Z",
+    "topic": "Startup Lessons",
+    "pillar": "Founder and Career",
+    "angle": "mistake-and-lesson",
+    "contentHash": "96ca0fbe0360a3cc",
+    "content": "I deleted the wrong feature.\n\nWe were trying to land our first paid pilot with a customer who cared about speed, not polish.\nThe demo was in 3 days, and I spent 2 weeks building a dashboard nobody had asked for.\n\nIt looked impressive.\nIt also confused everyone in the room.\n\nThe real ask was simpler: upload a file, get an answer, move on.\nInstead, I had wrapped it in filters, tabs, and a settings page because I wanted the product to feel complete.\n\nOn demo day, the customer kept clicking the one thing we had buried.\nWe lost the pilot.\n\nThat night I cut the product down to the smallest useful flow.\nOne upload.\nOne result.\nNo extra choices.\n\nThe next demo got a yes.\n\nThe lesson I keep paying for: if people can't find the first win fast, your \"better\" product is just more work.\n\nWhat feature have you seen hide the real value?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
