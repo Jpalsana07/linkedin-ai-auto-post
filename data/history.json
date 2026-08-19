@@ -638,5 +638,15 @@
     "content": "Two tools, one production mess.\n\nWe needed a chatbot that could answer product questions without hallucinating.\nThe choice was between LangChain and LlamaIndex, and the wrong pick meant weeks of lost time.\n\nLangChain gave us a lot of control.\nIt was great for wiring steps together, but our team spent 9 days debugging prompt chains, retrievers, and memory issues before we had a stable demo.\n\nLlamaIndex was different.\nIt was built around documents first, which meant our PDF knowledge base, FAQ pages, and support articles got into the app in 2 days instead of 9.\n\nThe surprise was not speed alone.\nIt was that LlamaIndex made the system easier to explain to non-engineers.\n“We ask the docs, then answer” is a sentence a PM can repeat.\n“Our chain has three agents and a custom retriever” is not.\n\nWe shipped with LlamaIndex.\n\nThe lesson: when two tools solve the same problem, pick the one that makes the system simpler to understand, not just the one that looks more flexible.\n\nWhat’s the clearest tool tradeoff you’ve seen win in production?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-19T04:03:45.794Z",
+    "topic": "Node.js at Scale",
+    "pillar": "Architecture and Stack",
+    "angle": "build-in-public",
+    "contentHash": "20cb7b026418e7fb",
+    "content": "12 million requests later\n\nI’m building a Node.js API for B2B teams that need fast, reliable automation.\nThis week, I shipped the first version that can handle customer workloads without falling over.\n\nThe change looked small on paper.\nWe split one service into 3 Node.js workers, added Redis for queueing, and moved our slowest job off the request path.\n\nBefore that, one spike could pin the CPU at 100% and turn a 300ms request into a 9s timeout.\nAfter the deploy, p95 latency dropped from 1.8s to 410ms.\nError rate fell from 4.2% to 0.6%.\n\nBut it’s not done.\n\nMemory still climbs after long runs.\nThat means one of our background jobs is holding onto objects longer than it should.\nNode is great at moving fast.\nAt scale, the real work is learning where your code quietly keeps paying interest.\n\nThe lesson I keep relearning: in Node.js, speed comes from removing pressure, not adding more code.\n\nWhat’s the first thing you’d simplify when a Node service starts slowing down?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
