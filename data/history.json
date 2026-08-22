@@ -668,5 +668,15 @@
     "content": "3 dashboards, still blind.\n\nI was building a SaaS for founders who wanted to share build-in-public metrics without pulling numbers by hand.\n\nThe charts looked polished.\n\nThe problem was simple: nobody trusted them.\n\nI spent 2 weeks wiring Stripe, PostHog, and Google Sheets into one dashboard.\n\nStripe was the payments source.\nPostHog is product analytics.\nGoogle Sheets was the manual fallback.\n\nOn paper, we had live revenue, signups, and activation.\n\nIn practice, one broken API rate limit — the limit on how often a service lets you ask — made the whole story drift by 18 hours.\n\nA founder would post \"we grew 14% today\" and the dashboard would quietly show yesterday’s data.\n\nThat gap killed confidence.\n\nThe root cause wasn’t the integrations.\n\nIt was pretending all metrics had the same freshness.\n\nRevenue can lag.\nProduct usage can update fast.\nManual inputs are even slower.\n\nI rebuilt the product around freshness labels instead of one pretty number.\n\nEach metric now says when it last updated.\n\nThe lesson: build-in-public metrics are not a design problem first.\n\nThey are a trust problem.\n\nIf the number can be stale, say so plainly.\n\nWhat would you rather see first: a clean dashboard or an honest one?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-22T04:01:19.002Z",
+    "topic": "PostgreSQL Lessons",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "d188436497377796",
+    "content": "Postgres is not your problem.\n\nThe hot take: your schema is.\n\nMost teams blame PostgreSQL when queries get slow.\nSo they reach for bigger machines, more replicas, or a cache like Redis.\n\nWe did that too.\n\nOur app was crawling on a table with 48 million rows.\nThe dashboard timeout was 8 seconds, and customers were noticing.\n\nThe fix wasn’t “better Postgres.”\nIt was one ugly, boring schema change.\n\nWe had packed five meanings into one text column.\nThat meant the database had to guess, scan, and sort too much.\n\nWe split the data, added one index, and removed a query that looked clever but was actually expensive.\n\nLatency dropped from 8 seconds to 140 milliseconds.\n\nThat’s the part people miss:\nPostgreSQL is usually fine.\nThe real cost is making the database clean up a messy model after your app ships it.\n\nThe strongest counterargument is fair:\nsometimes Postgres really is the bottleneck, and then tuning, partitioning, or read replicas matter.\n\nBut if your tables are confused, no amount of hardware will save you.\n\nThe lesson: before blaming the database, ask whether your data model is making simple work hard.\n\nWhat’s the most expensive schema mistake you’ve seen in production?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
