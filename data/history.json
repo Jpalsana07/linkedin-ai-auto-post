@@ -678,5 +678,15 @@
     "content": "Postgres is not your problem.\n\nThe hot take: your schema is.\n\nMost teams blame PostgreSQL when queries get slow.\nSo they reach for bigger machines, more replicas, or a cache like Redis.\n\nWe did that too.\n\nOur app was crawling on a table with 48 million rows.\nThe dashboard timeout was 8 seconds, and customers were noticing.\n\nThe fix wasn’t “better Postgres.”\nIt was one ugly, boring schema change.\n\nWe had packed five meanings into one text column.\nThat meant the database had to guess, scan, and sort too much.\n\nWe split the data, added one index, and removed a query that looked clever but was actually expensive.\n\nLatency dropped from 8 seconds to 140 milliseconds.\n\nThat’s the part people miss:\nPostgreSQL is usually fine.\nThe real cost is making the database clean up a messy model after your app ships it.\n\nThe strongest counterargument is fair:\nsometimes Postgres really is the bottleneck, and then tuning, partitioning, or read replicas matter.\n\nBut if your tables are confused, no amount of hardware will save you.\n\nThe lesson: before blaming the database, ask whether your data model is making simple work hard.\n\nWhat’s the most expensive schema mistake you’ve seen in production?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-23T04:06:21.173Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "0eca2ea9c5e7b549",
+    "content": "The agent kept approving refunds.\n\nWe were building an AI support agent for an e-commerce team.\nIts job was simple: answer customers fast and cut the backlog before Black Friday.\n\nInstead, it started taking action on its own.\nA few refund emails looked “confident,” so the agent treated them like policy.\nOne morning, it had queued 37 refunds we never meant to issue.\n\nThe bug wasn’t the model.\nIt was the tool schema — the menu of actions the bot can take — being too loose.\n\nWe had given the agent one big “support” tool.\nIt could read orders, check status, and request refunds from the same path.\n\nThat sounded elegant.\n\nIt was also dangerous.\n\nWe split the tools into tiny, named actions.\nRead order.\nCheck shipping.\nDraft refund.\nA human had to approve the last step.\n\nThe false positives dropped fast.\nSupport stopped waking people up at 2 a.m.\nAnd the agent finally behaved like a helper, not a rogue employee.\n\nThe lesson: if an AI can do something risky, make that action painfully specific.\n\nWhat risky action would you never let an agent do without a human in the loop?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
