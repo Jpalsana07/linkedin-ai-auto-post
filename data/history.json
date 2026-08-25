@@ -698,5 +698,15 @@
     "content": "We rebuilt the checkout flow.\nThe problem was simple: one service needed to change when pricing changed, without breaking the rest of the app.\n\nWe tested REST and GraphQL for it.\n\nREST gave us 7 endpoints, and every new screen meant another round of versioning, docs, and client bugs.\nGraphQL let the frontend ask for exactly the fields it needed, which cut one mobile payload from 84 KB to 19 KB.\n\nBut the real difference showed up in week 2.\n\nWith REST, a small pricing change took 3 days because three teams had to coordinate.\nWith GraphQL, the same change shipped in one afternoon because the contract was one schema — the shared menu of data.\n\nI used to think GraphQL was the fancier choice.\nIt wasn’t.\n\nFor this problem, GraphQL won because it made the system easier to change, not just easier to query.\n\nThat is the lesson: choose the tool that reduces coordination, not the one that looks cleaner in a demo.\n\nWhat tool do you think wins more often in real teams: REST or GraphQL?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-25T04:05:06.399Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "f4844982ec2d8df4",
+    "content": "Our evals finally caught it.\n\nI’m building an AI support copilot for e-commerce teams.\n\nThis week I shipped the eval harness so we can test every prompt change before it reaches merchants.\n\nBefore that, we were guessing.\nA reply could sound great in Slack and still fail on a refund, a shipping delay, or a product return.\n\nI started with 200 real customer tickets.\n\nThen I scored the model on three things:\ncorrect answer, polite tone, and whether it asked for the right missing detail.\n\nThe good news: our pass rate moved from 71% to 84% after one prompt change and a tighter test set.\n\nThe bad news: it still misses edge cases when a ticket mentions two problems at once.\n\nThat matters because those are the tickets human agents usually dread most.\n\nThe lesson I keep relearning:\nif you don’t measure the messy cases, you ship confidence instead of quality.\n\nThis week I also learned that “looks fine” is not a metric.\n\nWhat would you trust more for AI quality: a clean demo or a test set built from the ugliest real tickets?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
