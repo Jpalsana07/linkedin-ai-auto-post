@@ -708,5 +708,15 @@
     "content": "Our evals finally caught it.\n\nI’m building an AI support copilot for e-commerce teams.\n\nThis week I shipped the eval harness so we can test every prompt change before it reaches merchants.\n\nBefore that, we were guessing.\nA reply could sound great in Slack and still fail on a refund, a shipping delay, or a product return.\n\nI started with 200 real customer tickets.\n\nThen I scored the model on three things:\ncorrect answer, polite tone, and whether it asked for the right missing detail.\n\nThe good news: our pass rate moved from 71% to 84% after one prompt change and a tighter test set.\n\nThe bad news: it still misses edge cases when a ticket mentions two problems at once.\n\nThat matters because those are the tickets human agents usually dread most.\n\nThe lesson I keep relearning:\nif you don’t measure the messy cases, you ship confidence instead of quality.\n\nThis week I also learned that “looks fine” is not a metric.\n\nWhat would you trust more for AI quality: a clean demo or a test set built from the ugliest real tickets?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-26T04:07:37.497Z",
+    "topic": "Freelancing with Numbers",
+    "pillar": "Founder and Career",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "d3a7f25e3f559a6f",
+    "content": "I almost overbuilt my freelance stack.\n\nI was setting up how clients would pay, not writing code.\nThat sounds boring, but it decides when money hits your account.\n\nThe choice was simple: Stripe subscriptions or one-off invoices.\n\nSubscriptions look cleaner.\nThey promise predictable cash, fewer reminders, and less admin.\n\nInvoices looked messier.\nBut they matched how I actually worked: project by project, with scope that changed every week.\n\nI chose invoices.\n\nWhy?\nBecause I was freelancing while still holding a 20-hour side contract.\nI needed cash to land fast, not “eventually.”\nA subscription that starts next month is nice.\nA $4,000 invoice paid in 5 days keeps the lights on.\n\nThe tradeoff is real.\nSubscriptions are better when the same work repeats every month.\nInvoices are better when every client brings a different problem and a different timeline.\n\nThe lesson: pick the payment model that matches your uncertainty, not your ego.\n\nIf your work is changing every week, monthly billing can become a trap.\n\nWhere have you seen recurring billing help, and where has it made life harder?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
