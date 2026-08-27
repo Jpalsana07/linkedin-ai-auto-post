@@ -718,5 +718,15 @@
     "content": "I almost overbuilt my freelance stack.\n\nI was setting up how clients would pay, not writing code.\nThat sounds boring, but it decides when money hits your account.\n\nThe choice was simple: Stripe subscriptions or one-off invoices.\n\nSubscriptions look cleaner.\nThey promise predictable cash, fewer reminders, and less admin.\n\nInvoices looked messier.\nBut they matched how I actually worked: project by project, with scope that changed every week.\n\nI chose invoices.\n\nWhy?\nBecause I was freelancing while still holding a 20-hour side contract.\nI needed cash to land fast, not “eventually.”\nA subscription that starts next month is nice.\nA $4,000 invoice paid in 5 days keeps the lights on.\n\nThe tradeoff is real.\nSubscriptions are better when the same work repeats every month.\nInvoices are better when every client brings a different problem and a different timeline.\n\nThe lesson: pick the payment model that matches your uncertainty, not your ego.\n\nIf your work is changing every week, monthly billing can become a trap.\n\nWhere have you seen recurring billing help, and where has it made life harder?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-27T14:21:53.610Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "8fbe33867668993e",
+    "content": "The bot knew too much.\n\nWe were building an internal AI helper for a support team of 42 people.\n\nIt could read tickets, draft replies, and fetch customer history.\n\nThen it started pulling the wrong account details.\n\nThe scary part was that the model sounded confident every time.\n\nWe had wired in MCP, the Model Context Protocol, which is a standard way for an AI to ask for tools and data.\n\nWe also stuffed the prompt with everything we thought it might need.\n\nThat was the mistake.\n\nThe model didn’t fail because it was “not smart enough.”\n\nIt failed because we gave it a messy room and called it context.\n\nWe had mixed 11 tools, too many fields, and no clear order for what mattered first.\n\nSo the bot often grabbed the nearest answer, not the right one.\n\nWe fixed it by shrinking the tool list, naming each tool for one job, and sending only the customer data relevant to that ticket.\n\nLatency dropped by 38%.\n\nWrong-account lookups went to zero in the next 2 weeks.\n\nThe lesson: in AI systems, more context is not safer context.\n\nClear context beats big context.\n\nWhat’s the hardest part for you: choosing what the bot should know, or what it should ignore?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
