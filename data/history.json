@@ -728,5 +728,15 @@
     "content": "The bot knew too much.\n\nWe were building an internal AI helper for a support team of 42 people.\n\nIt could read tickets, draft replies, and fetch customer history.\n\nThen it started pulling the wrong account details.\n\nThe scary part was that the model sounded confident every time.\n\nWe had wired in MCP, the Model Context Protocol, which is a standard way for an AI to ask for tools and data.\n\nWe also stuffed the prompt with everything we thought it might need.\n\nThat was the mistake.\n\nThe model didn’t fail because it was “not smart enough.”\n\nIt failed because we gave it a messy room and called it context.\n\nWe had mixed 11 tools, too many fields, and no clear order for what mattered first.\n\nSo the bot often grabbed the nearest answer, not the right one.\n\nWe fixed it by shrinking the tool list, naming each tool for one job, and sending only the customer data relevant to that ticket.\n\nLatency dropped by 38%.\n\nWrong-account lookups went to zero in the next 2 weeks.\n\nThe lesson: in AI systems, more context is not safer context.\n\nClear context beats big context.\n\nWhat’s the hardest part for you: choosing what the bot should know, or what it should ignore?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-28T15:30:33.555Z",
+    "topic": "React Shipping Stories",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "a74e3bcc4821a49b",
+    "content": "React didn’t save us.\n\nEveryone said the UI layer was the bottleneck.\nThe real bottleneck was our product decisions.\n\nWe were shipping a dashboard in React for internal ops.\nThe team kept asking for “just one more component.”\nMore charts. More filters. More tabs.\n\nSo we did the thing everyone calls boring:\nwe deleted half the screens and kept the plain form.\n\nThe result was not subtle.\nBuild time dropped by 40%.\nSupport tickets fell because people could finally finish the task without hunting around.\n\nReact was never the problem.\nOur habit of turning every workflow into a mini app was.\n\nThat’s the hot take:\nmost React shipping problems are product problems wearing frontend clothes.\n\nThe strongest counterargument is real:\nsometimes the UI truly is the bottleneck, and React’s component model makes complex interfaces easier to manage.\nI still believe that.\n\nBut if users are confused, adding another component usually makes it worse, not better.\n\nThe lesson I keep relearning:\nclarity ships faster than clever UI.\n\nWhat’s the biggest React feature you’ve seen make a product harder to use?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
