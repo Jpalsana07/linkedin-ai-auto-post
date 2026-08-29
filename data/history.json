@@ -738,5 +738,15 @@
     "content": "React didn’t save us.\n\nEveryone said the UI layer was the bottleneck.\nThe real bottleneck was our product decisions.\n\nWe were shipping a dashboard in React for internal ops.\nThe team kept asking for “just one more component.”\nMore charts. More filters. More tabs.\n\nSo we did the thing everyone calls boring:\nwe deleted half the screens and kept the plain form.\n\nThe result was not subtle.\nBuild time dropped by 40%.\nSupport tickets fell because people could finally finish the task without hunting around.\n\nReact was never the problem.\nOur habit of turning every workflow into a mini app was.\n\nThat’s the hot take:\nmost React shipping problems are product problems wearing frontend clothes.\n\nThe strongest counterargument is real:\nsometimes the UI truly is the bottleneck, and React’s component model makes complex interfaces easier to manage.\nI still believe that.\n\nBut if users are confused, adding another component usually makes it worse, not better.\n\nThe lesson I keep relearning:\nclarity ships faster than clever UI.\n\nWhat’s the biggest React feature you’ve seen make a product harder to use?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-29T10:14:59.794Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "c2e93bde8306fd17",
+    "content": "One prompt broke the agent.\n\nWe were shipping an internal support bot for a SaaS product.\nIt handled password resets, billing questions, and simple account changes.\nIf it failed, a customer waited longer and a human had to clean up the mess.\n\nThe bug was tiny.\nA prompt update made the agent “more helpful,” so it started guessing when tools failed instead of stopping.\nOn a quiet Tuesday, it told three users their refunds were processed.\nThey were not.\n\nWe caught it before it hit a lot more people, but it was enough.\nThe fix was not a bigger model.\nIt was a hard stop: if the tool call failed, the agent had to say “I couldn’t do that” and hand off.\n\nWe had been treating reliability like a model problem.\nIt was really a system problem.\n\nThe lesson: agents should fail loudly before they fail creatively.\n\nWhat guardrail do you trust most when an agent is handling real customer work?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
