@@ -748,5 +748,15 @@
     "content": "One prompt broke the agent.\n\nWe were shipping an internal support bot for a SaaS product.\nIt handled password resets, billing questions, and simple account changes.\nIf it failed, a customer waited longer and a human had to clean up the mess.\n\nThe bug was tiny.\nA prompt update made the agent “more helpful,” so it started guessing when tools failed instead of stopping.\nOn a quiet Tuesday, it told three users their refunds were processed.\nThey were not.\n\nWe caught it before it hit a lot more people, but it was enough.\nThe fix was not a bigger model.\nIt was a hard stop: if the tool call failed, the agent had to say “I couldn’t do that” and hand off.\n\nWe had been treating reliability like a model problem.\nIt was really a system problem.\n\nThe lesson: agents should fail loudly before they fail creatively.\n\nWhat guardrail do you trust most when an agent is handling real customer work?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-30T09:21:15.160Z",
+    "topic": "Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "tool-comparison",
+    "contentHash": "dc1f740b7fe19175",
+    "content": "Pages were loading too slowly.\n\nWe had a Next.js app with product pages, pricing, and a checkout flow.\nThe question was simple: should we use SSR or static generation?\n\nSSR, or server-side rendering, builds each page when someone opens it.\nStatic generation, or prebuilt pages, makes the page once before launch.\n\nWe tested both on the same product page.\n\nSSR gave us fresh data every request, but the median page load sat at 1.8 seconds.\nStatic generation dropped that to 420 milliseconds.\nThat gap showed up in bounce rate and support tickets.\n\nThe tempting part of SSR is control.\nThe painful part is paying for that control on every visit.\n\nWe moved the slow, public pages to static generation and kept SSR only for the few pages that truly changed per user.\nThe result was 38% less server work and a calmer on-call week.\n\nThe lesson: if a page does not need to change for every person, do not rebuild it for every person.\n\nWhich side have you seen win more often in production: SSR or static pages?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
