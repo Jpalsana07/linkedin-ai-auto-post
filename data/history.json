@@ -758,5 +758,15 @@
     "content": "Pages were loading too slowly.\n\nWe had a Next.js app with product pages, pricing, and a checkout flow.\nThe question was simple: should we use SSR or static generation?\n\nSSR, or server-side rendering, builds each page when someone opens it.\nStatic generation, or prebuilt pages, makes the page once before launch.\n\nWe tested both on the same product page.\n\nSSR gave us fresh data every request, but the median page load sat at 1.8 seconds.\nStatic generation dropped that to 420 milliseconds.\nThat gap showed up in bounce rate and support tickets.\n\nThe tempting part of SSR is control.\nThe painful part is paying for that control on every visit.\n\nWe moved the slow, public pages to static generation and kept SSR only for the few pages that truly changed per user.\nThe result was 38% less server work and a calmer on-call week.\n\nThe lesson: if a page does not need to change for every person, do not rebuild it for every person.\n\nWhich side have you seen win more often in production: SSR or static pages?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-08-31T09:56:00.284Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "d229cc8a8e051493",
+    "content": "We shipped the chatbot to 120 users.\nIt answers support questions for a small SaaS team.\n\nThis week I pushed three things live.\n\nFirst, I moved the LLM from ad hoc prompts to a fixed OpenAI response format, which is just a stricter way to force cleaner outputs.\n\nSecond, I added LangSmith, a trace viewer that shows every step the model took.\n\nThird, I cut the average reply time from 4.8 seconds to 2.1 seconds.\n\nThat last number mattered more than I expected.\n\nUsers did not care that the prompt was prettier.\nThey cared that the answer arrived before they alt-tabbed away.\n\nWhat is still broken?\n\nThe model is still too eager to sound certain when it should ask for help.\nIn 7% of cases, it invents a policy detail instead of saying “I’m not sure.”\n\nSo the lesson for me this week was simple:\nshipping LLMs in production is mostly about removing chances to be wrong, not making the model sound smarter.\n\nWhat do you think matters more in production: faster answers or fewer confident mistakes?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
