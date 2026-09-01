@@ -768,5 +768,15 @@
     "content": "We shipped the chatbot to 120 users.\nIt answers support questions for a small SaaS team.\n\nThis week I pushed three things live.\n\nFirst, I moved the LLM from ad hoc prompts to a fixed OpenAI response format, which is just a stricter way to force cleaner outputs.\n\nSecond, I added LangSmith, a trace viewer that shows every step the model took.\n\nThird, I cut the average reply time from 4.8 seconds to 2.1 seconds.\n\nThat last number mattered more than I expected.\n\nUsers did not care that the prompt was prettier.\nThey cared that the answer arrived before they alt-tabbed away.\n\nWhat is still broken?\n\nThe model is still too eager to sound certain when it should ask for help.\nIn 7% of cases, it invents a policy detail instead of saying “I’m not sure.”\n\nSo the lesson for me this week was simple:\nshipping LLMs in production is mostly about removing chances to be wrong, not making the model sound smarter.\n\nWhat do you think matters more in production: faster answers or fewer confident mistakes?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-01T08:46:47.069Z",
+    "topic": "Career Inflection Moments",
+    "pillar": "Founder and Career",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "df91356083b32237",
+    "content": "I chose boring over clever.\n\nWe were building a customer tool that had to stay up every day.\nIf it broke, real people couldn’t do their jobs.\n\nThe decision was simple in English:\none big service, or several smaller ones.\n\nOne big service is easier to understand.\nSeveral smaller services are easier to change without touching everything.\n\nThe tradeoff is painful.\nWith microservices, you get cleaner boundaries, but you also get more deploys, more logs, and more ways for a tiny bug to become a long afternoon.\n\nI chose the big service.\n\nNot because it was elegant.\nBecause we were a 4-person team and every new system had a hidden tax:\nmore meetings, more monitoring, more “who owns this?”\n\nThe constraint most people miss is team shape.\nAt 4 people, speed came from fewer moving parts, not more isolation.\n\nThat choice saved us months.\nIt also meant saying no to some future-proofing we probably didn’t need yet.\n\nThis tradeoff matters less once a team is large enough that one person can own one service end to end.\n\nWhen have you seen the “scalable” option slow a small team down?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
