@@ -778,5 +778,15 @@
     "content": "I chose boring over clever.\n\nWe were building a customer tool that had to stay up every day.\nIf it broke, real people couldn’t do their jobs.\n\nThe decision was simple in English:\none big service, or several smaller ones.\n\nOne big service is easier to understand.\nSeveral smaller services are easier to change without touching everything.\n\nThe tradeoff is painful.\nWith microservices, you get cleaner boundaries, but you also get more deploys, more logs, and more ways for a tiny bug to become a long afternoon.\n\nI chose the big service.\n\nNot because it was elegant.\nBecause we were a 4-person team and every new system had a hidden tax:\nmore meetings, more monitoring, more “who owns this?”\n\nThe constraint most people miss is team shape.\nAt 4 people, speed came from fewer moving parts, not more isolation.\n\nThat choice saved us months.\nIt also meant saying no to some future-proofing we probably didn’t need yet.\n\nThis tradeoff matters less once a team is large enough that one person can own one service end to end.\n\nWhen have you seen the “scalable” option slow a small team down?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-02T08:00:15.921Z",
+    "topic": "TypeScript Pitfalls",
+    "pillar": "Architecture and Stack",
+    "angle": "postmortem",
+    "contentHash": "fe5ef68c78034eca",
+    "content": "TypeScript lied to us.\n\nWe were building a billing dashboard for finance teams.\nIt had to show invoices, refunds, and failed payments without confusing anyone.\n\nThen a bug slipped through and marked a refunded invoice as \"paid.\"\nOne customer saw the wrong balance for 3 hours.\n\nThe code looked safe because TypeScript, the typed JavaScript layer, said everything matched.\nWe had a union type, a TypeScript feature for multiple shapes, and a helper that narrowed it down.\nBut one `as` cast, a forced type override, let bad data sneak past the compiler, the code checker.\n\nI chased the UI first.\nThen the API.\nThen the database.\n\nThe real bug was simpler:\nwe treated compile-time types, checks before shipping, like runtime truth, what happens while the app runs.\n\nTypeScript helps you write cleaner code.\nIt does not protect you from lying to it.\n\nThat was the postmortem lesson:\ntypes are a seatbelt, not a force field.\n\nIf your app can hurt someone when it is wrong, where do you trust the type system too much?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
