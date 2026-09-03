@@ -788,5 +788,15 @@
     "content": "TypeScript lied to us.\n\nWe were building a billing dashboard for finance teams.\nIt had to show invoices, refunds, and failed payments without confusing anyone.\n\nThen a bug slipped through and marked a refunded invoice as \"paid.\"\nOne customer saw the wrong balance for 3 hours.\n\nThe code looked safe because TypeScript, the typed JavaScript layer, said everything matched.\nWe had a union type, a TypeScript feature for multiple shapes, and a helper that narrowed it down.\nBut one `as` cast, a forced type override, let bad data sneak past the compiler, the code checker.\n\nI chased the UI first.\nThen the API.\nThen the database.\n\nThe real bug was simpler:\nwe treated compile-time types, checks before shipping, like runtime truth, what happens while the app runs.\n\nTypeScript helps you write cleaner code.\nIt does not protect you from lying to it.\n\nThat was the postmortem lesson:\ntypes are a seatbelt, not a force field.\n\nIf your app can hurt someone when it is wrong, where do you trust the type system too much?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-03T08:10:03.082Z",
+    "topic": "LLM Cost Optimization",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "d1199a8c1f9c63d5",
+    "content": "Stop chasing cheaper tokens.\n\nThe common advice is simple:\npick a smaller model, trim the prompt, and call it optimization.\n\nWe built a support assistant for a product team.\nThe bill hit $1,840 in one month.\n\nEveryone wanted the same fix:\nswap GPT-4o for a cheaper model and hope quality held.\n\nWe tried it.\nAnswers got shorter, but so did trust.\n\nThe real waste was not the model.\nIt was sending the same 9-page policy doc into every request, even when the user asked about one billing rule.\n\nWe changed the system so it only pulled 2 relevant paragraphs first.\nThen we cached the boring repeat answers.\nThen we stopped asking the model to draft things a rules engine could decide in 3 lines.\n\nCost dropped 62% in 11 days.\nQuality went up, because the model got less junk and more signal.\n\nThe strongest counterargument is fair:\nsometimes the model really is the expensive part.\n\nBut most teams I’ve seen are paying for repetition, not intelligence.\n\nThe lesson: reduce the work around the model before you downgrade the model itself.\n\nWhat have you seen save more money: a smaller model, or less context?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
