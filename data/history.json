@@ -798,5 +798,15 @@
     "content": "Stop chasing cheaper tokens.\n\nThe common advice is simple:\npick a smaller model, trim the prompt, and call it optimization.\n\nWe built a support assistant for a product team.\nThe bill hit $1,840 in one month.\n\nEveryone wanted the same fix:\nswap GPT-4o for a cheaper model and hope quality held.\n\nWe tried it.\nAnswers got shorter, but so did trust.\n\nThe real waste was not the model.\nIt was sending the same 9-page policy doc into every request, even when the user asked about one billing rule.\n\nWe changed the system so it only pulled 2 relevant paragraphs first.\nThen we cached the boring repeat answers.\nThen we stopped asking the model to draft things a rules engine could decide in 3 lines.\n\nCost dropped 62% in 11 days.\nQuality went up, because the model got less junk and more signal.\n\nThe strongest counterargument is fair:\nsometimes the model really is the expensive part.\n\nBut most teams I’ve seen are paying for repetition, not intelligence.\n\nThe lesson: reduce the work around the model before you downgrade the model itself.\n\nWhat have you seen save more money: a smaller model, or less context?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-04T08:04:56.392Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "8040966272b45c0d",
+    "content": "I trusted the agent too much.\n\nWe were building an AI support rep to handle refund requests.\nIf it worked, it would save our team hours every week and answer angry customers in under a minute.\n\nIt looked great in demos.\n\nThen one customer asked for a refund on two orders.\nThe agent grabbed the right order, but it sent the refund twice.\n\nThe bug was subtle.\nWe had given it a tool schema, the menu of actions the bot can take, but we never made the refund action idempotent, meaning safe to run twice.\nSo the agent did exactly what we asked, not what we meant.\n\nOne duplicated refund cost us $84 and a very awkward Slack thread.\n\nWe fixed it by moving the money-moving step behind a hard server check.\nThe agent could ask for a refund.\nOnly the backend could actually do it.\n\nThat changed how I think about AI agents.\n\nThe lesson is simple:\nlet the agent decide, but keep the irreversible action outside its hands.\n\nWhat’s the riskiest action you’d never let an agent do alone?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
