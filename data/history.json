@@ -808,5 +808,15 @@
     "content": "I trusted the agent too much.\n\nWe were building an AI support rep to handle refund requests.\nIf it worked, it would save our team hours every week and answer angry customers in under a minute.\n\nIt looked great in demos.\n\nThen one customer asked for a refund on two orders.\nThe agent grabbed the right order, but it sent the refund twice.\n\nThe bug was subtle.\nWe had given it a tool schema, the menu of actions the bot can take, but we never made the refund action idempotent, meaning safe to run twice.\nSo the agent did exactly what we asked, not what we meant.\n\nOne duplicated refund cost us $84 and a very awkward Slack thread.\n\nWe fixed it by moving the money-moving step behind a hard server check.\nThe agent could ask for a refund.\nOnly the backend could actually do it.\n\nThat changed how I think about AI agents.\n\nThe lesson is simple:\nlet the agent decide, but keep the irreversible action outside its hands.\n\nWhat’s the riskiest action you’d never let an agent do alone?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-05T07:45:26.334Z",
+    "topic": "Node.js at Scale",
+    "pillar": "Architecture and Stack",
+    "angle": "tool-comparison",
+    "contentHash": "064d0afff2251b70",
+    "content": "Redis was hiding our bottleneck.\n\nWe were running a Node.js API that had to serve 8,000 requests a minute without turning every page load into a wait.\n\nThe choice was Redis pub/sub or BullMQ, a job queue for background work.\n\nRedis pub/sub is fast and simple.\nIt pushes messages right now, but if a worker is down, the message is gone.\n\nBullMQ adds retries, delays, and persistence.\nThat means a failed email or report still gets processed later, not lost in traffic.\n\nWe tested both on one service.\n\nPub/sub was cheaper to wire up.\nWe shipped it in 2 days.\n\nBut once traffic grew, the missing messages hurt more than the setup speed helped.\n\nBullMQ took an extra week to fit in cleanly.\nAfter that, failed jobs dropped by 93%, and support stopped seeing “I clicked send and nothing happened” complaints.\n\nThe lesson: at scale, the best tool is the one that remembers what happened when your system is busy or broken.\n\nI’ll take the slower setup if it buys me fewer lost tasks.\n\nWhen have you chosen the less flashy tool because it protected the work?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
