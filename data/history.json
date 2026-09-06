@@ -818,5 +818,15 @@
     "content": "Redis was hiding our bottleneck.\n\nWe were running a Node.js API that had to serve 8,000 requests a minute without turning every page load into a wait.\n\nThe choice was Redis pub/sub or BullMQ, a job queue for background work.\n\nRedis pub/sub is fast and simple.\nIt pushes messages right now, but if a worker is down, the message is gone.\n\nBullMQ adds retries, delays, and persistence.\nThat means a failed email or report still gets processed later, not lost in traffic.\n\nWe tested both on one service.\n\nPub/sub was cheaper to wire up.\nWe shipped it in 2 days.\n\nBut once traffic grew, the missing messages hurt more than the setup speed helped.\n\nBullMQ took an extra week to fit in cleanly.\nAfter that, failed jobs dropped by 93%, and support stopped seeing “I clicked send and nothing happened” complaints.\n\nThe lesson: at scale, the best tool is the one that remembers what happened when your system is busy or broken.\n\nI’ll take the slower setup if it buys me fewer lost tasks.\n\nWhen have you chosen the less flashy tool because it protected the work?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-06T07:59:43.564Z",
+    "topic": "Startup Lessons",
+    "pillar": "Founder and Career",
+    "angle": "build-in-public",
+    "contentHash": "6c6ce533fa2feabc",
+    "content": "This week, we shipped the thing.\n\nWe’re building a startup ops tool for small founders who live in Slack, spreadsheets, and sticky notes.\nThis week it finally started turning messy updates into a clean weekly report.\n\nThe first version took 14 minutes to run.\nNow it finishes in 38 seconds.\n\nThat mattered because people were dropping off before they saw the output.\n\nWe shipped three things:\na simpler upload flow,\na cleaner report template,\nand a retry path when the data import fails halfway through.\n\nThe upload flow cut first-time setup from 11 steps to 5.\nSignups didn’t jump.\nBut completed setups went from 27% to 51%.\n\nWhat’s broken?\nThe report still looks wrong when a founder has duplicate project names.\nOne customer called it “almost right, but annoying.”\nThat stung, because they were correct.\n\nBuild-in-public sounds nice until the public sees the broken parts.\nThat’s still the point.\n\nIf you’re sharing real shipping updates, show the time saved, the conversion moved, and the thing that still feels embarrassing.\n\nWhat do you think matters more in public updates: showing momentum or showing the bugs?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
