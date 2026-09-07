@@ -828,5 +828,15 @@
     "content": "This week, we shipped the thing.\n\nWe’re building a startup ops tool for small founders who live in Slack, spreadsheets, and sticky notes.\nThis week it finally started turning messy updates into a clean weekly report.\n\nThe first version took 14 minutes to run.\nNow it finishes in 38 seconds.\n\nThat mattered because people were dropping off before they saw the output.\n\nWe shipped three things:\na simpler upload flow,\na cleaner report template,\nand a retry path when the data import fails halfway through.\n\nThe upload flow cut first-time setup from 11 steps to 5.\nSignups didn’t jump.\nBut completed setups went from 27% to 51%.\n\nWhat’s broken?\nThe report still looks wrong when a founder has duplicate project names.\nOne customer called it “almost right, but annoying.”\nThat stung, because they were correct.\n\nBuild-in-public sounds nice until the public sees the broken parts.\nThat’s still the point.\n\nIf you’re sharing real shipping updates, show the time saved, the conversion moved, and the thing that still feels embarrassing.\n\nWhat do you think matters more in public updates: showing momentum or showing the bugs?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-07T08:29:32.093Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "339947dbd6a55406",
+    "content": "Two evals, one model.\n\nWe were building an AI support assistant.\nIf it answered wrong, customers got angry.\nIf it answered slowly, they gave up.\n\nSo we had to decide what to measure first:\ndoes the model sound good, or does it behave correctly?\n\nThat sounds small.\nIt isn’t.\n\nA “good” answer can read nicely and still make up a refund policy.\nA “correct” answer can be a little clunky and still save the ticket.\n\nThe tradeoff was simple:\nhuman evals catch nuance, but they’re slow and expensive.\nLLM-as-judge evals are fast, but they can miss the exact mistake that hurts a user.\n\nWe chose a hybrid.\nFirst pass: GPT-4o as a judge, because it could score 500 outputs in minutes.\nSecond pass: a human reviewed only the failures that touched money, legal promises, or account access.\n\nThat constraint mattered more than elegance.\nOur team was 4 people.\nWe couldn’t afford to label everything by hand every week.\n\nThe lesson:\nwhen you evaluate AI, optimize for the mistake that costs you most, not the metric that looks smartest.\n\nThis tradeoff breaks down when the domain is tiny and every edge case is known.\nThen human review can be the whole system.\n\nWhat do you trust more for AI evals: a fast judge or a slower person?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
