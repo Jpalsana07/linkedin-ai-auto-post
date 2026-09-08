@@ -838,5 +838,15 @@
     "content": "Two evals, one model.\n\nWe were building an AI support assistant.\nIf it answered wrong, customers got angry.\nIf it answered slowly, they gave up.\n\nSo we had to decide what to measure first:\ndoes the model sound good, or does it behave correctly?\n\nThat sounds small.\nIt isn’t.\n\nA “good” answer can read nicely and still make up a refund policy.\nA “correct” answer can be a little clunky and still save the ticket.\n\nThe tradeoff was simple:\nhuman evals catch nuance, but they’re slow and expensive.\nLLM-as-judge evals are fast, but they can miss the exact mistake that hurts a user.\n\nWe chose a hybrid.\nFirst pass: GPT-4o as a judge, because it could score 500 outputs in minutes.\nSecond pass: a human reviewed only the failures that touched money, legal promises, or account access.\n\nThat constraint mattered more than elegance.\nOur team was 4 people.\nWe couldn’t afford to label everything by hand every week.\n\nThe lesson:\nwhen you evaluate AI, optimize for the mistake that costs you most, not the metric that looks smartest.\n\nThis tradeoff breaks down when the domain is tiny and every edge case is known.\nThen human review can be the whole system.\n\nWhat do you trust more for AI evals: a fast judge or a slower person?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-08T08:12:20.115Z",
+    "topic": "PostgreSQL Lessons",
+    "pillar": "Architecture and Stack",
+    "angle": "postmortem",
+    "contentHash": "fc52d5df955c9fac",
+    "content": "PostgreSQL almost took us down.\n\nWe were building billing for a SaaS app, for customers who needed invoices to be exact.\nOne bad query turned a quiet Tuesday into a 3-hour outage.\n\nThe app looked fine.\nThe dashboard loaded.\nBut Postgres was stuck on a lock — a database traffic jam where one write blocks the others.\n\nWe had added a migration that touched a huge table.\nThen a background job started updating rows one by one.\nOn a table with 18 million rows, that was enough to freeze everything.\n\nWe tried faster indexes, smaller batches, and a retry loop.\nNone of it helped.\n\nThe real problem was simpler:\nwe treated Postgres like storage, not a shared room with one door.\n\nOnce we understood that, we changed the shape of the work.\nWe moved heavy updates out of peak hours.\nWe split the migration into chunks.\nWe added a hard rule: anything that can lock a big table gets rehearsed in staging first.\n\nPostgres is usually the safest tool in the stack.\nBut safety only holds when you respect its limits.\n\nThe lesson: boring databases still need traffic rules.\n\nWhat’s the Postgres mistake you only learned after it hurt?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
