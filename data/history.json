@@ -858,5 +858,15 @@
     "content": "MCP is not the bottleneck.\n\nThe hot part is context.\n\nA lot of people are treating Model Context Protocol like a magic plug.\nConnect the model to every tool, and the agent will somehow get smart.\n\nWe tried that with a support assistant.\nIt had access to Slack, Jira, and our docs.\nIt still answered slowly and confidently in the wrong direction.\n\nThe problem was not the connector.\nIt was the pile of junk we kept handing the model.\n\nAfter 3 days of trimming prompts, adding a 12-line context builder, and dropping two noisy tools, answer quality jumped.\nFewer tool calls.\nLess confusion.\nFaster replies.\n\nThat’s context engineering: deciding what the model sees, in what order, and why.\nNot “give it everything.”\nGive it the right few things.\n\nThe strongest counterargument is real:\nMCP makes integrations easier, and that matters a lot.\nIf a tool is hard to connect, nobody uses it.\n\nBut once the pipes exist, context is what decides whether the model is useful or just well-connected.\n\nThe lesson: better inputs beat more integrations.\n\nWhat’s one tool or detail you’ve seen make an AI assistant worse, not better?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-10T08:15:22.435Z",
+    "topic": "SaaS Build-in-Public Metrics",
+    "pillar": "Founder and Career",
+    "angle": "mistake-and-lesson",
+    "contentHash": "30d2dcc38bdd2df7",
+    "content": "Our metrics were wrong.\n\nWe were building a SaaS in public, and the numbers had to do two jobs at once:\nkeep us honest, and show strangers enough progress to care.\n\nSo we wired up PostHog, the product analytics tool, and published a weekly growth chart.\n\nThen I noticed something ugly.\n\nTrial signups were up, but revenue was flat.\nThe chart looked healthy.\nThe business was not.\n\nWe had counted every new account as a win, even if the person never made it past the first screen.\nThat meant our “growth” post was really a vanity report with better lighting.\n\nI spent a Friday fixing it.\n\nWe changed the public metric from signups to activated users, people who actually finished one core action.\nThe next week, the number dropped 38%.\n\nIt stung.\n\nBut the story got better, because it was true.\nAnd truth built more trust than a prettier chart ever did.\n\nThe lesson: if you build in public, publish the number that would hurt to lose.\n\nWhat metric would you trust most if your audience could see the raw truth?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
