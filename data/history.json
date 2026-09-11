@@ -868,5 +868,15 @@
     "content": "Our metrics were wrong.\n\nWe were building a SaaS in public, and the numbers had to do two jobs at once:\nkeep us honest, and show strangers enough progress to care.\n\nSo we wired up PostHog, the product analytics tool, and published a weekly growth chart.\n\nThen I noticed something ugly.\n\nTrial signups were up, but revenue was flat.\nThe chart looked healthy.\nThe business was not.\n\nWe had counted every new account as a win, even if the person never made it past the first screen.\nThat meant our “growth” post was really a vanity report with better lighting.\n\nI spent a Friday fixing it.\n\nWe changed the public metric from signups to activated users, people who actually finished one core action.\nThe next week, the number dropped 38%.\n\nIt stung.\n\nBut the story got better, because it was true.\nAnd truth built more trust than a prettier chart ever did.\n\nThe lesson: if you build in public, publish the number that would hurt to lose.\n\nWhat metric would you trust most if your audience could see the raw truth?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-11T08:10:24.852Z",
+    "topic": "Software Architecture",
+    "pillar": "Architecture and Stack",
+    "angle": "tool-comparison",
+    "contentHash": "252e674cd792cd3d",
+    "content": "We had two ways to run jobs.\n\nOne queue was BullMQ, the other was Temporal.\nBoth solve the same problem: what happens when work takes minutes, fails halfway, and needs to resume without losing data.\n\nWe hit this while building a payments sync service.\nIt had to retry failed imports, survive deploys, and not double-charge anyone.\n\nBullMQ was quick to ship.\nWe had a working queue in 2 days.\n\nBut as soon as we needed branching steps, manual retries, and visibility into stuck jobs, it got messy.\nWe were stitching state together across Redis, logs, and our app.\n\nTemporal was slower on day one.\nIt took us 8 days to get the first workflow right.\n\nBut after that, the difference was obvious.\nA failed step could resume from the exact point it stopped.\nThe workflow history was visible in one place.\nThe code read like a checklist instead of a pile of callback glue.\n\nThe lesson: pick the tool that matches the cost of failure, not the speed of the first demo.\n\nFor simple background jobs, BullMQ is great.\nFor long-running business processes where mistakes are expensive, Temporal wins.\n\nWhich one would you trust for a payment flow?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
