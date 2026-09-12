@@ -878,5 +878,15 @@
     "content": "We had two ways to run jobs.\n\nOne queue was BullMQ, the other was Temporal.\nBoth solve the same problem: what happens when work takes minutes, fails halfway, and needs to resume without losing data.\n\nWe hit this while building a payments sync service.\nIt had to retry failed imports, survive deploys, and not double-charge anyone.\n\nBullMQ was quick to ship.\nWe had a working queue in 2 days.\n\nBut as soon as we needed branching steps, manual retries, and visibility into stuck jobs, it got messy.\nWe were stitching state together across Redis, logs, and our app.\n\nTemporal was slower on day one.\nIt took us 8 days to get the first workflow right.\n\nBut after that, the difference was obvious.\nA failed step could resume from the exact point it stopped.\nThe workflow history was visible in one place.\nThe code read like a checklist instead of a pile of callback glue.\n\nThe lesson: pick the tool that matches the cost of failure, not the speed of the first demo.\n\nFor simple background jobs, BullMQ is great.\nFor long-running business processes where mistakes are expensive, Temporal wins.\n\nWhich one would you trust for a payment flow?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-12T08:00:57.346Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "87e093a2a7578c6b",
+    "content": "Our support agent is live.\nIt helps small teams answer customer emails without hiring a full-time rep.\n\nThis week I shipped a new reliability layer for it.\n\nThe agent now retries failed tool calls, checks its own output before sending, and stops after 3 bad attempts instead of spinning forever.\n\nThat matters because one bad reply can land in a customer inbox.\n\nBefore this, the agent answered 68% of tickets correctly in our test set.\nAfter the changes, it hit 81%.\n\nThe ugly part: the last 19% still fail in the same places.\nIt gets confused by refund edge cases and mixed intent emails, like “cancel my plan but keep my data.”\n\nThat’s the part I’m working on now.\n\nThe lesson is simple:\nagent reliability is not about making the model smarter first.\nIt’s about making failure smaller, faster, and easier to spot.\n\nWhat’s the hardest failure mode you’ve seen when an AI had to act on its own?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
