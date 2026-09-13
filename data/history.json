@@ -888,5 +888,15 @@
     "content": "Our support agent is live.\nIt helps small teams answer customer emails without hiring a full-time rep.\n\nThis week I shipped a new reliability layer for it.\n\nThe agent now retries failed tool calls, checks its own output before sending, and stops after 3 bad attempts instead of spinning forever.\n\nThat matters because one bad reply can land in a customer inbox.\n\nBefore this, the agent answered 68% of tickets correctly in our test set.\nAfter the changes, it hit 81%.\n\nThe ugly part: the last 19% still fail in the same places.\nIt gets confused by refund edge cases and mixed intent emails, like “cancel my plan but keep my data.”\n\nThat’s the part I’m working on now.\n\nThe lesson is simple:\nagent reliability is not about making the model smarter first.\nIt’s about making failure smaller, faster, and easier to spot.\n\nWhat’s the hardest failure mode you’ve seen when an AI had to act on its own?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-13T08:25:43.156Z",
+    "topic": "React Shipping Stories",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "129e108d7c52f134",
+    "content": "We almost split the app.\n\nI was shipping a React product where the homepage and dashboard lived in the same codebase.\nIt felt tidy.\nIt also meant one small change could break the login flow.\n\nThe decision was simple: keep one React app, or split it into separate apps.\nIn plain English, it was about whether every page should share the same suitcase, or pack its own.\n\nThe tradeoff was speed versus safety.\nOne app is faster to move early, because shared components and routing are easy.\nSeparate apps are safer later, because marketing can ship without touching product code.\n\nWe chose one app.\n\nWhy?\nBecause the real constraint was not code size.\nIt was team size.\nWe had 3 engineers, and splitting early would have doubled our release paths, our test surface, and our chance of shipping a broken redirect.\n\nThat mattered more than elegance.\n\nSix months later, the app had grown enough that this choice started to hurt.\nBut by then we had the users, the patterns, and the proof to justify the split.\n\nThe lesson: pick the structure that matches your team today, not the architecture you hope to deserve.\n\nIf you’ve split a React app early, what forced your hand?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
