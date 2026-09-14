@@ -898,5 +898,15 @@
     "content": "We almost split the app.\n\nI was shipping a React product where the homepage and dashboard lived in the same codebase.\nIt felt tidy.\nIt also meant one small change could break the login flow.\n\nThe decision was simple: keep one React app, or split it into separate apps.\nIn plain English, it was about whether every page should share the same suitcase, or pack its own.\n\nThe tradeoff was speed versus safety.\nOne app is faster to move early, because shared components and routing are easy.\nSeparate apps are safer later, because marketing can ship without touching product code.\n\nWe chose one app.\n\nWhy?\nBecause the real constraint was not code size.\nIt was team size.\nWe had 3 engineers, and splitting early would have doubled our release paths, our test surface, and our chance of shipping a broken redirect.\n\nThat mattered more than elegance.\n\nSix months later, the app had grown enough that this choice started to hurt.\nBut by then we had the users, the patterns, and the proof to justify the split.\n\nThe lesson: pick the structure that matches your team today, not the architecture you hope to deserve.\n\nIf you’ve split a React app early, what forced your hand?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-14T09:06:22.772Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "1b390ca9aede2b31",
+    "content": "The bot answered the wrong customer.\n\nWe were building an LLM support assistant for a SaaS product.\nIt handled billing questions for 8,000 users.\nThen it started giving confident, useful, completely wrong answers.\n\nThe scary part was the confidence.\nIt sounded like a great support rep right up until it invented refund rules.\n\nWe first blamed the prompt.\nThen we blamed the model.\nThen we added more context, more examples, and stricter instructions.\n\nNothing fixed it.\n\nThe root cause was simpler.\nWe had given the model our help docs, but not the current policy.\nThe retrieval layer — the search step that fetches source text — was pulling old pages from a cached index, a saved copy of the docs.\n\nSo the model wasn’t hallucinating from nothing.\nIt was faithfully repeating stale truth.\n\nWe found it by comparing bad answers against the exact doc version in the index.\nOne page had changed 11 days earlier.\nThe cache had not.\n\nWe rebuilt the index every deploy and added a freshness check before answers went out.\n\nThe lesson: when an LLM is wrong in production, check the inputs before you blame the intelligence.\n\nWhat’s the most expensive “AI bug” you’ve seen that was really a data bug?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
