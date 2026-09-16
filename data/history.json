@@ -918,5 +918,15 @@
     "content": "Price your work by outcome.\n\nEveryone says freelance pricing is simple:\npick an hourly rate, track time, invoice later.\n\nThat sounds fair.\nIt also keeps you trapped.\n\nI learned this after a 2-week project where I charged $4,000 for 40 hours.\nThe client got a launch page that brought in 17 qualified leads in the first month.\nI had accidentally sold hours when I should have sold relief.\n\nThe strongest counterargument is real:\nhourly billing is easy to explain, and it protects clients from overpaying.\n\nBut it also punishes speed.\n\nThe moment I switched to fixed-price packages with a clear result, the conversations changed.\nLess debate about the clock.\nMore debate about the problem.\n\nThe lesson I keep coming back to:\nif you can describe the outcome in plain English, don’t hide behind hours.\n\nThat doesn’t mean every project should be value-based.\nSome work is still messy, open-ended, or impossible to scope cleanly.\n\nBut for the work you can define clearly, numbers should describe the result, not your calendar.\n\nWhat’s the fairest way you’ve seen freelancers price real outcomes?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-16T08:42:46.316Z",
+    "topic": "LLM Cost Optimization",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "13547297b208b1fa",
+    "content": "We burned $1,842 on one prompt.\n\nWe were building an AI support assistant for a checkout flow.\nIf it worked, it would deflect tickets and save the team hours.\nInstead, one noisy prompt was calling GPT-4o on every user message.\n\nThe mistake was simple.\nWe stuffed the full chat history, the help center, and the user profile into every request.\nToken count — the text the model has to read — kept climbing.\nSo did the bill.\n\nWe found it in Datadog, the monitoring tool, after a weekend spike.\nOne customer thread cost us 38 cents.\nMultiply that by thousands of chats, and the math gets ugly fast.\n\nWe fixed it by cutting context hard.\nOnly the last few messages stayed in the prompt.\nThe rest moved to a cheap retrieval step — fetching only the relevant info — before the model answered.\n\nCost dropped 71% in two days.\n\nThe lesson: don’t pay the model to read things it doesn’t need.\n\nWhat’s the first thing you’d cut from an LLM prompt to save money?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
