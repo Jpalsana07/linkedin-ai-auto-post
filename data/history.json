@@ -928,5 +928,15 @@
     "content": "We burned $1,842 on one prompt.\n\nWe were building an AI support assistant for a checkout flow.\nIf it worked, it would deflect tickets and save the team hours.\nInstead, one noisy prompt was calling GPT-4o on every user message.\n\nThe mistake was simple.\nWe stuffed the full chat history, the help center, and the user profile into every request.\nToken count — the text the model has to read — kept climbing.\nSo did the bill.\n\nWe found it in Datadog, the monitoring tool, after a weekend spike.\nOne customer thread cost us 38 cents.\nMultiply that by thousands of chats, and the math gets ugly fast.\n\nWe fixed it by cutting context hard.\nOnly the last few messages stayed in the prompt.\nThe rest moved to a cheap retrieval step — fetching only the relevant info — before the model answered.\n\nCost dropped 71% in two days.\n\nThe lesson: don’t pay the model to read things it doesn’t need.\n\nWhat’s the first thing you’d cut from an LLM prompt to save money?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-17T08:46:09.032Z",
+    "topic": "Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "tool-comparison",
+    "contentHash": "c31395bc4d01d3f5",
+    "content": "App Router won in prod.\n\nWe had two ways to ship our Next.js app:\nPages Router, the older page-based setup,\nor App Router, the newer route-and-layout setup.\n\nThe problem was simple:\nwe needed faster pages, cleaner data loading, and less time fighting shared UI.\n\nWe tested both on the same product.\nA full dashboard page took 14 minutes to rebuild in Pages Router.\nThe same page took 9 minutes in App Router because the layout stayed in one place.\n\nMore importantly, the app felt lighter.\nServer Components, which render parts of the page on the server, cut the JavaScript bundle by 38%.\nThat made first load faster without us hand-optimizing every screen.\n\nPages Router is familiar.\nApp Router is better for production.\n\nThe reason is not hype.\nIt keeps data, layout, and loading states closer together, which means fewer files, fewer bugs, and less code duplicated across screens.\n\nThe lesson:\npick the stack that reduces repeated work, not the one that feels safest from 2021.\n\nWhat did you choose for your last Next.js launch, and why?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
