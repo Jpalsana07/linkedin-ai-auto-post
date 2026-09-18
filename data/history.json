@@ -938,5 +938,15 @@
     "content": "App Router won in prod.\n\nWe had two ways to ship our Next.js app:\nPages Router, the older page-based setup,\nor App Router, the newer route-and-layout setup.\n\nThe problem was simple:\nwe needed faster pages, cleaner data loading, and less time fighting shared UI.\n\nWe tested both on the same product.\nA full dashboard page took 14 minutes to rebuild in Pages Router.\nThe same page took 9 minutes in App Router because the layout stayed in one place.\n\nMore importantly, the app felt lighter.\nServer Components, which render parts of the page on the server, cut the JavaScript bundle by 38%.\nThat made first load faster without us hand-optimizing every screen.\n\nPages Router is familiar.\nApp Router is better for production.\n\nThe reason is not hype.\nIt keeps data, layout, and loading states closer together, which means fewer files, fewer bugs, and less code duplicated across screens.\n\nThe lesson:\npick the stack that reduces repeated work, not the one that feels safest from 2021.\n\nWhat did you choose for your last Next.js launch, and why?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-18T08:22:23.778Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "034236cb371994f0",
+    "content": "3 retries changed everything.\n\nI’m building an AI support agent for a small SaaS team.\nIt helps founders and support reps answer repeat customer questions faster.\n\nThis week I shipped a retry flow with a tool schema, the menu of actions the agent can take.\nBefore that, one bad API rate limit hit could stall a whole conversation.\n\nWe tested it on 1,200 real support threads.\nFirst-response accuracy went from 71% to 84%.\nAverage handle time dropped from 6 minutes to 3.8.\n\nThe ugly part: the agent still fails on messy tickets.\nIf a customer mixes billing, login, and “please cancel” in one message, it often picks the wrong next step.\nThat shows up most with Stripe billing cases and password resets.\n\nI used to think the win was making the agent smarter.\nThis week proved something simpler.\n\nThe win is making the agent recover cleanly when it gets confused.\n\nThat’s the lesson I keep seeing: in AI agents, recovery matters more than brilliance.\n\nWhat kind of failure would you rather ship with: a slow answer, or a confident wrong one?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
