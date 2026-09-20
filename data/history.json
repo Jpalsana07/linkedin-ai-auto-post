@@ -958,5 +958,15 @@
     "content": "Types erased a bug.\n\nWe were building a TypeScript backend for a small checkout flow.\nThe goal was simple: catch bad data before it reached Stripe.\nOne wrong field in production meant a real customer couldn’t pay.\n\nThe question was whether to trust TypeScript alone, or add runtime validation too.\nTypeScript checks code while you’re writing it.\nRuntime validation checks the actual data after the app is running.\n\nThat sounds like overlap.\nIt is.\n\nWe chose Zod, a schema validator, on the edges of the app.\nThat meant every request body got checked twice: once by TypeScript in the editor, once by Zod at runtime.\n\nThe tradeoff was extra code and a little friction.\nBut the constraint most people miss is this:\nTypeScript disappears after build.\nThe API still receives JSON from browsers, scripts, and broken clients.\n\nOne malformed payload can slip through perfect types.\n\nSo I’ll take the duplication when the input is external.\nI won’t add it everywhere inside the app, where the data already comes from code I control.\n\nThat’s the line for me:\nvalidate at the boundary, not in every room.\n\nWhere do you draw that line between compile-time safety and runtime checks?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-20T08:42:39.563Z",
+    "topic": "Career Inflection Moments",
+    "pillar": "Founder and Career",
+    "angle": "postmortem",
+    "contentHash": "65aeba1992e1b864",
+    "content": "I missed the promotion.\n\nI was building a hiring tool for founders.\nIt was for teams trying to fill one hard role fast.\nAnd I was sure the product would sell itself.\n\nIt didn’t.\n\nWe shipped 41 outreach emails, 12 demos, and 0 paid pilots.\nThe feature set looked strong on paper.\nThe problem was the pitch.\n\nI kept talking about automation.\nFounders heard risk.\nThey didn’t want a system that “managed candidates.”\nThey wanted fewer bad resumes and faster decisions.\n\nThe root cause was simple:\nI was selling my internal model of the product, not the outcome in their head.\n\nSo I rewrote the homepage in one afternoon.\nNo jargon.\nNo “workflow.”\nJust “shortlist better candidates in less time.”\n\nReplies came in that week.\n\nThe lesson: when a career move or a product launch fails, the failure is often not the thing itself.\nIt’s the story you told about it.\n\nWhat story have you seen kill an otherwise good idea?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
