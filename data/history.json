@@ -968,5 +968,15 @@
     "content": "I missed the promotion.\n\nI was building a hiring tool for founders.\nIt was for teams trying to fill one hard role fast.\nAnd I was sure the product would sell itself.\n\nIt didn’t.\n\nWe shipped 41 outreach emails, 12 demos, and 0 paid pilots.\nThe feature set looked strong on paper.\nThe problem was the pitch.\n\nI kept talking about automation.\nFounders heard risk.\nThey didn’t want a system that “managed candidates.”\nThey wanted fewer bad resumes and faster decisions.\n\nThe root cause was simple:\nI was selling my internal model of the product, not the outcome in their head.\n\nSo I rewrote the homepage in one afternoon.\nNo jargon.\nNo “workflow.”\nJust “shortlist better candidates in less time.”\n\nReplies came in that week.\n\nThe lesson: when a career move or a product launch fails, the failure is often not the thing itself.\nIt’s the story you told about it.\n\nWhat story have you seen kill an otherwise good idea?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-21T09:08:36.216Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "7313269c68fce858",
+    "content": "Most evals are comfort theater.\n\nThe popular advice is simple:\nbuild a giant test set, score the model, and call it “measured.”\n\nThat feels rigorous.\nIt also misses what users actually hit.\n\nWe shipped an AI support assistant with 200 labeled examples in LangSmith, a testing tool for LLMs.\nIt looked great on paper.\n\nThen one customer asked about a refund tied to a canceled card.\nThe eval said “correct.”\nThe user said “useless.”\n\nThe problem wasn’t the model.\nIt was our eval design.\n\nWe were grading answers for matching the reference text.\nReal users cared about whether the bot asked the right follow-up, used the right policy, and stopped before guessing.\n\nSo we changed the eval.\nWe kept only 40 high-risk cases, then added human review for the messy ones.\nOur failure rate dropped 31% in two weeks.\n\nThe hot take:\nsmall, sharp evals beat giant, fake-certainty evals.\n\nThe strongest counterargument is obvious:\nbig benchmarks catch broad regressions.\n\nThey do.\nBut if your product fails on one weird refund, one bad login, or one policy edge case, breadth won’t save you.\n\nMeasure the moments that hurt, not the average that flatters.\n\nWhat kind of AI bug do you think deserves its own eval first?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
