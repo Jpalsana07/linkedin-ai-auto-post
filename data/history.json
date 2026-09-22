@@ -978,5 +978,15 @@
     "content": "Most evals are comfort theater.\n\nThe popular advice is simple:\nbuild a giant test set, score the model, and call it “measured.”\n\nThat feels rigorous.\nIt also misses what users actually hit.\n\nWe shipped an AI support assistant with 200 labeled examples in LangSmith, a testing tool for LLMs.\nIt looked great on paper.\n\nThen one customer asked about a refund tied to a canceled card.\nThe eval said “correct.”\nThe user said “useless.”\n\nThe problem wasn’t the model.\nIt was our eval design.\n\nWe were grading answers for matching the reference text.\nReal users cared about whether the bot asked the right follow-up, used the right policy, and stopped before guessing.\n\nSo we changed the eval.\nWe kept only 40 high-risk cases, then added human review for the messy ones.\nOur failure rate dropped 31% in two weeks.\n\nThe hot take:\nsmall, sharp evals beat giant, fake-certainty evals.\n\nThe strongest counterargument is obvious:\nbig benchmarks catch broad regressions.\n\nThey do.\nBut if your product fails on one weird refund, one bad login, or one policy edge case, breadth won’t save you.\n\nMeasure the moments that hurt, not the average that flatters.\n\nWhat kind of AI bug do you think deserves its own eval first?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-22T08:40:22.136Z",
+    "topic": "Node.js at Scale",
+    "pillar": "Architecture and Stack",
+    "angle": "mistake-and-lesson",
+    "contentHash": "c73eeb0f0034263c",
+    "content": "We crashed checkout with one queue.\n\nWe were trying to handle a Black Friday traffic spike on a Node.js backend.\nThis was the path that took orders, charged cards, and sent confirmation emails.\nWhen traffic jumped, one slow payment call blocked everything behind it.\n\nThe mistake was simple.\nWe treated Node like a machine that would just keep swallowing work.\nInstead, one event loop got pinned, and a single retry storm turned into a 14-minute outage.\n\nWe found it in Datadog, the monitoring tool we used.\nLatency climbed from 180ms to 11s, then errors started stacking up.\nCustomers were refreshing carts while our workers were stuck waiting on the same external API.\n\nWe fixed it by splitting the queue and putting hard timeouts on every payment request.\nNothing fancy.\nJust fewer things allowed to wait on one another.\n\nThe lesson: at scale, Node.js fails less like a crash and more like a traffic jam.\n\nWhat’s the worst bottleneck you’ve seen hidden behind “it works fine on my machine”?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
