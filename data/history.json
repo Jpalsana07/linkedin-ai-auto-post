@@ -988,5 +988,15 @@
     "content": "We crashed checkout with one queue.\n\nWe were trying to handle a Black Friday traffic spike on a Node.js backend.\nThis was the path that took orders, charged cards, and sent confirmation emails.\nWhen traffic jumped, one slow payment call blocked everything behind it.\n\nThe mistake was simple.\nWe treated Node like a machine that would just keep swallowing work.\nInstead, one event loop got pinned, and a single retry storm turned into a 14-minute outage.\n\nWe found it in Datadog, the monitoring tool we used.\nLatency climbed from 180ms to 11s, then errors started stacking up.\nCustomers were refreshing carts while our workers were stuck waiting on the same external API.\n\nWe fixed it by splitting the queue and putting hard timeouts on every payment request.\nNothing fancy.\nJust fewer things allowed to wait on one another.\n\nThe lesson: at scale, Node.js fails less like a crash and more like a traffic jam.\n\nWhat’s the worst bottleneck you’ve seen hidden behind “it works fine on my machine”?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-23T08:42:38.452Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "f4123155bca9b2fa",
+    "content": "MCP beat the old plugin path.\n\nWe were building an AI assistant that had to read tickets, fetch docs, and create Jira issues without hand-holding.\nThe choice was MCP, the new tool connector standard, or a custom plugin layer.\n\nWith the plugin layer, every tool needed a one-off wrapper.\nThree tools became 11 files, and every schema change meant another half day of fixes.\n\nMCP was simpler.\nOne server exposed the tools, and the model could discover them with the same contract.\nThat cut setup from 2 days to 3 hours.\n\nIt also made context engineering cleaner.\nContext engineering means choosing what the model sees, not dumping everything in.\nWith MCP, we could send only the ticket, the relevant doc, and the action menu.\nLess noise.\nFewer hallucinated clicks.\n\nThe winner was MCP.\nNot because it was trendy.\nBecause it made the tool boundary explicit, which kept the assistant easier to debug and cheaper to extend.\n\nThe lesson: when an AI needs tools, prefer the interface that makes the model’s choices visible.\n\nWhat tool boundary has saved you the most debugging time?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
