@@ -998,5 +998,15 @@
     "content": "MCP beat the old plugin path.\n\nWe were building an AI assistant that had to read tickets, fetch docs, and create Jira issues without hand-holding.\nThe choice was MCP, the new tool connector standard, or a custom plugin layer.\n\nWith the plugin layer, every tool needed a one-off wrapper.\nThree tools became 11 files, and every schema change meant another half day of fixes.\n\nMCP was simpler.\nOne server exposed the tools, and the model could discover them with the same contract.\nThat cut setup from 2 days to 3 hours.\n\nIt also made context engineering cleaner.\nContext engineering means choosing what the model sees, not dumping everything in.\nWith MCP, we could send only the ticket, the relevant doc, and the action menu.\nLess noise.\nFewer hallucinated clicks.\n\nThe winner was MCP.\nNot because it was trendy.\nBecause it made the tool boundary explicit, which kept the assistant easier to debug and cheaper to extend.\n\nThe lesson: when an AI needs tools, prefer the interface that makes the model’s choices visible.\n\nWhat tool boundary has saved you the most debugging time?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-24T08:35:41.251Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "fdafc623f32e4689",
+    "content": "The bot kept guessing.\n\nI’m building an AI support agent for a B2B SaaS team.\nIt helps support reps answer the same customer questions faster.\n\nThis week I shipped a hard stop on vague answers.\nIf the agent can’t find a source, it now says so instead of improvising.\n\nI also added a retry cap and a fallback path to Zendesk, the ticket inbox support teams use.\nBefore that, the agent could loop for 4 turns and still sound confident.\n\nThe metric moved, but not the way I wanted first.\nResolution rate went from 71% to 79%.\nHallucinated answers dropped from 12% to 3%.\n\nThe broken part is obvious now:\nwhen the customer asks something slightly unusual, the agent gets shy.\nIt stops too early and hands the case back to a human.\n\nThat looked like a failure at first.\nThen I realized reliability is not “the bot answers everything.”\n\nReliability is “the bot knows when to stop lying.”\n\nThat’s the lesson I’m keeping.\nIn agent work, a smaller honest answer is worth more than a bigger wrong one.\n\nWhat do you think matters more for agents: higher autonomy or better refusal?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
