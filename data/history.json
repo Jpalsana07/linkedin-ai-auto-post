@@ -1008,5 +1008,15 @@
     "content": "The bot kept guessing.\n\nI’m building an AI support agent for a B2B SaaS team.\nIt helps support reps answer the same customer questions faster.\n\nThis week I shipped a hard stop on vague answers.\nIf the agent can’t find a source, it now says so instead of improvising.\n\nI also added a retry cap and a fallback path to Zendesk, the ticket inbox support teams use.\nBefore that, the agent could loop for 4 turns and still sound confident.\n\nThe metric moved, but not the way I wanted first.\nResolution rate went from 71% to 79%.\nHallucinated answers dropped from 12% to 3%.\n\nThe broken part is obvious now:\nwhen the customer asks something slightly unusual, the agent gets shy.\nIt stops too early and hands the case back to a human.\n\nThat looked like a failure at first.\nThen I realized reliability is not “the bot answers everything.”\n\nReliability is “the bot knows when to stop lying.”\n\nThat’s the lesson I’m keeping.\nIn agent work, a smaller honest answer is worth more than a bigger wrong one.\n\nWhat do you think matters more for agents: higher autonomy or better refusal?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-25T08:57:10.970Z",
+    "topic": "PostgreSQL Lessons",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "7b54fb103bdf679f",
+    "content": "Postgres can be too helpful.\n\nWe were building a product where users could search millions of rows and get results back fast.\n\nThe question was simple: do we let PostgreSQL do the heavy lifting, or add a separate search system?\n\nPostgreSQL is the database that stores the data and answers questions about it.\nA search system is a second index built just for finding things quickly.\n\nThe tradeoff is speed versus simplicity.\n\nPostgres is easier to operate.\nOne backup, one permissions model, one place to look when something breaks.\n\nA separate search engine can feel faster at larger scale.\nBut it adds another moving part, another bill, and another failure mode.\n\nWe stayed with PostgreSQL and used indexed queries first.\nThat meant a few searches were not as flashy as a dedicated engine, but the product stayed simpler to run.\n\nThe constraint most people miss is team size.\n\nIf a 3-person team has to support 2 databases at 2 a.m., the “better” architecture starts looking expensive.\nFor us, boring won.\n\nThis tradeoff does not hold forever.\nIf search becomes the product, I’d split it out sooner.\n\nThe lesson: don’t add a second system until the pain is bigger than the complexity.\n\nWhen have you kept everything in PostgreSQL instead of splitting the stack?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
