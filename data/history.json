@@ -1018,5 +1018,15 @@
     "content": "Postgres can be too helpful.\n\nWe were building a product where users could search millions of rows and get results back fast.\n\nThe question was simple: do we let PostgreSQL do the heavy lifting, or add a separate search system?\n\nPostgreSQL is the database that stores the data and answers questions about it.\nA search system is a second index built just for finding things quickly.\n\nThe tradeoff is speed versus simplicity.\n\nPostgres is easier to operate.\nOne backup, one permissions model, one place to look when something breaks.\n\nA separate search engine can feel faster at larger scale.\nBut it adds another moving part, another bill, and another failure mode.\n\nWe stayed with PostgreSQL and used indexed queries first.\nThat meant a few searches were not as flashy as a dedicated engine, but the product stayed simpler to run.\n\nThe constraint most people miss is team size.\n\nIf a 3-person team has to support 2 databases at 2 a.m., the “better” architecture starts looking expensive.\nFor us, boring won.\n\nThis tradeoff does not hold forever.\nIf search becomes the product, I’d split it out sooner.\n\nThe lesson: don’t add a second system until the pain is bigger than the complexity.\n\nWhen have you kept everything in PostgreSQL instead of splitting the stack?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-26T08:43:06.648Z",
+    "topic": "Startup Lessons",
+    "pillar": "Founder and Career",
+    "angle": "postmortem",
+    "contentHash": "8b7ae4639626b52b",
+    "content": "We built the wrong startup.\n\nIt was a recruiting tool for small teams.\nI thought speed was the product.\nIt wasn't.\n\nWe shipped the first version in 6 weeks.\nIt had a clean dashboard, one-click outreach, and a workflow that looked great in demos.\n\nNobody stuck around.\n\nWe kept blaming the funnel.\nMore ads.\nBetter copy.\nAnother landing page.\n\nThe real problem showed up in customer calls.\nRecruiters didn't need another place to send messages.\nThey needed proof that a candidate was actually worth pursuing.\n\nWe had built a motion machine.\nThey needed a decision machine.\n\nThat was the postmortem:\nour product solved the visible task, not the expensive judgment.\n\nOnce we saw that, the whole plan changed.\nWe cut features, narrowed the buyer, and rebuilt around candidate scoring instead of sending more emails.\n\nThe lesson: if your product saves time but not doubt, people may try it and still not trust it.\n\nWhat product have you seen fail because it made work faster, but not clearer?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
