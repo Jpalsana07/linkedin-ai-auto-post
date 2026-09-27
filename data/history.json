@@ -1028,5 +1028,15 @@
     "content": "We built the wrong startup.\n\nIt was a recruiting tool for small teams.\nI thought speed was the product.\nIt wasn't.\n\nWe shipped the first version in 6 weeks.\nIt had a clean dashboard, one-click outreach, and a workflow that looked great in demos.\n\nNobody stuck around.\n\nWe kept blaming the funnel.\nMore ads.\nBetter copy.\nAnother landing page.\n\nThe real problem showed up in customer calls.\nRecruiters didn't need another place to send messages.\nThey needed proof that a candidate was actually worth pursuing.\n\nWe had built a motion machine.\nThey needed a decision machine.\n\nThat was the postmortem:\nour product solved the visible task, not the expensive judgment.\n\nOnce we saw that, the whole plan changed.\nWe cut features, narrowed the buyer, and rebuilt around candidate scoring instead of sending more emails.\n\nThe lesson: if your product saves time but not doubt, people may try it and still not trust it.\n\nWhat product have you seen fail because it made work faster, but not clearer?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-27T09:23:44.185Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "1e0ea9dc1e9a6270",
+    "content": "The model wasn’t the problem.\n\nEveryone wanted a bigger model, a better prompt, or a fancier orchestration layer.\n\nWe were building a support assistant for a SaaS product.\nThe goal was simple: answer customer questions before a human had to.\n\nOur first version used GPT-4 and looked great in demos.\nIn production, it was expensive, slow, and confidently wrong on the same 12 questions.\n\nSo we stopped tuning the model and traced the failure.\nMost bad answers came from messy product docs, stale screenshots, and one huge knowledge base that mixed setup guides with marketing copy.\n\nWe split the content, cut retrieval time by 38%, and deleted 40% of the source material.\nAccuracy jumped more than any prompt tweak had managed.\n\nThat’s the hot take:\nproduction LLM work is usually an information problem, not a model problem.\n\nThe strongest counterargument is fair:\nsometimes you really do need a better model for reasoning, coding, or long context.\n\nBut most teams reach for that fix too early.\nThey spend weeks chasing tokens when the real issue is that the bot is reading a junk drawer.\n\nThe lesson I keep seeing:\nmake the inputs boring before you make the model smarter.\n\nWhat’s the first thing you’d clean up before blaming the model?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
