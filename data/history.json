@@ -1038,5 +1038,15 @@
     "content": "The model wasn’t the problem.\n\nEveryone wanted a bigger model, a better prompt, or a fancier orchestration layer.\n\nWe were building a support assistant for a SaaS product.\nThe goal was simple: answer customer questions before a human had to.\n\nOur first version used GPT-4 and looked great in demos.\nIn production, it was expensive, slow, and confidently wrong on the same 12 questions.\n\nSo we stopped tuning the model and traced the failure.\nMost bad answers came from messy product docs, stale screenshots, and one huge knowledge base that mixed setup guides with marketing copy.\n\nWe split the content, cut retrieval time by 38%, and deleted 40% of the source material.\nAccuracy jumped more than any prompt tweak had managed.\n\nThat’s the hot take:\nproduction LLM work is usually an information problem, not a model problem.\n\nThe strongest counterargument is fair:\nsometimes you really do need a better model for reasoning, coding, or long context.\n\nBut most teams reach for that fix too early.\nThey spend weeks chasing tokens when the real issue is that the bot is reading a junk drawer.\n\nThe lesson I keep seeing:\nmake the inputs boring before you make the model smarter.\n\nWhat’s the first thing you’d clean up before blaming the model?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-28T09:59:33.252Z",
+    "topic": "Software Architecture",
+    "pillar": "Architecture and Stack",
+    "angle": "mistake-and-lesson",
+    "contentHash": "b6ff4765f5f13cab",
+    "content": "A microservice blew up.\n\nWe were shipping a new checkout flow for a client with 2 million monthly visits.\nThe goal was simple: split one slow backend into smaller services so the site could handle more traffic.\n\nInstead, the first release made everything slower.\n\nEvery page load now had to call 6 services.\nOne request turned into a tiny road trip.\n\nThe worst part was that each service looked clean on its own.\nBut the system was paying the cost of all those handoffs:\nmore network hops, more failure points, more waiting.\n\nWe spent a week tracing logs in Datadog, the monitoring tool, and watching latency climb from 180ms to 640ms.\n\nThe fix was embarrassingly simple.\nWe merged three of the services back together and kept the split only where the boundaries were actually real.\n\nThe lesson: clean code is not the same thing as a good architecture.\nIf the pieces talk to each other constantly, they are probably not separate enough.\n\nWhat architecture mistake taught you that boundaries have to earn their existence?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
