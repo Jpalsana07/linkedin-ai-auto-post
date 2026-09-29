@@ -1048,5 +1048,15 @@
     "content": "A microservice blew up.\n\nWe were shipping a new checkout flow for a client with 2 million monthly visits.\nThe goal was simple: split one slow backend into smaller services so the site could handle more traffic.\n\nInstead, the first release made everything slower.\n\nEvery page load now had to call 6 services.\nOne request turned into a tiny road trip.\n\nThe worst part was that each service looked clean on its own.\nBut the system was paying the cost of all those handoffs:\nmore network hops, more failure points, more waiting.\n\nWe spent a week tracing logs in Datadog, the monitoring tool, and watching latency climb from 180ms to 640ms.\n\nThe fix was embarrassingly simple.\nWe merged three of the services back together and kept the split only where the boundaries were actually real.\n\nThe lesson: clean code is not the same thing as a good architecture.\nIf the pieces talk to each other constantly, they are probably not separate enough.\n\nWhat architecture mistake taught you that boundaries have to earn their existence?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-29T10:00:13.301Z",
+    "topic": "LLM Cost Optimization",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "e7d60cb14833b1e1",
+    "content": "Our LLM bill hit $4,800.\n\nWe were shipping a support assistant, and every customer reply had the same problem: too many tokens, too much spent.\n\nSo I compared two ways to cut cost fast:\nPrompt caching and semantic caching.\n\nPrompt caching reuses work when the exact same prompt shows up again.\nSemantic caching reuses answers when the question means the same thing, even if the words change.\n\nI tested both on 12,000 real support questions.\n\nPrompt caching was easy.\nWe added it in half a day with OpenAI’s cache-friendly prompts, and it cut cost by 18%.\n\nSemantic caching took 4 days with Redis, the fast memory store.\nIt saved 41%, but it also returned a few stale answers when customers changed one detail.\n\nThat was the trap.\n\nSemantic caching looked smarter.\nPrompt caching was less impressive.\nBut the winner was obvious in production: prompt caching.\n\nWhy?\n\nBecause cheaper answers are nice.\nWrong answers are expensive.\n\nThe lesson I keep coming back to:\nOptimize for the cost savings you can trust, not the savings that look biggest in a dashboard.\n\nWhich cache would you ship first for a customer-facing AI product?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
