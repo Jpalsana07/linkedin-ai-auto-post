@@ -1058,5 +1058,15 @@
     "content": "Our LLM bill hit $4,800.\n\nWe were shipping a support assistant, and every customer reply had the same problem: too many tokens, too much spent.\n\nSo I compared two ways to cut cost fast:\nPrompt caching and semantic caching.\n\nPrompt caching reuses work when the exact same prompt shows up again.\nSemantic caching reuses answers when the question means the same thing, even if the words change.\n\nI tested both on 12,000 real support questions.\n\nPrompt caching was easy.\nWe added it in half a day with OpenAI’s cache-friendly prompts, and it cut cost by 18%.\n\nSemantic caching took 4 days with Redis, the fast memory store.\nIt saved 41%, but it also returned a few stale answers when customers changed one detail.\n\nThat was the trap.\n\nSemantic caching looked smarter.\nPrompt caching was less impressive.\nBut the winner was obvious in production: prompt caching.\n\nWhy?\n\nBecause cheaper answers are nice.\nWrong answers are expensive.\n\nThe lesson I keep coming back to:\nOptimize for the cost savings you can trust, not the savings that look biggest in a dashboard.\n\nWhich cache would you ship first for a customer-facing AI product?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-09-30T09:50:51.529Z",
+    "topic": "SaaS Build-in-Public Metrics",
+    "pillar": "Founder and Career",
+    "angle": "build-in-public",
+    "contentHash": "951f16f3d3cb7482",
+    "content": "Built for small teams.\n\nI’m building a SaaS that helps solo founders and tiny teams turn messy customer calls into clear next steps.\n\nThis week I shipped the first onboarding flow.\nPeople can now sign up, paste a call transcript, and get a cleaned-up action list in under 2 minutes.\n\nThe metric that moved: activation went from 18% to 31%.\nThat means more people made it past the first screen and actually used the product.\n\nThe broken part is obvious.\n35% of users still drop off when they hit the transcript upload.\nMost of them aren’t stuck on the product.\nThey’re stuck on the file itself.\n\nSome recordings come in as .mp3.\nSome are Zoom exports.\nSome are just a link to a Google Drive folder with three unrelated files inside.\n\nI thought the hard part was the AI.\nIt wasn’t.\n\nThe hard part was making the first 60 seconds feel stupidly simple.\n\nThat’s the lesson I keep relearning while building in public:\nearly growth is usually blocked by confusion, not demand.\n\nWhat would you fix first: the first click or the final output?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
