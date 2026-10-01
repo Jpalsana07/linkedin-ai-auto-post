@@ -1068,5 +1068,15 @@
     "content": "Built for small teams.\n\nI’m building a SaaS that helps solo founders and tiny teams turn messy customer calls into clear next steps.\n\nThis week I shipped the first onboarding flow.\nPeople can now sign up, paste a call transcript, and get a cleaned-up action list in under 2 minutes.\n\nThe metric that moved: activation went from 18% to 31%.\nThat means more people made it past the first screen and actually used the product.\n\nThe broken part is obvious.\n35% of users still drop off when they hit the transcript upload.\nMost of them aren’t stuck on the product.\nThey’re stuck on the file itself.\n\nSome recordings come in as .mp3.\nSome are Zoom exports.\nSome are just a link to a Google Drive folder with three unrelated files inside.\n\nI thought the hard part was the AI.\nIt wasn’t.\n\nThe hard part was making the first 60 seconds feel stupidly simple.\n\nThat’s the lesson I keep relearning while building in public:\nearly growth is usually blocked by confusion, not demand.\n\nWhat would you fix first: the first click or the final output?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-01T10:18:39.493Z",
+    "topic": "React Shipping Stories",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "5a23092192061b62",
+    "content": "React on the server hurt less.\n\nWe were shipping a customer dashboard in Next.js.\nThe page had 12 widgets, and the first load felt sluggish.\nSales was waiting on this screen to close deals.\n\nWe had one decision to make:\nrender more in React, or send more plain HTML from the server.\n\nReact on the server means the browser gets ready-made page pieces.\nPlain HTML means the browser gets text and layout first, then behavior later.\n\nThe tradeoff was simple.\n\nMore React gives a smoother app feel after load.\nMore HTML gives a faster first screen, which matters when a rep is staring at a blank page in a demo.\n\nWe chose the boring option: more HTML, less React.\nThat cut initial load by 38% and shaved about 900 ms off the first meaningful paint.\nFirst meaningful paint is the moment the page looks useful.\n\nWhy?\nBecause our real constraint wasn’t polish.\nIt was trust.\n\nA sales rep does not care that a dropdown is beautifully stateful if the page feels dead for 2 seconds.\n\nI still like React.\nI just think it should earn its place.\n\nThis tradeoff changes if your app is mostly interactive after login.\nThen the smoother feel can matter more than the first load.\n\nWhat would you optimize for first: instant page load or richer interaction?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
