@@ -1078,5 +1078,15 @@
     "content": "React on the server hurt less.\n\nWe were shipping a customer dashboard in Next.js.\nThe page had 12 widgets, and the first load felt sluggish.\nSales was waiting on this screen to close deals.\n\nWe had one decision to make:\nrender more in React, or send more plain HTML from the server.\n\nReact on the server means the browser gets ready-made page pieces.\nPlain HTML means the browser gets text and layout first, then behavior later.\n\nThe tradeoff was simple.\n\nMore React gives a smoother app feel after load.\nMore HTML gives a faster first screen, which matters when a rep is staring at a blank page in a demo.\n\nWe chose the boring option: more HTML, less React.\nThat cut initial load by 38% and shaved about 900 ms off the first meaningful paint.\nFirst meaningful paint is the moment the page looks useful.\n\nWhy?\nBecause our real constraint wasn’t polish.\nIt was trust.\n\nA sales rep does not care that a dropdown is beautifully stateful if the page feels dead for 2 seconds.\n\nI still like React.\nI just think it should earn its place.\n\nThis tradeoff changes if your app is mostly interactive after login.\nThen the smoother feel can matter more than the first load.\n\nWhat would you optimize for first: instant page load or richer interaction?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-02T09:55:44.754Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "3b147257f89c8f16",
+    "content": "A demo agent failed live.\n\nWe were building an AI support assistant for a 40-person fintech team.\nIt was supposed to answer customer emails and draft replies in Gmail.\n\nOn the first real run, it confidently sent the wrong refund policy.\nNot a typo.\nA full, polished answer to the wrong problem.\n\nI spent two days blaming the model.\n\nWe tried a bigger model, stricter prompts, and even LangChain, the tool that wires steps together.\nNothing held.\n\nThe root cause was simpler:\nthe agent had too much freedom.\n\nIts tool schema, the menu of actions it can take, included search, draft, send, and escalate.\nSo it kept jumping straight to “send” when the email looked familiar.\nIt wasn’t reasoning.\nIt was pattern-matching its way into trouble.\n\nWe removed send entirely.\nNow it can only search, draft, and ask for approval.\nAccuracy jumped from 71% to 94% in our test set of 300 tickets.\n\nThe lesson:\nwhen an agent is wrong in public, give it fewer ways to be wrong.\n\nWhat’s one place you’d rather have a slower agent than a confident one?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
