@@ -1088,5 +1088,15 @@
     "content": "A demo agent failed live.\n\nWe were building an AI support assistant for a 40-person fintech team.\nIt was supposed to answer customer emails and draft replies in Gmail.\n\nOn the first real run, it confidently sent the wrong refund policy.\nNot a typo.\nA full, polished answer to the wrong problem.\n\nI spent two days blaming the model.\n\nWe tried a bigger model, stricter prompts, and even LangChain, the tool that wires steps together.\nNothing held.\n\nThe root cause was simpler:\nthe agent had too much freedom.\n\nIts tool schema, the menu of actions it can take, included search, draft, send, and escalate.\nSo it kept jumping straight to “send” when the email looked familiar.\nIt wasn’t reasoning.\nIt was pattern-matching its way into trouble.\n\nWe removed send entirely.\nNow it can only search, draft, and ask for approval.\nAccuracy jumped from 71% to 94% in our test set of 300 tickets.\n\nThe lesson:\nwhen an agent is wrong in public, give it fewer ways to be wrong.\n\nWhat’s one place you’d rather have a slower agent than a confident one?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-03T09:17:37.042Z",
+    "topic": "Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "5cb4901b6e12579f",
+    "content": "Next.js is not your default.\n\nThe hot take: most teams should not start production there.\n\nThe dominant story is simple.\nNext.js is the “safe” choice because it gives you React, server rendering, and a path to ship fast.\n\nThat’s true for demos.\n\nBut at work, I saw a small team build a customer portal in Next.js and spend 3 weeks untangling caching, server actions, and deployment quirks before the first real customer even logged in.\n\nThe app was fine.\nThe stack was the drag.\n\nWe moved the same product to a plain React frontend plus a separate API, and the team spent less time guessing where a bug lived.\n\nNext.js can still be the right call when you need SEO, one codebase, or a tiny team shipping a marketing site and app together.\n\nBut if your product is mostly logged-in flows, dashboards, or forms, the framework can become extra ceremony you pay for every day.\n\nThe lesson: choose the stack that matches the shape of the work, not the one that sounds smartest in a launch post.\n\nWhat stack choice looked smart at first, then got expensive later?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
