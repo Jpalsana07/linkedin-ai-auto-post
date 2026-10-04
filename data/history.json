@@ -1098,5 +1098,15 @@
     "content": "Next.js is not your default.\n\nThe hot take: most teams should not start production there.\n\nThe dominant story is simple.\nNext.js is the “safe” choice because it gives you React, server rendering, and a path to ship fast.\n\nThat’s true for demos.\n\nBut at work, I saw a small team build a customer portal in Next.js and spend 3 weeks untangling caching, server actions, and deployment quirks before the first real customer even logged in.\n\nThe app was fine.\nThe stack was the drag.\n\nWe moved the same product to a plain React frontend plus a separate API, and the team spent less time guessing where a bug lived.\n\nNext.js can still be the right call when you need SEO, one codebase, or a tiny team shipping a marketing site and app together.\n\nBut if your product is mostly logged-in flows, dashboards, or forms, the framework can become extra ceremony you pay for every day.\n\nThe lesson: choose the stack that matches the shape of the work, not the one that sounds smartest in a launch post.\n\nWhat stack choice looked smart at first, then got expensive later?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-04T09:57:16.181Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "0b2ed26850edbadc",
+    "content": "Our eval passed. It still failed.\n\nWe were shipping an AI support assistant for a customer team.\nThe goal was simple: answer tickets faster without making the humans clean up bad replies.\n\nIn staging, the bot looked great.\nWe ran 200 test prompts and got a 92% pass rate.\n\nThen real customers asked messy things.\nOne user wrote, “I got charged twice, but only one charge shows up.”\n\nThe bot answered with a refund policy.\nTechnically correct.\n\nCompletely useless.\n\nOur eval had measured whether the answer sounded right.\nIt had not measured whether the answer solved the customer’s actual problem.\n\nThat mistake cost us a week and a lot of trust.\n\nWe rebuilt the eval around outcomes, not style.\nInstead of “Did it sound helpful?” we asked “Did it ask the right follow-up, route the issue, or resolve it?”\n\nThe lesson is simple:\nAI evals only matter when they match the real job.\n\nA pretty score on a test set can hide a broken product.\n\nWhat’s the most misleading AI eval score you’ve seen?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
