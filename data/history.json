@@ -1108,5 +1108,15 @@
     "content": "Our eval passed. It still failed.\n\nWe were shipping an AI support assistant for a customer team.\nThe goal was simple: answer tickets faster without making the humans clean up bad replies.\n\nIn staging, the bot looked great.\nWe ran 200 test prompts and got a 92% pass rate.\n\nThen real customers asked messy things.\nOne user wrote, “I got charged twice, but only one charge shows up.”\n\nThe bot answered with a refund policy.\nTechnically correct.\n\nCompletely useless.\n\nOur eval had measured whether the answer sounded right.\nIt had not measured whether the answer solved the customer’s actual problem.\n\nThat mistake cost us a week and a lot of trust.\n\nWe rebuilt the eval around outcomes, not style.\nInstead of “Did it sound helpful?” we asked “Did it ask the right follow-up, route the issue, or resolve it?”\n\nThe lesson is simple:\nAI evals only matter when they match the real job.\n\nA pretty score on a test set can hide a broken product.\n\nWhat’s the most misleading AI eval score you’ve seen?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-05T10:40:30.615Z",
+    "topic": "Freelancing with Numbers",
+    "pillar": "Founder and Career",
+    "angle": "tool-comparison",
+    "contentHash": "e16666fc1601b453",
+    "content": "Two tools cost me clients.\n\nI was trying to send invoices faster.\n\nThe choice was between Bonsai, a freelance admin app, and Notion plus Stripe, a homemade stack.\n\nBonsai handled contracts, proposals, invoices, and reminders in one place.\n\nNotion held the docs.\nStripe took payments.\nI glued the rest together by hand.\n\nAt first, the handmade setup felt cheaper.\n\nIt wasn’t.\n\nI spent 6 hours building templates, fixing formatting, and chasing edge cases.\nBonsai took 20 minutes to set up.\nIt was $24 a month.\nThe DIY stack looked free, then ate a Saturday every time I onboarded someone new.\n\nThe real difference was not features.\n\nIt was trust.\n\nClients understood Bonsai immediately.\nThey knew where to sign, where to pay, and when to expect the invoice.\n\nMy custom flow looked clever.\nClever is expensive when a client just wants to pay you.\n\nThe lesson: if the tool touches money and trust, buy the boring one.\n\nWhat’s a tool you stopped customizing because the client experience mattered more?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
