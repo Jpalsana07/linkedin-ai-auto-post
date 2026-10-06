@@ -1118,5 +1118,15 @@
     "content": "Two tools cost me clients.\n\nI was trying to send invoices faster.\n\nThe choice was between Bonsai, a freelance admin app, and Notion plus Stripe, a homemade stack.\n\nBonsai handled contracts, proposals, invoices, and reminders in one place.\n\nNotion held the docs.\nStripe took payments.\nI glued the rest together by hand.\n\nAt first, the handmade setup felt cheaper.\n\nIt wasn’t.\n\nI spent 6 hours building templates, fixing formatting, and chasing edge cases.\nBonsai took 20 minutes to set up.\nIt was $24 a month.\nThe DIY stack looked free, then ate a Saturday every time I onboarded someone new.\n\nThe real difference was not features.\n\nIt was trust.\n\nClients understood Bonsai immediately.\nThey knew where to sign, where to pay, and when to expect the invoice.\n\nMy custom flow looked clever.\nClever is expensive when a client just wants to pay you.\n\nThe lesson: if the tool touches money and trust, buy the boring one.\n\nWhat’s a tool you stopped customizing because the client experience mattered more?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-06T10:33:45.160Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "5aa631cb823a74af",
+    "content": "MCP shipped on Friday.\n\nI’m building an AI assistant for support teams.\nThis week I wired it to our internal docs, tickets, and Slack so it can answer with real company context.\n\nThe new piece was MCP, the Model Context Protocol — a standard way for the model to ask for tools and data.\n\nBefore that, the bot guessed a lot.\nIt would answer fast, but it would miss policy details or quote stale docs.\n\nAfter the ship, one metric moved hard:\ncorrect answers on our 50-question support set went from 68% to 84%.\n\nBut one thing broke.\n\nWhen the prompt got too long, the bot started ignoring the newest ticket and clinging to old context.\nThat means context engineering — deciding what the model sees first — mattered more than adding another tool.\n\nI spent most of the week trimming 12 KB of noisy history down to the 3 lines that actually changed the answer.\n\nThat was the real lesson.\n\nWith MCP, the hard part is not connecting tools.\nIt’s choosing the right context, in the right order, every time.\n\nWhat context do you usually see teams give the model first?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
