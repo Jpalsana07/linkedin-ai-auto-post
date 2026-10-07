@@ -1128,5 +1128,15 @@
     "content": "MCP shipped on Friday.\n\nI’m building an AI assistant for support teams.\nThis week I wired it to our internal docs, tickets, and Slack so it can answer with real company context.\n\nThe new piece was MCP, the Model Context Protocol — a standard way for the model to ask for tools and data.\n\nBefore that, the bot guessed a lot.\nIt would answer fast, but it would miss policy details or quote stale docs.\n\nAfter the ship, one metric moved hard:\ncorrect answers on our 50-question support set went from 68% to 84%.\n\nBut one thing broke.\n\nWhen the prompt got too long, the bot started ignoring the newest ticket and clinging to old context.\nThat means context engineering — deciding what the model sees first — mattered more than adding another tool.\n\nI spent most of the week trimming 12 KB of noisy history down to the 3 lines that actually changed the answer.\n\nThat was the real lesson.\n\nWith MCP, the hard part is not connecting tools.\nIt’s choosing the right context, in the right order, every time.\n\nWhat context do you usually see teams give the model first?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-07T10:25:24.558Z",
+    "topic": "TypeScript Pitfalls",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "62f5dffdf70924a0",
+    "content": "TypeScript made us slower.\n\nWe were building a checkout flow in a Next.js app.\nThe bug wasn’t obvious.\nThe code looked safe, but one missing field broke a payment path for real users.\n\nThe decision was simple:\nwrite stricter types everywhere, or keep some parts loose and move faster.\n\nStrict TypeScript catches small mistakes early.\nThat matters when one bad object can turn into a broken invoice or a failed signup.\nBut it also adds friction.\nEvery API change means touching types in 6 places.\nEvery third-party package with weak typings becomes a little fight.\n\nWe chose a middle path.\nCore money code stayed strict.\nUI and integration edges used lighter types, plus runtime checks.\nThat kept the checkout stable without turning every small edit into a type puzzle.\n\nThe constraint most people miss is team speed.\nA type system only helps if people still want to ship in it.\nIf reviews start stalling on types instead of product work, the safety net becomes drag.\n\nThis tradeoff doesn’t apply everywhere.\nFor a library, a compiler-enforced API is worth the extra work.\nFor a small product team shipping weekly, fewer perfect types can mean better real-world reliability.\n\nWhere do you draw the line between type safety and shipping speed?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
