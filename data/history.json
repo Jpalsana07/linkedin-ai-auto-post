@@ -1148,5 +1148,15 @@
     "content": "We shipped an AI support agent.\n\nIt was for a B2B SaaS team handling refunds and account fixes.\n\nOn day 4, it confidently sent the wrong refund email to 37 customers.\n\nWe had built it with LangChain, a framework for wiring model steps together.\n\nThe agent looked fine in tests.\n\nIt failed in the messy middle: one customer had two accounts, and the tool schema — the menu of actions the bot can take — let it pick the refund path without checking which account was active.\n\nSo it grabbed the wrong order ID, then wrote a polite lie with perfect grammar.\n\nWe spent two days blaming the model.\n\nThen we traced the logs and saw the real issue: the agent was making decisions before it had verified the customer’s identity.\n\nThat was the root cause.\n\nNot “bad AI.”\n\nMissing guardrails.\n\nWe fixed it by forcing a human-readable check before any money-moving action.\n\nOne simple rule changed everything: if the agent can cause damage, make it prove the facts first.\n\nThat sounds obvious now.\n\nIt felt expensive at 2 a.m.\n\nWhat’s the guardrail you learned the hard way?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-09T10:44:50.703Z",
+    "topic": "Node.js at Scale",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "b09d23e75b54f3f9",
+    "content": "Node.js is overrated at scale.\n\nThe popular story is simple:\nNode is fast, easy to hire for, and perfect until “real traffic” shows up.\n\nI believed that too.\nThen I helped run a Node API serving 2 million requests a day.\n\nThe bottleneck was not JavaScript.\nIt was everything around it:\nbad cache keys, noisy neighbors, and a database doing too much work.\n\nWe moved one hot path out of the request cycle and put BullMQ, a background job queue, on the slow tasks.\nP95 latency dropped from 840 ms to 190 ms.\n\nThat was the surprise.\n\nNode didn’t fail because it was Node.\nIt failed when we treated it like a place to do every job immediately.\n\nMy hot take:\nNode scales fine when you use it as an orchestrator, not a warehouse.\n\nThe strongest counterargument is still real:\nfor CPU-heavy work, Node can get crushed by garbage collection and a single event loop.\n\nTrue.\n\nBut most teams don’t lose sleep over the language.\nThey lose sleep over synchronous work hiding in request handlers.\n\nWhat has broken first for you at scale: the runtime, or the design?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
