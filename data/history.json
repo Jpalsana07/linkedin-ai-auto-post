@@ -1158,5 +1158,15 @@
     "content": "Node.js is overrated at scale.\n\nThe popular story is simple:\nNode is fast, easy to hire for, and perfect until “real traffic” shows up.\n\nI believed that too.\nThen I helped run a Node API serving 2 million requests a day.\n\nThe bottleneck was not JavaScript.\nIt was everything around it:\nbad cache keys, noisy neighbors, and a database doing too much work.\n\nWe moved one hot path out of the request cycle and put BullMQ, a background job queue, on the slow tasks.\nP95 latency dropped from 840 ms to 190 ms.\n\nThat was the surprise.\n\nNode didn’t fail because it was Node.\nIt failed when we treated it like a place to do every job immediately.\n\nMy hot take:\nNode scales fine when you use it as an orchestrator, not a warehouse.\n\nThe strongest counterargument is still real:\nfor CPU-heavy work, Node can get crushed by garbage collection and a single event loop.\n\nTrue.\n\nBut most teams don’t lose sleep over the language.\nThey lose sleep over synchronous work hiding in request handlers.\n\nWhat has broken first for you at scale: the runtime, or the design?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-10T10:00:09.136Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "9ee4653898d3cb8f",
+    "content": "We trusted the first answer.\n\nWe were rolling out an LLM assistant inside a support app.\nIf it worked, it would cut 200 repetitive tickets a day.\nIf it failed, real customers would get bad answers in front of our team.\n\nThe problem looked small at first.\n\nThe model sounded confident, so we shipped with a simple “answer only if sure” prompt.\nBut “sure” is not a feeling a chatbot actually has.\nIt kept guessing on refund policy, shipping delays, and account access.\n\nOne Monday, 14 answers in a row were wrong.\n\nThe fix was not a fancier model.\nWe added a retrieval step — pulling the answer from our help docs first — and made the bot quote the source before replying.\nThat extra guardrail cut hallucinations hard, but it also slowed responses a bit.\n\nThat tradeoff was worth it.\n\nThe lesson: in production, confidence is cheap.\nProof is what customers pay for.\n\nWhere have you seen “sounds right” fail harder than “is right”?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
