@@ -1188,5 +1188,15 @@
     "content": "Postgres was our bottleneck.\n\nWe’re building a support dashboard for small teams.\nThe people using it are non-technical ops managers who just want fast search and fewer tabs.\n\nThis week I shipped the PostgreSQL layer for the first real users.\n\nI added partial indexes for the 2 queries that mattered most.\nThat cut one page load from 840ms to 110ms.\n\nI also moved the audit log into a separate table instead of stuffing everything into one giant row.\nThat made writes predictable again.\n\nBut one thing is still broken:\nour sync job keeps timing out when a customer has more than 80,000 events.\n\nThe painful lesson this week was simple.\n\nPostgres usually isn’t slow.\nMy schema was.\n\nI kept blaming the database because that felt technical.\nThe fix was to make the data shape match the product shape.\n\nWhat’s the cleanest Postgres mistake you only spotted after users hit it?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-13T10:48:53.761Z",
+    "topic": "LLM Cost Optimization",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "7c04ee703eb24d7c",
+    "content": "Our LLM bill doubled.\n\nWe were building a customer support assistant.\nThe product was fine.\nThe invoice was not.\n\nThe choice was simple on paper:\nsend every user message to the biggest model, or route only the hard ones there.\n\nThat sounds tiny.\nIt isn’t.\n\nThe expensive model was better at messy edge cases.\nBut most questions were boring:\npassword resets, billing dates, shipping status.\nPaying top dollar for those was like hiring a surgeon to open jars.\n\nWe tried caching, but it only helped repeated prompts.\nWe tried shorter prompts, but the real cost was still the model call.\nSo we switched to a cheaper model first, and only escalated to GPT-4o when the answer was unclear.\n\nThat cut spend by 58% in 2 weeks.\n\nThe tradeoff:\ncheaper routing adds one more decision before the answer.\nIf your product lives on speed and simplicity, that extra hop can hurt.\nIf your product handles lots of repetitive, low-risk questions, it’s worth it.\n\nThe constraint most people miss:\ncost is not the only bill.\nEvery extra model call also adds latency, and users feel that before finance does.\n\nThe lesson:\ndon’t optimize LLM cost by chasing the cheapest token.\nOptimize by asking which questions deserve the expensive brain.\n\nWhere would you spend the extra latency: on first-pass speed or better answers?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
