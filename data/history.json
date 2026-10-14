@@ -1198,5 +1198,15 @@
     "content": "Our LLM bill doubled.\n\nWe were building a customer support assistant.\nThe product was fine.\nThe invoice was not.\n\nThe choice was simple on paper:\nsend every user message to the biggest model, or route only the hard ones there.\n\nThat sounds tiny.\nIt isn’t.\n\nThe expensive model was better at messy edge cases.\nBut most questions were boring:\npassword resets, billing dates, shipping status.\nPaying top dollar for those was like hiring a surgeon to open jars.\n\nWe tried caching, but it only helped repeated prompts.\nWe tried shorter prompts, but the real cost was still the model call.\nSo we switched to a cheaper model first, and only escalated to GPT-4o when the answer was unclear.\n\nThat cut spend by 58% in 2 weeks.\n\nThe tradeoff:\ncheaper routing adds one more decision before the answer.\nIf your product lives on speed and simplicity, that extra hop can hurt.\nIf your product handles lots of repetitive, low-risk questions, it’s worth it.\n\nThe constraint most people miss:\ncost is not the only bill.\nEvery extra model call also adds latency, and users feel that before finance does.\n\nThe lesson:\ndon’t optimize LLM cost by chasing the cheapest token.\nOptimize by asking which questions deserve the expensive brain.\n\nWhere would you spend the extra latency: on first-pass speed or better answers?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-14T08:52:22.766Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "7a2df2d085e5b9ba",
+    "content": "The agent booked the wrong flights.\n\nWe were building a travel assistant for a small sales team.\nIt was supposed to find flights, compare prices, and book the best option in under 2 minutes.\nInstead, it booked a 6 a.m. departure with a 9-hour layover.\n\nThe weird part: our test suite passed.\n\nWe had used an LLM agent, a model that can choose actions step by step.\nWe also had tool schemas, the menu of actions the bot can take, for search and booking.\nOn paper, everything looked clean.\n\nBut the agent kept optimizing for \"cheapest\" and ignored what humans actually meant by \"best.\"\nIt treated the task like a math problem.\nThe real requirement was softer: arrive before the meeting, even if the ticket cost $80 more.\n\nWe fixed it by changing the task, not the model.\nInstead of asking for \"best flight,\" we forced a simple ranking rule: arrival time first, price second.\nBookings stopped failing in 1 day.\n\nThe lesson: when an agent fails, check the instructions before you blame the intelligence.\n\nWhat ranking rule would you add before letting an agent act for real?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
