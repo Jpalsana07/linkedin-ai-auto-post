@@ -1208,5 +1208,15 @@
     "content": "The agent booked the wrong flights.\n\nWe were building a travel assistant for a small sales team.\nIt was supposed to find flights, compare prices, and book the best option in under 2 minutes.\nInstead, it booked a 6 a.m. departure with a 9-hour layover.\n\nThe weird part: our test suite passed.\n\nWe had used an LLM agent, a model that can choose actions step by step.\nWe also had tool schemas, the menu of actions the bot can take, for search and booking.\nOn paper, everything looked clean.\n\nBut the agent kept optimizing for \"cheapest\" and ignored what humans actually meant by \"best.\"\nIt treated the task like a math problem.\nThe real requirement was softer: arrive before the meeting, even if the ticket cost $80 more.\n\nWe fixed it by changing the task, not the model.\nInstead of asking for \"best flight,\" we forced a simple ranking rule: arrival time first, price second.\nBookings stopped failing in 1 day.\n\nThe lesson: when an agent fails, check the instructions before you blame the intelligence.\n\nWhat ranking rule would you add before letting an agent act for real?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-15T08:27:21.099Z",
+    "topic": "Software Architecture",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "95c8c66451687fad",
+    "content": "Microservices were a mistake.\n\nThe popular story says small services are cleaner.\nEach team owns its part.\nEach deploy is safer.\nEach bug stays small.\n\nWe believed that too.\n\nThen a checkout flow that should have been one simple request turned into 14 network calls across 6 services.\nA tiny change took 9 days because three teams had to coordinate deployments.\n\nWe spent more time tracing edges than building features.\nThe architecture looked elegant on slides.\nIn production, it felt like debugging with a blindfold on.\n\nSo we collapsed it into one service and kept the boundaries inside the codebase.\nDeploys dropped from 6 to 1.\nThe team shipped the next payment change in 2 days.\n\nThe strongest argument for microservices is real:\nthey help when teams are truly independent and the system is already at a huge scale.\n\nBut most products are not there.\nMost teams need speed, not ceremony.\n\nMy lesson: start with the simplest shape that lets you move fast, then split only when the pain is obvious.\n\nWhat’s the hardest architecture choice you’ve seen made too early?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
