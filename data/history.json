@@ -1218,5 +1218,15 @@
     "content": "Microservices were a mistake.\n\nThe popular story says small services are cleaner.\nEach team owns its part.\nEach deploy is safer.\nEach bug stays small.\n\nWe believed that too.\n\nThen a checkout flow that should have been one simple request turned into 14 network calls across 6 services.\nA tiny change took 9 days because three teams had to coordinate deployments.\n\nWe spent more time tracing edges than building features.\nThe architecture looked elegant on slides.\nIn production, it felt like debugging with a blindfold on.\n\nSo we collapsed it into one service and kept the boundaries inside the codebase.\nDeploys dropped from 6 to 1.\nThe team shipped the next payment change in 2 days.\n\nThe strongest argument for microservices is real:\nthey help when teams are truly independent and the system is already at a huge scale.\n\nBut most products are not there.\nMost teams need speed, not ceremony.\n\nMy lesson: start with the simplest shape that lets you move fast, then split only when the pain is obvious.\n\nWhat’s the hardest architecture choice you’ve seen made too early?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-17T07:55:33.336Z",
+    "topic": "Startup Lessons",
+    "pillar": "Founder and Career",
+    "angle": "mistake-and-lesson",
+    "contentHash": "27df67331b67c1cb",
+    "content": "We lost the launch week.\n\nWe were building our first paid product.\nThe goal was simple: get 20 customers before the demo day investors were watching.\n\nInstead, I merged a “small” change on Friday night.\nIt looked harmless.\nBy Monday, checkout was failing for half the users.\n\nThe worst part wasn’t the bug itself.\nIt was that we’d spent 6 weeks polishing features people hadn’t asked for, while the one thing that mattered was fragile.\n\nWe fixed the code in a few hours.\nBut the damage was already done: support emails, a delayed launch, and a very quiet Slack channel.\n\nThat week taught me one thing I still use today:\n\nShipping faster matters less than shipping the thing people actually depend on.\n\nNot the flashiest feature.\nNot the nicest dashboard.\nThe part that lets someone pay, sign in, or get value without friction.\n\nWhat’s a product mistake you’ve seen that looked small on Friday and expensive on Monday?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
