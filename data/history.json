@@ -1228,5 +1228,15 @@
     "content": "We lost the launch week.\n\nWe were building our first paid product.\nThe goal was simple: get 20 customers before the demo day investors were watching.\n\nInstead, I merged a “small” change on Friday night.\nIt looked harmless.\nBy Monday, checkout was failing for half the users.\n\nThe worst part wasn’t the bug itself.\nIt was that we’d spent 6 weeks polishing features people hadn’t asked for, while the one thing that mattered was fragile.\n\nWe fixed the code in a few hours.\nBut the damage was already done: support emails, a delayed launch, and a very quiet Slack channel.\n\nThat week taught me one thing I still use today:\n\nShipping faster matters less than shipping the thing people actually depend on.\n\nNot the flashiest feature.\nNot the nicest dashboard.\nThe part that lets someone pay, sign in, or get value without friction.\n\nWhat’s a product mistake you’ve seen that looked small on Friday and expensive on Monday?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-18T08:10:51.076Z",
+    "topic": "AI Evals",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "1b2e3c54a09f7c5f",
+    "content": "We compared two eval tools.\n\nThey both score AI outputs, so you can catch bad answers before users do.\n\nI was building a support bot and needed to know: which responses were actually good, and which just sounded confident?\n\nI tried OpenAI Evals and LangSmith evals.\n\nOpenAI Evals gave us a clean way to run repeatable tests.\nGreat for prompts, datasets, and quick regression checks.\n\nLangSmith evals, from LangChain’s tracing tool, made debugging easier.\nIt showed the full path: prompt, retrieved docs, model output, and scores.\n\nThat mattered when one answer looked fine until we saw it pulled the wrong policy page.\n\nSetup time told the story.\n\nOpenAI Evals took us about 2 hours to wire up.\nLangSmith took closer to 30 minutes because the traces were already there.\n\nBut the winner for our team was OpenAI Evals.\n\nWhy?\n\nBecause we needed a simple gate in CI, not a pretty dashboard.\nOne score per test case was enough to stop bad prompts from shipping.\n\nThe lesson: pick the eval tool that matches your workflow, not the one with the fanciest UI.\n\nWhich eval workflow has saved you from shipping a bad prompt?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
