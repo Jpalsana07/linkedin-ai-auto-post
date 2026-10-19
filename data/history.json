@@ -1238,5 +1238,15 @@
     "content": "We compared two eval tools.\n\nThey both score AI outputs, so you can catch bad answers before users do.\n\nI was building a support bot and needed to know: which responses were actually good, and which just sounded confident?\n\nI tried OpenAI Evals and LangSmith evals.\n\nOpenAI Evals gave us a clean way to run repeatable tests.\nGreat for prompts, datasets, and quick regression checks.\n\nLangSmith evals, from LangChain’s tracing tool, made debugging easier.\nIt showed the full path: prompt, retrieved docs, model output, and scores.\n\nThat mattered when one answer looked fine until we saw it pulled the wrong policy page.\n\nSetup time told the story.\n\nOpenAI Evals took us about 2 hours to wire up.\nLangSmith took closer to 30 minutes because the traces were already there.\n\nBut the winner for our team was OpenAI Evals.\n\nWhy?\n\nBecause we needed a simple gate in CI, not a pretty dashboard.\nOne score per test case was enough to stop bad prompts from shipping.\n\nThe lesson: pick the eval tool that matches your workflow, not the one with the fanciest UI.\n\nWhich eval workflow has saved you from shipping a bad prompt?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-19T09:07:18.967Z",
+    "topic": "React Shipping Stories",
+    "pillar": "Architecture and Stack",
+    "angle": "build-in-public",
+    "contentHash": "d41adcb9a8b2f323",
+    "content": "This week got real.\n\nWe’re building a React dashboard for ops teams who need to spot broken workflows fast.\n\nThis week I shipped the new incident timeline, the part that shows what changed, when, and who touched it.\n\nIt replaced a messy table that nobody trusted.\n\nThe first version looked fine in Storybook, the UI preview tool.\n\nIn production, it was slow.\n\nA page with 120 events took 1.8 seconds to render, and the frame rate dropped hard when you scrolled.\n\nSo I rebuilt the list with windowing, which only renders the rows on screen.\n\nThat cut render time to 240 milliseconds.\n\nBut one thing is still broken: the filters reset every time you switch tabs.\n\nThat sounds small.\n\nIt isn’t.\n\nOps people use filters to answer one question: what changed right before the incident?\n\nIf that state disappears, the timeline becomes decoration.\n\nThe lesson I keep relearning: shipping the visible part is not enough.\n\nIf the state behind it is fragile, people won’t trust the product.\n\nWhat’s the first thing you’d fix in a dashboard: speed, or state that never resets?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
