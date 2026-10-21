@@ -1258,5 +1258,15 @@
     "content": "MCP changed our prompts.\n\nWe were building an internal AI assistant for support.\nThe question was simple: do we stuff every tool and rule into the prompt, or let the model fetch context on demand?\n\nMCP, the Model Context Protocol, is a standard way for an AI to ask for tools and data when it needs them.\nThat matters because the prompt has a hard limit, and every extra instruction makes the model slower and more confused.\n\nThe tradeoff looked like this:\nput everything in the prompt for speed and simplicity,\nor keep the prompt small and pay the cost of extra tool calls.\n\nWe chose smaller prompts plus MCP.\nWhy?\n\nBecause our biggest constraint wasn’t latency.\nIt was change.\nSupport docs moved every week, and a 400-line prompt was already stale before lunch.\n\nWith MCP, the assistant could pull the latest policy, ticket history, or order status only when needed.\nOur average response time went up by 180 ms.\nOur wrong-answer rate went down because the model stopped guessing from old context.\n\nThe lesson: when your information changes fast, let the model ask for it instead of cramming it into memory.\n\nThis tradeoff matters less for tiny workflows with stable rules and one or two tools.\n\nWhere have you chosen smaller prompts over “just include everything”?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-21T08:43:51.631Z",
+    "topic": "SaaS Build-in-Public Metrics",
+    "pillar": "Founder and Career",
+    "angle": "postmortem",
+    "contentHash": "ddd8e1b844090fae",
+    "content": "I killed our metric dashboard.\n\nWe were building a SaaS for founders.\nThe promise was simple: show your build-in-public numbers without a spreadsheet.\nThen the dashboard made us feel busier, not clearer.\n\nFor 3 weeks, I watched daily signups, activation rate, and churn in Mixpanel, a product analytics tool.\nThe charts looked polished.\nThe story was wrong.\n\nI kept adding more graphs.\nRevenue, trial starts, email opens, referral clicks.\nEvery new chart gave me one more thing to explain and one less thing to act on.\n\nThe root cause was embarrassingly simple:\nI was tracking what was easy to measure, not what would change the product.\n\nOnce I cut the dashboard down to 4 numbers, the noise dropped hard.\nWe found the real issue in one afternoon: users were signing up, but not reaching the first useful action.\n\nThat was the postmortem.\nBuild-in-public metrics are only useful when they help you make one decision.\n\nIf a number cannot change what you do next, it is just decoration.\n\nWhat metric have you seen people obsess over while missing the real problem?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
