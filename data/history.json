@@ -1268,5 +1268,15 @@
     "content": "I killed our metric dashboard.\n\nWe were building a SaaS for founders.\nThe promise was simple: show your build-in-public numbers without a spreadsheet.\nThen the dashboard made us feel busier, not clearer.\n\nFor 3 weeks, I watched daily signups, activation rate, and churn in Mixpanel, a product analytics tool.\nThe charts looked polished.\nThe story was wrong.\n\nI kept adding more graphs.\nRevenue, trial starts, email opens, referral clicks.\nEvery new chart gave me one more thing to explain and one less thing to act on.\n\nThe root cause was embarrassingly simple:\nI was tracking what was easy to measure, not what would change the product.\n\nOnce I cut the dashboard down to 4 numbers, the noise dropped hard.\nWe found the real issue in one afternoon: users were signing up, but not reaching the first useful action.\n\nThat was the postmortem.\nBuild-in-public metrics are only useful when they help you make one decision.\n\nIf a number cannot change what you do next, it is just decoration.\n\nWhat metric have you seen people obsess over while missing the real problem?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-22T08:46:07.563Z",
+    "topic": "Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "contrarian-take",
+    "contentHash": "1cf655ee701a1c01",
+    "content": "Next.js is not your bottleneck.\n\nThe hot take:\nyour app is usually slower because of product decisions, not the framework.\n\nThe common story is simple.\nIf the site feels slow, people blame Next.js and start rewriting everything.\nI used to do that too.\n\nThen I shipped a dashboard on Next.js 14 with 8 routes, server components, and a Stripe checkout.\nThe page felt “slow” in review.\nThe real problem was 11 images loading at once and a 1.8 MB analytics script hiding in the background.\n\nWe fixed those two things.\nNo framework swap.\nNo rebuild.\nJust smaller images, fewer client-side widgets, and moving the heavy script off the critical path.\n\nLoad time dropped from 4.9 seconds to 2.1 seconds on a mid-range laptop.\n\nThe strongest counterargument is real:\nNext.js can get messy when teams mix server and client code carelessly.\nThat’s true.\n\nBut messy code is still a team problem.\nNot a reason to blame the framework first.\n\nMy lesson:\nmost “Next.js problems” are really product and loading problems wearing a framework costume.\n\nWhat’s the most common thing you’ve seen blamed on Next.js that was actually a build decision?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
