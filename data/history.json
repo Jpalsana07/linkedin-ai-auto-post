@@ -1278,5 +1278,15 @@
     "content": "Next.js is not your bottleneck.\n\nThe hot take:\nyour app is usually slower because of product decisions, not the framework.\n\nThe common story is simple.\nIf the site feels slow, people blame Next.js and start rewriting everything.\nI used to do that too.\n\nThen I shipped a dashboard on Next.js 14 with 8 routes, server components, and a Stripe checkout.\nThe page felt “slow” in review.\nThe real problem was 11 images loading at once and a 1.8 MB analytics script hiding in the background.\n\nWe fixed those two things.\nNo framework swap.\nNo rebuild.\nJust smaller images, fewer client-side widgets, and moving the heavy script off the critical path.\n\nLoad time dropped from 4.9 seconds to 2.1 seconds on a mid-range laptop.\n\nThe strongest counterargument is real:\nNext.js can get messy when teams mix server and client code carelessly.\nThat’s true.\n\nBut messy code is still a team problem.\nNot a reason to blame the framework first.\n\nMy lesson:\nmost “Next.js problems” are really product and loading problems wearing a framework costume.\n\nWhat’s the most common thing you’ve seen blamed on Next.js that was actually a build decision?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-23T08:42:03.201Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "10f9d45ca955d36e",
+    "content": "One checkbox broke the agent.\n\nWe were building an internal support bot for a 40-person team.\nIt had to answer policy questions fast, because every wrong reply meant a human had to clean it up.\n\nThe bug was tiny.\nA tool flag was set to “optional” instead of “required.”\nThat meant the agent could skip the one step that checked the source of truth.\n\nFor three days, it looked fine in demos.\nThen it started answering from stale docs and one outdated Slack thread.\n\nWe caught it after 17 bad responses.\nNot because the model was “smart enough.”\nBecause the failure was silent.\n\nThat was the real mistake:\nwe treated the agent like a chat app, not a system that can drift.\n\nThe lesson is simple:\nif a step matters, make it impossible to skip.\n\nWhat safety check have you seen save a system from looking right while being wrong?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
