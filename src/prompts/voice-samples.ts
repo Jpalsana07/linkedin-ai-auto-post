@@ -6,20 +6,23 @@
  * Keep each sample 100–300 words. Remove any names/handles you don't want copied.
  */
 export const VOICE_SAMPLES: readonly string[] = [
-  // Example placeholder — replace with your own samples before first run.
-  `I shipped my first SaaS in 2019.
-It made $12 in the first three months.
+  `My automation showed green checkmarks for three months.
+It wasn't working for a single one of them.
 
-I almost quit.
+I built a daily job on GitHub Actions — a free scheduler that runs code on a timer.
+It did its work, hit an expired API token, logged one quiet error line, and exited clean.
+Green checkmark. Every day. Zero output.
 
-Then I noticed something: every paying customer had the same pain. They didn't want my "all-in-one" feature set. They wanted one thing done well.
+The fix took 10 minutes.
+Finding it took one honest look at the logs.
 
-I deleted half the product in a weekend.
-Revenue 4x'd in 60 days.
+I had written "fail soft" error handling — catch the error, log it, move on — so one bad step wouldn't kill the whole run.
+Sensible. Except nothing ever told me the most important step was the one failing.
 
-The lesson I keep relearning: customers don't pay for ambition. They pay for relief.
+The lesson: a pipeline that can't fail loudly will fail silently.
+Now the job turns red the moment the critical step breaks, and everything else stays soft.
 
-What's the one feature you'd be embarrassed to ship alone?`,
+What's quietly showing green in your stack right now?`,
 ];
 
 export function formatVoiceSamples(samples: readonly string[]): string {

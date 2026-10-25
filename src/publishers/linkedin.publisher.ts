@@ -7,7 +7,7 @@ const POSTS_ENDPOINT = "https://api.linkedin.com/rest/posts";
  * Bump this every ~6 months to stay safely within the window.
  * Latest supported versions: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
  */
-const LINKEDIN_API_VERSION = "202506";
+const LINKEDIN_API_VERSION = "202609";
 
 export interface LinkedInPublisherConfig {
   /** The user's person URN, e.g. `urn:li:person:abc123`. Required as `author` on every post. */

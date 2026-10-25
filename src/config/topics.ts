@@ -9,11 +9,10 @@ export interface Pillar {
 
 /**
  * Topic pillars, weighted by target share of overall posting volume.
- * Derived from June 2026 LinkedIn engagement research:
- *  - AI/agent/eval content is the highest-reach niche right now.
- *  - Architecture & stack-specific stories work when bundled into real shipping moments.
- *  - Career/founder lessons work only with specific numbers — keep them <20% of mix.
- *  - Productivity and Remote Work intentionally dropped (algorithmically suppressed).
+ * Topics are restricted to technologies the author actually works with
+ * (see src/config/profile.ts) so generated posts stay truthful.
+ * Weights follow June 2026 LinkedIn engagement research: AI content leads,
+ * stack stories second, career lessons capped under 20%.
  */
 export const PILLARS: readonly Pillar[] = [
   {
@@ -21,32 +20,33 @@ export const PILLARS: readonly Pillar[] = [
     weight: 45,
     topics: [
       "AI Agents",
-      "AI Evals",
+      "Multi-Agent Orchestration",
       "MCP and Context Engineering",
       "Agent Reliability",
       "LLM in Production",
-      "LLM Cost Optimization",
+      "AI Automation Workflows",
+      "VLMs and Computer Vision",
     ],
   },
   {
     name: "Architecture and Stack",
     weight: 35,
     topics: [
-      "Software Architecture",
-      "React Shipping Stories",
-      "Next.js in Production",
+      "React and Next.js in Production",
       "TypeScript Pitfalls",
-      "Node.js at Scale",
+      "Node.js and Rails Backends",
       "PostgreSQL Lessons",
+      "Real-Time Systems (WebRTC and Streaming)",
+      "API Design (REST and GraphQL)",
     ],
   },
   {
     name: "Founder and Career",
     weight: 20,
     topics: [
-      "Startup Lessons",
-      "SaaS Build-in-Public Metrics",
-      "Freelancing with Numbers",
+      "Freelance Client Lessons",
+      "Shipping Solo End-to-End",
+      "Automation That Saves Time",
       "Career Inflection Moments",
     ],
   },

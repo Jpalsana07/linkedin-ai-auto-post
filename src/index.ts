@@ -1,4 +1,5 @@
 import { pickNextAngle } from "./config/angles.ts";
+import { decoratePost } from "./config/engagement.ts";
 import { pickNextTopic } from "./config/topics.ts";
 import { LinkedInGenerator } from "./generators/linkedin.generator.ts";
 import { createProvider, resolveProviderName } from "./providers/index.ts";
@@ -44,9 +45,16 @@ async function main(): Promise<void> {
   const generator = new LinkedInGenerator(provider);
   const post = await generateValidated(generator, pillar.name, topic, angle, recent);
 
+  // Hashtags + periodic CTA go only to publishers; history keeps the raw body
+  // so semantic dedup isn't skewed by identical footers.
+  const decorated: GeneratedPost = {
+    ...post,
+    content: decoratePost(post.content, pillar.name, history.length),
+  };
+
   if (CONFIG.dryRun) {
     console.log("\n--- DRY RUN: generated post ---\n");
-    console.log(post.content);
+    console.log(decorated.content);
     console.log("\n--- end ---");
     return;
   }
@@ -61,7 +69,7 @@ async function main(): Promise<void> {
 
   for (const publisher of publishers) {
     try {
-      const result = await publisher.publish(post);
+      const result = await publisher.publish(decorated);
       console.log(`  [${publisher.name}] ${result.destination}${result.detail ? ` — ${result.detail}` : ""}`);
     } catch (err) {
       // Fail soft: a publishing error (e.g. Make webhook timeout) should not

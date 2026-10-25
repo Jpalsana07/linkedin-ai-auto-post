@@ -66,7 +66,7 @@ describe("pillarForTopic", () => {
   test("returns the correct pillar for a known topic", () => {
     expect(pillarForTopic("AI Agents")?.name).toBe("AI Engineering");
     expect(pillarForTopic("PostgreSQL Lessons")?.name).toBe("Architecture and Stack");
-    expect(pillarForTopic("Startup Lessons")?.name).toBe("Founder and Career");
+    expect(pillarForTopic("Freelance Client Lessons")?.name).toBe("Founder and Career");
   });
 
   test("returns undefined for an unknown topic", () => {
