@@ -26,6 +26,8 @@ export const PILLARS: readonly Pillar[] = [
       "LLM in Production",
       "AI Automation Workflows",
       "VLMs and Computer Vision",
+      "AI-Assisted Coding (how devs use AI daily)",
+      "AI Coding Hype vs Reality",
     ],
   },
   {

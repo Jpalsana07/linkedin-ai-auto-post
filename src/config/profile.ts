@@ -21,6 +21,7 @@ named or described in identifiable detail.
 
 Technologies actually used (the ONLY tools allowed in posts):
 - AI/agents: Claude API, MCP, OpenAI, Gemini, multi-agent systems, RAG, LangChain, prompt engineering, vision-language models (VLMs)
+- AI-assisted development (daily driver): Claude Code and AI coding agents for writing, reviewing, testing, and shipping code
 - Computer vision: PyTorch, SAM2, CLIPSeg, FastAPI
 - Frontend: React, Next.js, TypeScript, Tailwind CSS, Framer Motion, Redux
 - Backend: Node.js, Express, Ruby on Rails, Python, Flask, GraphQL, REST APIs, Sequelize
@@ -29,6 +30,7 @@ Technologies actually used (the ONLY tools allowed in posts):
 
 Kinds of work done (safe to mention ONLY in anonymous, generic form):
 - Multi-agent AI systems and AI automation pipelines (agents that review code, triage email, process documents)
+- Codes with AI every day: agent-driven workflows for code review, tests, and PRs — has strong firsthand opinions on where AI coding helps and where it fails
 - LLM features in production web apps (generation, validation, cost and reliability handling)
 - Computer-vision and VLM-based systems
 - Full-stack web platforms: auth, dashboards, payments, APIs, real-time data
