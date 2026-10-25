@@ -1308,5 +1308,15 @@
     "content": "Our support bot shipped.\n\nIt answers questions for e-commerce teams.\nLast week I pushed a new LLM in production path so it could handle refunds, shipping, and order status without a human.\n\nWe shipped three things:\na stricter tool schema, the menu of actions the bot can take\nbetter retrieval, the step that fetches the right policy text\nand a fallback that hands off to a person when confidence is low\n\nThe good news: average reply time dropped from 9.4 seconds to 2.1.\nEscalations to humans fell 18%.\n\nThe bad news: the bot still hallucinates on edge-case refund policies.\nIf a customer asks about a partial refund after a split shipment, it sometimes sounds certain and wrong.\n\nThat is the part people miss about LLMs in production.\n\nThe demo is not the hard part.\nThe hard part is deciding when the model should answer, when it should search, and when it should stop talking.\n\nThis week reminded me of one lesson:\na production LLM is not a brain.\nIt is a very fast employee that needs tight rules.\n\nWhat’s the hardest thing you’d trust an LLM to do in production?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-25T06:08:17.160Z",
+    "topic": "React and Next.js in Production",
+    "pillar": "Architecture and Stack",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "a873447b839d23f9",
+    "content": "Server components are a tradeoff.\n\nI was building a production app in Next.js with React on the front end.\nThe question was simple: what should render on the server, and what should wait for the browser?\n\nThat choice matters because it changes how fast the first screen appears, how much code ships to the user, and how painful debugging becomes.\n\nThe tradeoff is real.\nMore server rendering can mean less JavaScript and a faster first load.\nMore client rendering can mean simpler state, easier interactions, and fewer surprises when things update on the page.\n\nI chose a mostly client-heavy setup for the parts that changed often.\nWhy? The app had live dashboards, forms, and frequent state updates.\nThe hidden constraint was developer speed.\nWhen a screen changes every few days, splitting logic across server and browser can slow down every small edit.\n\nSo I kept server rendering for the initial page and shared data, then moved interactive pieces to the browser.\n\nThat choice would not fit every app.\nIf the page is mostly static, or search visibility matters more than rapid UI changes, I would push harder toward server rendering.\n\nThe lesson: optimize for the shape of change, not just raw performance.\n\nWhat do you optimize for first when choosing between server and browser rendering?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
