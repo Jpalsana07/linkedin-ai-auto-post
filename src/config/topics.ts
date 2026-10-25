@@ -17,7 +17,7 @@ export interface Pillar {
 export const PILLARS: readonly Pillar[] = [
   {
     name: "AI Engineering",
-    weight: 45,
+    weight: 60,
     topics: [
       "AI Agents",
       "Multi-Agent Orchestration",
@@ -32,7 +32,7 @@ export const PILLARS: readonly Pillar[] = [
   },
   {
     name: "Architecture and Stack",
-    weight: 35,
+    weight: 25,
     topics: [
       "React and Next.js in Production",
       "TypeScript Pitfalls",
@@ -44,7 +44,7 @@ export const PILLARS: readonly Pillar[] = [
   },
   {
     name: "Founder and Career",
-    weight: 20,
+    weight: 15,
     topics: [
       "Freelance Client Lessons",
       "Shipping Solo End-to-End",
