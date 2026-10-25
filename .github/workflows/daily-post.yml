@@ -2,8 +2,15 @@ name: Daily LinkedIn Post
 
 on:
   schedule:
-    # 03:30 UTC = 09:00 IST. Note: GitHub Actions cron drifts 15-60+ min under load.
-    - cron: "30 3 * * *"
+    # Five daily slots; the "Pick today's posting slot" step chooses ONE per day
+    # (seeded from the date) so the post lands at a different time each day.
+    # Odd minutes dodge GitHub's busy :00/:30 cron queues.
+    # UTC -> IST: 02:47=08:17, 05:47=11:17, 08:17=13:47, 11:47=17:17, 15:17=20:47
+    - cron: "47 2 * * *"
+    - cron: "47 5 * * *"
+    - cron: "17 8 * * *"
+    - cron: "47 11 * * *"
+    - cron: "17 15 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -29,18 +36,48 @@ jobs:
         with:
           fetch-depth: 1
 
+      # Scheduled runs only: hash today's date to pick one of the five cron
+      # slots. Runs before the chosen slot skip; the chosen one (or any later
+      # one, if GitHub delayed/dropped it) posts. history.json prevents doubles.
+      - name: Pick today's posting slot
+        if: github.event_name == 'schedule'
+        run: |
+          TODAY=$(date -u +%F)
+          if grep -q "\"date\": \"$TODAY" data/history.json; then
+            echo "Already posted today — skipping."
+            echo "SKIP=true" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          # Slot start times as minutes-of-day UTC; must match the cron list.
+          SLOTS=(167 347 497 707 917)
+          NOW=$(( 10#$(date -u +%H) * 60 + 10#$(date -u +%M) ))
+          CURRENT=-1
+          for i in "${!SLOTS[@]}"; do
+            if [ "$NOW" -ge "${SLOTS[$i]}" ]; then CURRENT=$i; fi
+          done
+          CHOSEN=$(( $(echo "$TODAY" | cksum | cut -d' ' -f1) % ${#SLOTS[@]} ))
+          echo "current slot: $CURRENT, today's chosen slot: $CHOSEN"
+          if [ "$CURRENT" -lt "$CHOSEN" ]; then
+            echo "Not this slot — today's post goes out later."
+            echo "SKIP=true" >> "$GITHUB_ENV"
+          fi
+
       - name: Setup Bun
+        if: env.SKIP != 'true'
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
       - name: Install dependencies
+        if: env.SKIP != 'true'
         run: bun install --frozen-lockfile
 
       - name: Typecheck
+        if: env.SKIP != 'true'
         run: bun run typecheck
 
       - name: Generate post
+        if: env.SKIP != 'true'
         env:
           LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'openai' }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.4-mini' }}
@@ -58,7 +95,7 @@ jobs:
         run: bun run generate
 
       - name: Upload draft artifact
-        if: ${{ inputs.dry_run != true }}
+        if: ${{ env.SKIP != 'true' && inputs.dry_run != true }}
         uses: actions/upload-artifact@v4
         with:
           name: linkedin-draft-${{ github.run_id }}
@@ -66,7 +103,7 @@ jobs:
           retention-days: 30
 
       - name: Commit and push
-        if: ${{ inputs.dry_run != true }}
+        if: ${{ env.SKIP != 'true' && inputs.dry_run != true }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
