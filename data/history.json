@@ -1298,5 +1298,15 @@
     "content": "Two type systems, one bug.\n\nWe were shipping a billing dashboard in TypeScript, and one bad payload could quietly break invoices for 200 customers.\n\nThe choice was simple:\nZod or Valibot.\n\nBoth validate incoming data at runtime, which means they check real API values before your app trusts them.\nTypeScript alone only checks your code while you build it.\nIt does not protect you from a broken JSON response at 2 a.m.\n\nWe tried Zod first.\nIt was easy to read, easy to debug, and our team moved fast.\nBut the validation layer started to feel heavy.\nThe bundle grew by 28 KB, and parsing large forms was noticeably slower in the browser.\n\nThen we tested Valibot.\nSmaller package, faster validation, less noise in the code.\nOn our forms, it cut validation time by about 40% and shaved enough bundle weight to matter on slower laptops.\n\nWe picked Valibot.\n\nNot because Zod is bad.\nBecause for our use case, the lighter tool made the safety net cheap enough to keep on everywhere.\n\nThe lesson: if TypeScript is the guardrail, runtime validation is the seatbelt.\nPick the one your team will actually wear.\n\nWhich runtime validator would you trust in a production app?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-25T05:41:37.603Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "5b1809ea048a549b",
+    "content": "Our support bot shipped.\n\nIt answers questions for e-commerce teams.\nLast week I pushed a new LLM in production path so it could handle refunds, shipping, and order status without a human.\n\nWe shipped three things:\na stricter tool schema, the menu of actions the bot can take\nbetter retrieval, the step that fetches the right policy text\nand a fallback that hands off to a person when confidence is low\n\nThe good news: average reply time dropped from 9.4 seconds to 2.1.\nEscalations to humans fell 18%.\n\nThe bad news: the bot still hallucinates on edge-case refund policies.\nIf a customer asks about a partial refund after a split shipment, it sometimes sounds certain and wrong.\n\nThat is the part people miss about LLMs in production.\n\nThe demo is not the hard part.\nThe hard part is deciding when the model should answer, when it should search, and when it should stop talking.\n\nThis week reminded me of one lesson:\na production LLM is not a brain.\nIt is a very fast employee that needs tight rules.\n\nWhat’s the hardest thing you’d trust an LLM to do in production?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
