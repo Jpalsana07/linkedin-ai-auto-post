@@ -1318,5 +1318,15 @@
     "content": "Server components are a tradeoff.\n\nI was building a production app in Next.js with React on the front end.\nThe question was simple: what should render on the server, and what should wait for the browser?\n\nThat choice matters because it changes how fast the first screen appears, how much code ships to the user, and how painful debugging becomes.\n\nThe tradeoff is real.\nMore server rendering can mean less JavaScript and a faster first load.\nMore client rendering can mean simpler state, easier interactions, and fewer surprises when things update on the page.\n\nI chose a mostly client-heavy setup for the parts that changed often.\nWhy? The app had live dashboards, forms, and frequent state updates.\nThe hidden constraint was developer speed.\nWhen a screen changes every few days, splitting logic across server and browser can slow down every small edit.\n\nSo I kept server rendering for the initial page and shared data, then moved interactive pieces to the browser.\n\nThat choice would not fit every app.\nIf the page is mostly static, or search visibility matters more than rapid UI changes, I would push harder toward server rendering.\n\nThe lesson: optimize for the shape of change, not just raw performance.\n\nWhat do you optimize for first when choosing between server and browser rendering?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-26T17:39:28.320Z",
+    "topic": "Multi-Agent Orchestration",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "9a0d89ebba452020",
+    "content": "The agents kept talking forever.\n\nI was building a multi-agent workflow for a client project.\nOne agent reviewed code, another checked tests, and a third summarized the result.\nInstead of finishing, they bounced the same task back and forth for 18 minutes.\n\nIt looked busy.\nIt was just stuck.\n\nI had wired the handoff using LangChain, the agent glue layer, and gave each agent too much freedom.\nNo hard stop. No clear owner. No limit on retries.\nSo when one agent saw a weak answer, it asked the next one to rethink it, and the loop kept going.\n\nThe logs made it obvious in hindsight.\nThe same file path, the same question, the same “please verify” message, repeated again and again.\n\nThe fix was not smarter prompts.\nIt was stricter orchestration: one agent owns the step, one retry max, then a fallback to a plain deterministic check.\n\nThat was the lesson.\n\nWith multi-agent systems, coordination matters more than intelligence.\nIf no one is clearly responsible, the group can look productive while doing nothing.\n\nWhat’s the most expensive loop you’ve seen a system repeat?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
