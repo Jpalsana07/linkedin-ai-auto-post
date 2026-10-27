@@ -1328,5 +1328,15 @@
     "content": "The agents kept talking forever.\n\nI was building a multi-agent workflow for a client project.\nOne agent reviewed code, another checked tests, and a third summarized the result.\nInstead of finishing, they bounced the same task back and forth for 18 minutes.\n\nIt looked busy.\nIt was just stuck.\n\nI had wired the handoff using LangChain, the agent glue layer, and gave each agent too much freedom.\nNo hard stop. No clear owner. No limit on retries.\nSo when one agent saw a weak answer, it asked the next one to rethink it, and the loop kept going.\n\nThe logs made it obvious in hindsight.\nThe same file path, the same question, the same “please verify” message, repeated again and again.\n\nThe fix was not smarter prompts.\nIt was stricter orchestration: one agent owns the step, one retry max, then a fallback to a plain deterministic check.\n\nThat was the lesson.\n\nWith multi-agent systems, coordination matters more than intelligence.\nIf no one is clearly responsible, the group can look productive while doing nothing.\n\nWhat’s the most expensive loop you’ve seen a system repeat?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-27T08:23:00.787Z",
+    "topic": "AI Automation Workflows",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "ae7ae0d82f572d41",
+    "content": "Most automation should stay boring.\n\nThe internet says every workflow needs agents, memory, and a clever chain of tools.\nMy hot take: most of it should be one script with clear steps.\n\nI built an AI automation pipeline for a client project that triaged emails, classified the request, and drafted a reply.\nThe first version used a multi-agent system.\nIt felt smart.\nIt also took 14 seconds, made weird handoffs, and failed in places that were hard to explain.\n\nSo I cut it down to Claude API plus a plain backend workflow in Node.js.\nOne step reads the message.\nOne step classifies it.\nOne step drafts the output.\nNo drama. No hidden state.\n\nThe result was less impressive on a demo, but much better in production.\nLatency dropped to under 4 seconds.\nMore importantly, when something broke, I could point to the exact step instead of asking three agents what they “meant.”\n\nThat said, the counterargument is real.\nIf the task is open-ended, messy, or needs back-and-forth reasoning, agents can be worth the complexity.\nI still use them there.\n\nThe lesson: start with the simplest workflow that can fail in one obvious place.\n\nWhat kind of automation do you think actually deserves agents?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
