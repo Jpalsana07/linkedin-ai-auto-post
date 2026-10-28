@@ -1338,5 +1338,15 @@
     "content": "Most automation should stay boring.\n\nThe internet says every workflow needs agents, memory, and a clever chain of tools.\nMy hot take: most of it should be one script with clear steps.\n\nI built an AI automation pipeline for a client project that triaged emails, classified the request, and drafted a reply.\nThe first version used a multi-agent system.\nIt felt smart.\nIt also took 14 seconds, made weird handoffs, and failed in places that were hard to explain.\n\nSo I cut it down to Claude API plus a plain backend workflow in Node.js.\nOne step reads the message.\nOne step classifies it.\nOne step drafts the output.\nNo drama. No hidden state.\n\nThe result was less impressive on a demo, but much better in production.\nLatency dropped to under 4 seconds.\nMore importantly, when something broke, I could point to the exact step instead of asking three agents what they “meant.”\n\nThat said, the counterargument is real.\nIf the task is open-ended, messy, or needs back-and-forth reasoning, agents can be worth the complexity.\nI still use them there.\n\nThe lesson: start with the simplest workflow that can fail in one obvious place.\n\nWhat kind of automation do you think actually deserves agents?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-28T08:59:36.067Z",
+    "topic": "VLMs and Computer Vision",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "169ecabb65782716",
+    "content": "A mask was off by 12 pixels.\n\nI was building a vision flow that needed to find a person in a frame, then cut the background cleanly for a client project.\nIf the cut was wrong, the final image looked broken, so the whole feature depended on that one edge.\n\nThe model was SAM2, a segmentation model that draws the object boundary.\nIt looked great in local tests.\nThen I checked a few real images and saw the mask drifting just enough to chop off hands, hair, and shoulders.\n\nThe mistake was assuming the model saw the same thing I saw.\nIt did not.\nA tiny crop change, a busy background, or a face at the edge of the frame could shift the result by a few pixels and make the output feel wrong to a human.\n\nI spent about 3 hours adding a second pass with CLIPSeg, a text-guided mask model, and a few plain checks before accepting the result.\nThat extra step caught the bad cases early and made the output stable enough to ship through FastAPI.\n\nThe lesson: with computer vision, “looks fine in the notebook” is not enough.\nYou need a human-shaped check before you trust the mask.\n\nWhere have you seen a model be technically correct and still look wrong to a person?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
