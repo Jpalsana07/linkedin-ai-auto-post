@@ -1358,5 +1358,15 @@
     "content": "Copilot writes fast. Claude Code ships clean.\n\nBoth solve the same daily problem:\ngetting from a blank file to working code without burning an hour.\n\nI used Claude Code and GitHub Copilot on real client work and side projects.\nCopilot was great for filling in the next few lines.\nIt felt like autocomplete with a sharper memory.\n\nClaude Code was different.\nI could ask it to trace a bug through a React page, a Node.js API, and a PostgreSQL query in one pass.\nIt wrote tests, spotted missing edge cases, and caught one bad migration before I pushed it.\n\nThe difference showed up in time.\nCopilot saved me minutes all day.\nClaude Code saved me entire debugging sessions.\n\nCopilot is still useful when I already know the shape of the code.\nBut when I need an AI pair that can reason across files, tests, and backend logic, Claude Code wins.\n\nThe lesson: use the tool that can hold the whole problem, not just the next line.\n\nWhat kind of coding work do you trust AI with, and what do you still keep for yourself?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-30T17:13:25.135Z",
+    "topic": "AI Coding Hype vs Reality",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "0aa77cc18d259847",
+    "content": "AI coding is still a shortcut.\n\nI’m building an AI code review agent for a client project, and I’m also using Claude Code to ship the app around it.\n\nThis week I shipped the review flow, the PR summary, and the first pass at test suggestions.\nThe agent now reads a pull request, flags risky changes, and leaves a short review instead of a wall of text.\n\nThe metric that moved: review time dropped from 18 minutes to 6 minutes on a few real PRs.\n\nThe broken part is obvious now.\nClaude Code can draft code fast, but it still misses context when the change touches auth, database migrations, or a tiny edge case hidden in existing code.\nThat means the agent can sound confident while being wrong in exactly the places that matter most.\n\nI spent more time wiring guardrails than generating code.\nA small validation step, a narrower prompt, and a second pass on the diff mattered more than the “AI magic.”\n\nThe lesson: AI helps most when it speeds up the boring middle, not when you let it own the risky edges.\n\nWhat part of coding do you trust AI with, and what part still needs your eyes?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
