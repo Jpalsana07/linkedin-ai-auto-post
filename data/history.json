@@ -1368,5 +1368,15 @@
     "content": "AI coding is still a shortcut.\n\nI’m building an AI code review agent for a client project, and I’m also using Claude Code to ship the app around it.\n\nThis week I shipped the review flow, the PR summary, and the first pass at test suggestions.\nThe agent now reads a pull request, flags risky changes, and leaves a short review instead of a wall of text.\n\nThe metric that moved: review time dropped from 18 minutes to 6 minutes on a few real PRs.\n\nThe broken part is obvious now.\nClaude Code can draft code fast, but it still misses context when the change touches auth, database migrations, or a tiny edge case hidden in existing code.\nThat means the agent can sound confident while being wrong in exactly the places that matter most.\n\nI spent more time wiring guardrails than generating code.\nA small validation step, a narrower prompt, and a second pass on the diff mattered more than the “AI magic.”\n\nThe lesson: AI helps most when it speeds up the boring middle, not when you let it own the risky edges.\n\nWhat part of coding do you trust AI with, and what part still needs your eyes?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-10-31T16:19:55.316Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "14bdefb6d6f4a072",
+    "content": "I stopped adding more agents.\n\nI was building an AI agent that could review code, triage email, and draft replies.\nThe obvious move was to split it into specialist agents, each with one job.\n\nThat sounds neat.\nIt also sounds like more prompts, more handoffs, and more places for Claude API calls to disagree.\n\nSo I kept one agent and gave it a small tool menu instead.\nThe menu of actions the bot can take was narrower, but every step was easier to test.\nI could trace one path through FastAPI instead of guessing which agent forgot context.\n\nThe tradeoff is simple.\nMore agents can feel smarter on paper.\nOne agent with good tools is usually easier to debug, cheaper to run, and less likely to drift when the task is small and the workflow is fixed.\n\nI chose the smaller system because the real constraint was not intelligence.\nIt was reliability under messy inputs and a human needing to understand what happened 2 minutes later.\n\nThis tradeoff breaks down when the work is open-ended, long-running, or needs separate reasoning styles.\n\nWhat do you reach for first: more agents, or better tools?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
