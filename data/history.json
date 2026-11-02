@@ -1388,5 +1388,15 @@
     "content": "My bot answered with the wrong memory.\n\nI was building an internal assistant for a client project, and it was supposed to pull the right notes before drafting replies.\nInstead, it kept mixing old context with fresh requests.\n\nThe app used MCP, the Model Context Protocol, so the model could call tools and read the right files.\nI also had context engineering, which is just deciding what the model sees, in what order, and how much of it.\n\nThe failure was sneaky.\nThe tool calls worked.\nThe answer looked confident.\nBut one stale document was still being sent in every request, so the model kept treating yesterday’s note as if it were current.\n\nI spent a few hours blaming the prompt.\nThen I checked the actual payloads and found the real problem: too much context, and the wrong context.\n\nThe fix was simple.\nI stopped sending everything.\nI made the tool return only the exact section needed, plus a short summary, and I added a small freshness check so older notes could not win by accident.\n\nThe lesson: with MCP, the model is only as good as the context you feed it.\nGood prompts help, but clean context is what keeps the answer honest.\n\nWhat do you trust more when an AI is wrong: the prompt, or the context?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-02T13:51:33.234Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "39424b0d411ef91b",
+    "content": "Agent reliability is mostly theater.\n\nThe popular advice is to add more checks, more planners, more retries, and more agents until the system feels “robust.”\nThat sounds safe.\nIt also makes failure harder to see.\n\nI hit this building an automation pipeline with Claude API and a small tool layer.\nThe agent could read a document, decide what to do, and call the right function.\nIt looked solid in tests.\n\nThen one branch started looping on the same stale input.\nNothing crashed.\nThe logs stayed tidy.\nThe only clue was a task that quietly took 14 minutes instead of 40 seconds.\n\nThe fix was not another agent.\nIt was a hard timeout, a single allowed retry, and a plain status that said “stuck on the same step.”\n\nThat’s the contrarian part:\nreliability usually comes from fewer moving parts, not smarter ones.\n\nThe strongest counterargument is obvious.\nSome workflows really do need planning, retries, and multiple passes, especially when the input is messy.\nI agree.\n\nBut if the system can’t tell you when it is confused, extra intelligence just hides the confusion longer.\n\nThe lesson: make agent failures obvious before you make them clever.\n\nWhere have you seen “more AI” make a workflow less trustworthy?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
