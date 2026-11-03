@@ -1398,5 +1398,15 @@
     "content": "Agent reliability is mostly theater.\n\nThe popular advice is to add more checks, more planners, more retries, and more agents until the system feels “robust.”\nThat sounds safe.\nIt also makes failure harder to see.\n\nI hit this building an automation pipeline with Claude API and a small tool layer.\nThe agent could read a document, decide what to do, and call the right function.\nIt looked solid in tests.\n\nThen one branch started looping on the same stale input.\nNothing crashed.\nThe logs stayed tidy.\nThe only clue was a task that quietly took 14 minutes instead of 40 seconds.\n\nThe fix was not another agent.\nIt was a hard timeout, a single allowed retry, and a plain status that said “stuck on the same step.”\n\nThat’s the contrarian part:\nreliability usually comes from fewer moving parts, not smarter ones.\n\nThe strongest counterargument is obvious.\nSome workflows really do need planning, retries, and multiple passes, especially when the input is messy.\nI agree.\n\nBut if the system can’t tell you when it is confused, extra intelligence just hides the confusion longer.\n\nThe lesson: make agent failures obvious before you make them clever.\n\nWhere have you seen “more AI” make a workflow less trustworthy?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-03T13:01:42.721Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "780dcd424d4d37ca",
+    "content": "I shipped a bad answer once.\n\nIt was inside a production web app, and the reply had to be useful on the first try.\nIf it missed, a real user would trust the wrong thing and move on.\n\nI had an LLM feature running through Claude API, with a small validation step before the answer went out.\nThe output looked fine in testing.\nIn production, the model gave a polished response that was still wrong.\n\nThe bug was simple.\nI was validating the shape of the text, not the facts inside it.\n\nSo the app kept accepting answers that were well-formed but useless.\nNo crash.\nNo warning.\nJust confident nonsense.\n\nI added a second pass: the model had to restate the key fields, and if they drifted, the response was rejected and retried.\nThat extra check added about 300 ms, but it saved the user from bad output more than once.\n\nThe lesson: in production, “looks right” is not the same as “is right.”\n\nWhat do you trust more in LLM apps: a clean response, or a checked one?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
