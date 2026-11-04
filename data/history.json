@@ -1408,5 +1408,15 @@
     "content": "I shipped a bad answer once.\n\nIt was inside a production web app, and the reply had to be useful on the first try.\nIf it missed, a real user would trust the wrong thing and move on.\n\nI had an LLM feature running through Claude API, with a small validation step before the answer went out.\nThe output looked fine in testing.\nIn production, the model gave a polished response that was still wrong.\n\nThe bug was simple.\nI was validating the shape of the text, not the facts inside it.\n\nSo the app kept accepting answers that were well-formed but useless.\nNo crash.\nNo warning.\nJust confident nonsense.\n\nI added a second pass: the model had to restate the key fields, and if they drifted, the response was rejected and retried.\nThat extra check added about 300 ms, but it saved the user from bad output more than once.\n\nThe lesson: in production, “looks right” is not the same as “is right.”\n\nWhat do you trust more in LLM apps: a clean response, or a checked one?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-04T13:18:08.165Z",
+    "topic": "Multi-Agent Orchestration",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "91b3c962671c9039",
+    "content": "CrewAI looked elegant.\nLangGraph was harder, but it shipped.\n\nI was building a multi-agent system for a client project.\nThe job was simple in plain English: one agent gathers facts, one checks them, one turns them into a final answer.\n\nCrewAI made that feel quick.\nIt reads like a team chart, where each agent has a role and passes work along.\nI had a prototype running in a few hours.\n\nThen I hit the real problem: control.\nOne bad step needed to stop the whole flow, retrying had to be explicit, and I needed to see exactly where the run branched.\n\nThat is where LangGraph won.\nLangGraph is a state graph — a flowchart for agents — so I could define nodes, loops, and fallbacks directly.\nThe first stable version took me about 2 days, but the behavior was predictable.\nWhen a step failed, I knew why.\nWhen a branch repeated, I could see it.\n\nCrewAI is faster for a demo.\nLangGraph is better for production when the orchestration itself matters.\n\nMy lesson: if the agents need real control flow, pick the tool that makes the flow visible.\n\nWhich side do you trust more when the system starts looping?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
