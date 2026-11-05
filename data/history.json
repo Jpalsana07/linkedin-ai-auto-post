@@ -1418,5 +1418,15 @@
     "content": "CrewAI looked elegant.\nLangGraph was harder, but it shipped.\n\nI was building a multi-agent system for a client project.\nThe job was simple in plain English: one agent gathers facts, one checks them, one turns them into a final answer.\n\nCrewAI made that feel quick.\nIt reads like a team chart, where each agent has a role and passes work along.\nI had a prototype running in a few hours.\n\nThen I hit the real problem: control.\nOne bad step needed to stop the whole flow, retrying had to be explicit, and I needed to see exactly where the run branched.\n\nThat is where LangGraph won.\nLangGraph is a state graph — a flowchart for agents — so I could define nodes, loops, and fallbacks directly.\nThe first stable version took me about 2 days, but the behavior was predictable.\nWhen a step failed, I knew why.\nWhen a branch repeated, I could see it.\n\nCrewAI is faster for a demo.\nLangGraph is better for production when the orchestration itself matters.\n\nMy lesson: if the agents need real control flow, pick the tool that makes the flow visible.\n\nWhich side do you trust more when the system starts looping?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-05T13:30:16.650Z",
+    "topic": "AI Automation Workflows",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "45cf69f6c81352e1",
+    "content": "This week I shipped the inbox sorter.\n\nIt’s for a client project where I help a small team turn messy emails into clear next steps.\n\nThe bot reads a message, labels it, and drafts the first reply.\nBefore this week, it was getting the easy ones right and freezing on anything with attachments.\n\nI added one small thing: a file check before the LLM call.\nThe LLM, or large language model, is the text generator doing the thinking.\nIf an email had a PDF or image, the workflow now sends it to a different path instead of guessing.\n\nThat changed the numbers.\n\nManual reviews dropped from 31 a day to 14.\nThe average draft time fell from 48 seconds to 19.\nAnd the error rate on attachment-heavy emails went from “annoying” to “still broken, but visible.”\n\nI built it with Claude API, FastAPI, and GitHub Actions cron, so the whole thing runs on a timer without extra infra.\n\nWhat’s still broken is the part that looks smartest on paper: the reply tone.\nIt can sound too certain when the email is actually vague.\n\nThe lesson: in automation, the boring pre-check often matters more than the clever model.\n\nWhat do you trust more in workflows like this: smarter generation, or tighter guardrails?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
