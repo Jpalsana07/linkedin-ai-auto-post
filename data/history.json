@@ -1438,5 +1438,15 @@
     "content": "The camera was the easy part.\nThe hard part was memory.\n\nI was building a vision feature that had to look at uploaded images and extract one small detail reliably.\nNot a demo. A real step in a production flow.\n\nThe choice was simple on paper:\nsend one full image to a vision-language model, or cut the image into smaller pieces first.\n\nFull images keep the whole scene.\nThat matters when the clue depends on context.\nBut they also cost more, take longer, and sometimes miss tiny details.\n\nSo I tried both.\nFor wide shots, I used a VLM first, then cropped only when the answer looked uncertain.\nFor close-up tasks, I skipped the full pass and sent only the crop.\n\nThat saved about 40% of the API work on one flow, and the answers got steadier.\nThe constraint most people miss is not accuracy.\nIt’s cost per retry.\n\nIf the model is wrong, you don’t just pay once.\nYou pay again to verify it, and again to recover from the bad result.\n\nSo I chose the smaller input when the task was local and visual.\nI kept the full frame only when context could change the answer.\n\nThis tradeoff does not hold when the scene itself matters more than the object.\nA tiny crop can be perfect and still be useless.\n\nWhen do you keep the whole image instead of cropping first?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-07T16:59:56.366Z",
+    "topic": "AI-Assisted Coding (how devs use AI daily)",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "bd1c87130408092f",
+    "content": "The bug came from my own prompt.\n\nI was building a small internal feature for a client project.\nClaude Code was helping me write the tests, the API glue, and a refactor in one pass.\nThen a change that looked safe broke the flow in one place and passed everywhere else.\n\nI spent 40 minutes blaming TypeScript, then React, then my backend.\nTypeScript is the type system that catches shape mistakes.\nReact is the UI library for building screens.\nThe real issue was simpler: I had asked the coding agent to “clean up the handler” without giving it the edge cases I cared about.\n\nIt rewrote the code correctly for the happy path.\nIt also removed a tiny guard that only mattered when one field was empty.\nThe test still passed because I had only written the sunny-day version.\n\nThe root cause was not the model.\nIt was me using AI like a fast junior engineer instead of a tool that needs a sharp spec.\n\nI fixed it by writing the failure cases first, then asking Claude Code to change only the smallest possible surface.\nThe next run took 6 minutes, not 40.\n\nThe lesson: AI coding is most useful when you tell it what must not break.\n\nWhere do you draw the line between letting AI move fast and forcing it to stay boxed in?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
