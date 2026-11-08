@@ -1448,5 +1448,15 @@
     "content": "The bug came from my own prompt.\n\nI was building a small internal feature for a client project.\nClaude Code was helping me write the tests, the API glue, and a refactor in one pass.\nThen a change that looked safe broke the flow in one place and passed everywhere else.\n\nI spent 40 minutes blaming TypeScript, then React, then my backend.\nTypeScript is the type system that catches shape mistakes.\nReact is the UI library for building screens.\nThe real issue was simpler: I had asked the coding agent to “clean up the handler” without giving it the edge cases I cared about.\n\nIt rewrote the code correctly for the happy path.\nIt also removed a tiny guard that only mattered when one field was empty.\nThe test still passed because I had only written the sunny-day version.\n\nThe root cause was not the model.\nIt was me using AI like a fast junior engineer instead of a tool that needs a sharp spec.\n\nI fixed it by writing the failure cases first, then asking Claude Code to change only the smallest possible surface.\nThe next run took 6 minutes, not 40.\n\nThe lesson: AI coding is most useful when you tell it what must not break.\n\nWhere do you draw the line between letting AI move fast and forcing it to stay boxed in?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-08T12:13:49.881Z",
+    "topic": "AI Coding Hype vs Reality",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "4d5dd6fe1c7a358f",
+    "content": "AI coding is not the bottleneck.\n\nThe sales pitch is simple:\ntype less, ship more, let the model do the boring parts.\n\nMy contrarian take:\nthe hard part is still judgment, not typing.\n\nI use Claude Code every day to draft tests, review diffs, and scaffold boring CRUD work.\nThat part is real.\nIt saves me maybe 30 to 60 minutes on a normal day.\n\nBut on one client build, the model wrote a clean-looking auth flow in under 5 minutes.\nThe code ran.\nThe bug was in the edge case around token refresh, and it only showed up after a few manual retries.\n\nThat was the moment I got reminded:\nAI is great at producing code that looks finished.\nIt is much worse at knowing what must never break.\n\nThe strongest counterargument is fair.\nIf you are starting from zero, AI can help you move fast enough to finish things you might never have shipped alone.\nI’ve felt that too.\n\nBut the lesson is the same:\nAI should compress the first draft, not replace your understanding.\n\nIf you treat it like a junior pair programmer, it helps.\nIf you treat it like a senior engineer, it will eventually hand you a polished mistake.\n\nWhere have you seen AI help speed up the wrong part of the work?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
