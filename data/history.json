@@ -1458,5 +1458,15 @@
     "content": "AI coding is not the bottleneck.\n\nThe sales pitch is simple:\ntype less, ship more, let the model do the boring parts.\n\nMy contrarian take:\nthe hard part is still judgment, not typing.\n\nI use Claude Code every day to draft tests, review diffs, and scaffold boring CRUD work.\nThat part is real.\nIt saves me maybe 30 to 60 minutes on a normal day.\n\nBut on one client build, the model wrote a clean-looking auth flow in under 5 minutes.\nThe code ran.\nThe bug was in the edge case around token refresh, and it only showed up after a few manual retries.\n\nThat was the moment I got reminded:\nAI is great at producing code that looks finished.\nIt is much worse at knowing what must never break.\n\nThe strongest counterargument is fair.\nIf you are starting from zero, AI can help you move fast enough to finish things you might never have shipped alone.\nI’ve felt that too.\n\nBut the lesson is the same:\nAI should compress the first draft, not replace your understanding.\n\nIf you treat it like a junior pair programmer, it helps.\nIf you treat it like a senior engineer, it will eventually hand you a polished mistake.\n\nWhere have you seen AI help speed up the wrong part of the work?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-09T10:22:00.955Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "402a588ffecde704",
+    "content": "I let one agent send emails.\n\nI was building a small automation that sorted incoming documents, summarized them, and drafted replies for a client project.\nThe goal was simple: save me 30 to 40 minutes a day without touching the final send button myself.\n\nThen I tested it on a real thread.\nThe agent read the wrong context, wrote a confident reply, and nearly sent it as if it were final.\n\nThe mistake was mine.\nI had given the agent too much freedom and too little structure.\n\nI was using Claude API for the language part and a tool schema — the menu of actions the bot can take — to decide what it could do.\nBut I treated “can draft” and “can send” like they were close cousins.\n\nThey are not.\n\nThe fix was boring and effective.\nDrafting stayed automatic.\nSending became a separate human step.\nAfter that, the same flow still saved time, but the risky part had to cross one extra checkpoint.\n\nThat was the lesson:\nan agent should earn trust in layers, not all at once.\n\nIf it can act on the world, it needs a smaller first job than you think.\n\nWhere have you seen an automation become dangerous because it was trusted too early?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
