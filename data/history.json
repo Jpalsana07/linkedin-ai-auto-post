@@ -1468,5 +1468,15 @@
     "content": "I let one agent send emails.\n\nI was building a small automation that sorted incoming documents, summarized them, and drafted replies for a client project.\nThe goal was simple: save me 30 to 40 minutes a day without touching the final send button myself.\n\nThen I tested it on a real thread.\nThe agent read the wrong context, wrote a confident reply, and nearly sent it as if it were final.\n\nThe mistake was mine.\nI had given the agent too much freedom and too little structure.\n\nI was using Claude API for the language part and a tool schema — the menu of actions the bot can take — to decide what it could do.\nBut I treated “can draft” and “can send” like they were close cousins.\n\nThey are not.\n\nThe fix was boring and effective.\nDrafting stayed automatic.\nSending became a separate human step.\nAfter that, the same flow still saved time, but the risky part had to cross one extra checkpoint.\n\nThat was the lesson:\nan agent should earn trust in layers, not all at once.\n\nIf it can act on the world, it needs a smaller first job than you think.\n\nWhere have you seen an automation become dangerous because it was trusted too early?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-10T10:27:07.815Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "35041f9d248f25bc",
+    "content": "MCP failed less. Context engineering won more.\n\nI was building an assistant that had to read docs, inspect code, and answer one clear question without dragging the whole app into the prompt.\n\nI tried two approaches: MCP, the Model Context Protocol, and old-school context engineering, which means hand-picking only the useful text for the model.\n\nMCP was neat.\nThe tool list was clean.\nThe setup took about 30 minutes, and the agent could discover actions on its own.\n\nBut the first version still bloated the prompt.\nIt kept pulling in too much history, too many files, and too many irrelevant tool calls.\n\nWith context engineering, I spent 2 extra hours trimming the input.\nI passed just the current file, the failing test, and one short summary of the last run.\nThe response time dropped from about 14 seconds to 6.\nThe answers also stopped drifting.\n\nThat was the real difference.\n\nMCP is great for exposing tools.\nContext engineering is what makes those tools usable.\n\nMy lesson: give the model less context than feels comfortable, then add back only what it proves it needs.\n\nWhich side do you trust more when the answer has to stay focused?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
