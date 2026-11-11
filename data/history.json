@@ -1478,5 +1478,15 @@
     "content": "MCP failed less. Context engineering won more.\n\nI was building an assistant that had to read docs, inspect code, and answer one clear question without dragging the whole app into the prompt.\n\nI tried two approaches: MCP, the Model Context Protocol, and old-school context engineering, which means hand-picking only the useful text for the model.\n\nMCP was neat.\nThe tool list was clean.\nThe setup took about 30 minutes, and the agent could discover actions on its own.\n\nBut the first version still bloated the prompt.\nIt kept pulling in too much history, too many files, and too many irrelevant tool calls.\n\nWith context engineering, I spent 2 extra hours trimming the input.\nI passed just the current file, the failing test, and one short summary of the last run.\nThe response time dropped from about 14 seconds to 6.\nThe answers also stopped drifting.\n\nThat was the real difference.\n\nMCP is great for exposing tools.\nContext engineering is what makes those tools usable.\n\nMy lesson: give the model less context than feels comfortable, then add back only what it proves it needs.\n\nWhich side do you trust more when the answer has to stay focused?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-11T09:51:20.548Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "30fdfd2bf072c042",
+    "content": "A shipping update on agent reliability.\n\nI’m building a code-review agent for client and side projects.\nIt reads diffs, flags risky changes, and leaves a short review before I merge.\n\nThis week I shipped a stricter tool schema — the menu of actions the agent can take.\nThat cut bad tool calls from 14% to 3%.\n\nThe agent now has one job at a time.\nBefore, it could jump between reading files, searching context, and writing feedback in the same loop.\nThat looked flexible.\nIt also made it forget why it started.\n\nI also added a hard stop on low-confidence answers.\nIf the model is unsure, it asks for one more file or returns “I need more context” instead of guessing.\n\nThe broken part is still memory.\nIt holds onto the last few steps too aggressively, so on larger diffs it sometimes repeats old reasoning and misses the new change.\nThat shows up mostly on 200+ line reviews.\n\nThe lesson: reliability is not making an agent smarter.\nIt is removing the places where it can improvise at the wrong time.\n\nI’d rather get a shorter answer that stays honest than a confident one that drifts.\n\nWhat do you trust more in agents: tighter constraints or more context?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
