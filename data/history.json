@@ -1488,5 +1488,15 @@
     "content": "A shipping update on agent reliability.\n\nI’m building a code-review agent for client and side projects.\nIt reads diffs, flags risky changes, and leaves a short review before I merge.\n\nThis week I shipped a stricter tool schema — the menu of actions the agent can take.\nThat cut bad tool calls from 14% to 3%.\n\nThe agent now has one job at a time.\nBefore, it could jump between reading files, searching context, and writing feedback in the same loop.\nThat looked flexible.\nIt also made it forget why it started.\n\nI also added a hard stop on low-confidence answers.\nIf the model is unsure, it asks for one more file or returns “I need more context” instead of guessing.\n\nThe broken part is still memory.\nIt holds onto the last few steps too aggressively, so on larger diffs it sometimes repeats old reasoning and misses the new change.\nThat shows up mostly on 200+ line reviews.\n\nThe lesson: reliability is not making an agent smarter.\nIt is removing the places where it can improvise at the wrong time.\n\nI’d rather get a shorter answer that stays honest than a confident one that drifts.\n\nWhat do you trust more in agents: tighter constraints or more context?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-12T10:20:38.760Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "5743c6906f5e2dff",
+    "content": "A faster answer cost me more.\n\nI was adding an LLM feature to a production web app.\nThe choice was simple on paper: stream the answer token by token, or wait and send one complete response.\n\nStreaming feels better.\nThe user sees words arrive in under a second.\nIt also makes the app look alive while the model is still thinking.\n\nBut the hidden cost is state.\nIf the model changes its mind halfway through, you have to handle partial text, retries, and weird edge cases in the UI.\nWith one complete response, validation is easier.\nYou can check the output, clean it up, and show only what passed.\n\nI chose the complete response path for that build.\nNot because streaming is bad.\nBecause the feature had a strict formatting rule, and I needed the answer to survive a parser before it reached the screen.\n\nThat constraint mattered more than perceived speed.\nA 300 ms delay is forgivable.\nA broken response that looks instant is not.\n\nSo my rule is simple:\nstream when the user is reading for comfort.\nWait when the output must be correct first.\n\nThis tradeoff changes when the model is just chatting, or when the UI can safely recover from partial text.\n\nWhere do you draw the line between fast and safe?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
