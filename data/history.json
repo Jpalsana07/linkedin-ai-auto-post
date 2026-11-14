@@ -1508,5 +1508,15 @@
     "content": "Three agents, one bad answer.\n\nI was building a client automation that read documents, checked them, and drafted a reply.\nA multi-agent system — several bots splitting one job — was supposed to make it safer.\nInstead, it sent a polished wrong answer after 2 retries.\n\nThe flow looked fine on paper.\nOne agent extracted facts.\nOne agent verified them.\nOne agent wrote the response.\n\nThe failure was in the handoff.\nThe verifier was reading the writer’s summary, not the source document.\nSo it was validating a paraphrase, not the truth.\nThe system was arguing with itself and calling it confidence.\n\nI found it after tracing a single bad response through the logs.\nThe source was correct.\nThe summary had dropped one small negation.\nThat tiny “not” changed the meaning completely.\n\nI changed the design.\nThe verifier now checks the raw document first, then the draft.\nI also made the agents pass structured output — fixed fields, not free-form text — so each step has less room to drift.\n\nThe lesson: in multi-agent systems, the danger is not usually the smartest agent.\nIt is the story each agent tells the next one.\n\nWhere have you seen a system trust its own summary too much?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-14T12:32:01.294Z",
+    "topic": "AI Automation Workflows",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "02edf781309f3b49",
+    "content": "The best automations are boring.\n\nMost people want an AI workflow to feel smart.\nA bot that reads, decides, and acts on its own.\n\nI’ve found the opposite works better.\nThe best workflow is usually one clear step, one clear owner, and one escape hatch.\n\nI built a small automation with Claude API and GitHub Actions — a free scheduler that runs code on a timer.\nIt processed a handful of documents, then handed me only the messy edge cases.\n\nThe first version tried to do everything.\nClassify, summarize, route, and draft replies.\nIt looked impressive until one vague input sent it down the wrong path and I had to trace 4 steps to find where the mistake started.\n\nSo I cut it back.\n\nNow the system does the dull part first, then asks for help only when it is unsure.\nThe result was less “AI magic” and more 10 minutes of calm fixes instead of 1 hour of guessing.\n\nThe hot take:\nautomation should remove decisions, not create new ones.\n\nThe strongest counterargument is obvious.\nIf humans still have to review everything, what is the point?\n\nMy answer is simple.\nA workflow that saves 80 percent of the work is still worth more than a clever one that fails silently.\n\nWhere have you seen an “intelligent” workflow create more noise than help?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
