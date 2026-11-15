@@ -1518,5 +1518,15 @@
     "content": "The best automations are boring.\n\nMost people want an AI workflow to feel smart.\nA bot that reads, decides, and acts on its own.\n\nI’ve found the opposite works better.\nThe best workflow is usually one clear step, one clear owner, and one escape hatch.\n\nI built a small automation with Claude API and GitHub Actions — a free scheduler that runs code on a timer.\nIt processed a handful of documents, then handed me only the messy edge cases.\n\nThe first version tried to do everything.\nClassify, summarize, route, and draft replies.\nIt looked impressive until one vague input sent it down the wrong path and I had to trace 4 steps to find where the mistake started.\n\nSo I cut it back.\n\nNow the system does the dull part first, then asks for help only when it is unsure.\nThe result was less “AI magic” and more 10 minutes of calm fixes instead of 1 hour of guessing.\n\nThe hot take:\nautomation should remove decisions, not create new ones.\n\nThe strongest counterargument is obvious.\nIf humans still have to review everything, what is the point?\n\nMy answer is simple.\nA workflow that saves 80 percent of the work is still worth more than a clever one that fails silently.\n\nWhere have you seen an “intelligent” workflow create more noise than help?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-15T12:58:03.387Z",
+    "topic": "VLMs and Computer Vision",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "2e5e180576139123",
+    "content": "One mask was off by 12 pixels.\n\nI was building a vision feature for a production app that had to find a specific region in uploaded images.\nIf it missed, the whole workflow downstream would use the wrong crop.\n\nI used SAM2, a segmentation model that draws object masks, and the output looked fine at a glance.\nBut one edge case kept failing.\nThe mask was shifted just enough that the next step cropped the wrong part of the image.\n\nThe problem was not the model.\nIt was my assumption that “looks close” was good enough.\n\nI had treated computer vision like regular web input.\nIf a form field is 1 character off, you notice.\nIf a mask is 12 pixels off, the app can still look correct while quietly being wrong.\n\nThe fix was to validate the mask against the actual crop, not just the preview.\nI added a simple check in FastAPI, and the bad cases started failing immediately instead of sneaking through.\n\nThe lesson: with vision systems, test the output your app uses, not the picture that looks nice.\n\nWhat do you trust more in vision work: the model preview or the downstream check?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
