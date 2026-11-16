@@ -1528,5 +1528,15 @@
     "content": "One mask was off by 12 pixels.\n\nI was building a vision feature for a production app that had to find a specific region in uploaded images.\nIf it missed, the whole workflow downstream would use the wrong crop.\n\nI used SAM2, a segmentation model that draws object masks, and the output looked fine at a glance.\nBut one edge case kept failing.\nThe mask was shifted just enough that the next step cropped the wrong part of the image.\n\nThe problem was not the model.\nIt was my assumption that “looks close” was good enough.\n\nI had treated computer vision like regular web input.\nIf a form field is 1 character off, you notice.\nIf a mask is 12 pixels off, the app can still look correct while quietly being wrong.\n\nThe fix was to validate the mask against the actual crop, not just the preview.\nI added a simple check in FastAPI, and the bad cases started failing immediately instead of sneaking through.\n\nThe lesson: with vision systems, test the output your app uses, not the picture that looks nice.\n\nWhat do you trust more in vision work: the model preview or the downstream check?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-16T10:11:07.309Z",
+    "topic": "AI-Assisted Coding (how devs use AI daily)",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "f94b0c4c3f5b1560",
+    "content": "Claude Code wrote faster.\nCursor made me think harder.\n\nI use both while shipping full-stack work in React, Next.js, Node, and Rails.\nSame job: get from blank file to a working change without wasting half a day.\n\nClaude Code is my daily driver for bigger edits.\nIt can read a repo, change several files, run tests, and keep going.\nThat matters when I’m touching auth, API routes, and a PostgreSQL schema in one sitting.\n\nCursor is better when I want to stay close to the code.\nIts inline suggestions are great for one file, one function, one sharp fix.\nIt feels like pair programming inside the editor.\n\nThe difference showed up on a small feature last week.\nClaude Code handled the broad refactor in under 20 minutes.\nCursor helped me tighten the last 15 lines and catch a mismatch in a TypeScript prop name before it shipped.\n\nMy lesson: use the tool that matches the size of the change.\nBig repo-wide work needs an agent that can move through the whole system.\nTiny edits need a tool that keeps your attention on the exact line that matters.\n\nI still review every diff.\nThat part never gets outsourced.\n\nWhich one do you trust more for real shipping?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
