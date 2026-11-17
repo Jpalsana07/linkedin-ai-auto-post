@@ -1538,5 +1538,15 @@
     "content": "Claude Code wrote faster.\nCursor made me think harder.\n\nI use both while shipping full-stack work in React, Next.js, Node, and Rails.\nSame job: get from blank file to a working change without wasting half a day.\n\nClaude Code is my daily driver for bigger edits.\nIt can read a repo, change several files, run tests, and keep going.\nThat matters when I’m touching auth, API routes, and a PostgreSQL schema in one sitting.\n\nCursor is better when I want to stay close to the code.\nIts inline suggestions are great for one file, one function, one sharp fix.\nIt feels like pair programming inside the editor.\n\nThe difference showed up on a small feature last week.\nClaude Code handled the broad refactor in under 20 minutes.\nCursor helped me tighten the last 15 lines and catch a mismatch in a TypeScript prop name before it shipped.\n\nMy lesson: use the tool that matches the size of the change.\nBig repo-wide work needs an agent that can move through the whole system.\nTiny edits need a tool that keeps your attention on the exact line that matters.\n\nI still review every diff.\nThat part never gets outsourced.\n\nWhich one do you trust more for real shipping?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-17T17:39:18.053Z",
+    "topic": "AI Coding Hype vs Reality",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "91796f04b01ba5e1",
+    "content": "This week, I shipped the agent to one client flow.\nIt reviews a draft, writes code, runs tests, and hands me a PR.\n\nI built it as a solo engineer, with Claude Code doing the heavy lifting on writes and reviews.\nThe app around it is still the same stack I use everywhere: React, Next.js, Node.js, PostgreSQL, and GitHub Actions for the scheduled bits.\n\nThe good part: review time dropped from about 40 minutes to 12.\nThe bad part: the agent still misses small edge cases when the prompt gets too broad.\n\nThat was the real lesson this week.\n\nAI coding is fast at first pass.\nIt is much weaker when the task depends on hidden context, old decisions, or one weird line in a file from last month.\n\nI spent less time typing and more time checking.\nThat is the part people skip when they talk about speed.\n\nThe metric moved.\nThe trust did not.\n\nSo I am keeping the agent on narrow tasks, where the input is clear and the output is easy to verify.\nThat is where it earns its keep.\n\nWhat’s the best line between “let the agent write it” and “I need to inspect every line”?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
