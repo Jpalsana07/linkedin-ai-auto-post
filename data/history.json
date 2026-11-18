@@ -1548,5 +1548,15 @@
     "content": "This week, I shipped the agent to one client flow.\nIt reviews a draft, writes code, runs tests, and hands me a PR.\n\nI built it as a solo engineer, with Claude Code doing the heavy lifting on writes and reviews.\nThe app around it is still the same stack I use everywhere: React, Next.js, Node.js, PostgreSQL, and GitHub Actions for the scheduled bits.\n\nThe good part: review time dropped from about 40 minutes to 12.\nThe bad part: the agent still misses small edge cases when the prompt gets too broad.\n\nThat was the real lesson this week.\n\nAI coding is fast at first pass.\nIt is much weaker when the task depends on hidden context, old decisions, or one weird line in a file from last month.\n\nI spent less time typing and more time checking.\nThat is the part people skip when they talk about speed.\n\nThe metric moved.\nThe trust did not.\n\nSo I am keeping the agent on narrow tasks, where the input is clear and the output is easy to verify.\nThat is where it earns its keep.\n\nWhat’s the best line between “let the agent write it” and “I need to inspect every line”?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-18T17:17:57.525Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "0df73bb4e3a30c01",
+    "content": "I stopped letting agents see everything.\n\nI was building an AI agent that handled a small internal workflow in a production web app.\nThe question was simple: should it get the full conversation, or only the part it needs?\n\nFull context sounds safer.\nMore history, more clues, fewer chances to miss something.\nBut it also makes the agent slower, more expensive, and easier to distract.\n\nSo I chose narrow context.\nThe agent only got the current task, a short summary, and the tool schema — the menu of actions it can take.\nThat kept the prompt small and the output more reliable.\n\nThe tradeoff was obvious after a few runs.\nBroad context helps when the task is fuzzy and human judgment matters.\nNarrow context wins when the job is repetitive and the mistake cost is high.\n\nI chose narrow because the constraint most people miss is not intelligence.\nIt is attention.\nAn agent that sees too much starts inventing relevance.\n\nWhere this breaks: if the task depends on long back-and-forth nuance, or hidden history buried across messages, trimming context too hard will hurt more than it helps.\n\nThe lesson: give agents less than you think, then add back only what they actually use.\n\nWhat context would you cut first in your own agent?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
