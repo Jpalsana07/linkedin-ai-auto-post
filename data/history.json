@@ -1568,5 +1568,15 @@
     "content": "The bot knew too much.\n\nI was building a support assistant for a client project, and it kept giving confident answers from the wrong files.\n\nThe setup used MCP, the model context protocol that lets tools share data, and a RAG search layer, which pulls in relevant docs before the model answers.\n\nThe first version felt smart.\nIt could read tickets, fetch docs, and draft replies.\n\nBut one tiny thing kept breaking trust:\nthe model saw every tool and every document, even when it only needed one or two.\n\nSo it started mixing old policies with new ones.\nIt quoted a retired note once.\nIt stitched two unrelated answers together another time.\n\nI spent 2 hours trimming the context.\nNot by adding more prompts.\nBy sending less.\n\nI narrowed the tool schema, the menu of actions the bot can take.\nI split documents by task.\nI made the assistant ask for one missing piece instead of loading the whole archive.\n\nThe root cause was simple:\nI had treated context like storage.\nIt is not storage.\n\nContext is working memory.\nIf you fill it with noise, the model becomes confident in the wrong thing.\n\nThe lesson: with MCP, the best system is not the one that can see everything.\nIt is the one that sees only what it needs.\n\nWhere have you seen a system fail because it knew too much?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-20T14:23:29.509Z",
+    "topic": "Agent Reliability",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "b89fbeeab19613b2",
+    "content": "I made the agent stricter on purpose.\n\nMost people think reliability means giving an agent more tools, more memory, and more freedom.\n\nHot take: agent reliability usually improves when you remove choices.\n\nI was building an agent-driven workflow that reviewed code, checked a few files, and wrote a short summary.\nThe first version had 8 tools and a loose prompt.\nIt looked smart in demos and drifted in real use.\n\nOne run would call the wrong tool.\nAnother would loop twice before finishing.\nA third would return a confident answer with a missing step.\n\nI cut it down to 3 tools, added a tool schema — the menu of actions the bot can take — and forced a fixed path for the common case.\nI also made Claude Code do the boring part: draft, review, and test the changes before anything shipped.\n\nThe result was less impressive on paper and far more useful in practice.\nFewer branches.\nFewer weird failures.\nLess time spent wondering what the agent was “thinking.”\n\nThe strongest counterargument is obvious: constrained agents can feel less capable, especially when the task is messy.\nThat’s true.\nFor open-ended work, flexibility matters.\n\nBut for production, I want an agent that is predictable first and clever second.\n\nReliability is usually a design problem, not an intelligence problem.\n\nWhat have you seen break first: too little freedom, or too much?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
