@@ -1578,5 +1578,15 @@
     "content": "I made the agent stricter on purpose.\n\nMost people think reliability means giving an agent more tools, more memory, and more freedom.\n\nHot take: agent reliability usually improves when you remove choices.\n\nI was building an agent-driven workflow that reviewed code, checked a few files, and wrote a short summary.\nThe first version had 8 tools and a loose prompt.\nIt looked smart in demos and drifted in real use.\n\nOne run would call the wrong tool.\nAnother would loop twice before finishing.\nA third would return a confident answer with a missing step.\n\nI cut it down to 3 tools, added a tool schema — the menu of actions the bot can take — and forced a fixed path for the common case.\nI also made Claude Code do the boring part: draft, review, and test the changes before anything shipped.\n\nThe result was less impressive on paper and far more useful in practice.\nFewer branches.\nFewer weird failures.\nLess time spent wondering what the agent was “thinking.”\n\nThe strongest counterargument is obvious: constrained agents can feel less capable, especially when the task is messy.\nThat’s true.\nFor open-ended work, flexibility matters.\n\nBut for production, I want an agent that is predictable first and clever second.\n\nReliability is usually a design problem, not an intelligence problem.\n\nWhat have you seen break first: too little freedom, or too much?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-21T10:14:50.112Z",
+    "topic": "LLM in Production",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "4038ea8fb34fed5d",
+    "content": "A harmless prompt became a bug.\n\nI was shipping an LLM feature in a production app, where the model turns messy user input into something the UI can use.\nIf it breaks, the app feels broken.\n\nThe prompt looked fine in Claude API.\nThe happy-path demo worked.\nThen one bad input came through, and the model returned half a sentence with no valid structure.\nMy parser trusted it anyway.\n\nThat meant the app had to guess what to do next.\nWrong guess, wrong screen, confused user.\n\nThe fix was not a smarter model.\nIt was a stricter contract.\n\nI added a tiny validator after the model call, so only responses with the exact shape could move forward.\nIf the output was missing a field, the request failed fast instead of leaking garbage into the app.\nThe whole thing took about 20 minutes.\nThe bug took longer to find than to fix.\n\nThe lesson: in production, an LLM is not the feature.\nThe checked output is.\n\nWhat do you trust more in your own stack: the model, or the guardrail after it?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
