@@ -1588,5 +1588,15 @@
     "content": "A harmless prompt became a bug.\n\nI was shipping an LLM feature in a production app, where the model turns messy user input into something the UI can use.\nIf it breaks, the app feels broken.\n\nThe prompt looked fine in Claude API.\nThe happy-path demo worked.\nThen one bad input came through, and the model returned half a sentence with no valid structure.\nMy parser trusted it anyway.\n\nThat meant the app had to guess what to do next.\nWrong guess, wrong screen, confused user.\n\nThe fix was not a smarter model.\nIt was a stricter contract.\n\nI added a tiny validator after the model call, so only responses with the exact shape could move forward.\nIf the output was missing a field, the request failed fast instead of leaking garbage into the app.\nThe whole thing took about 20 minutes.\nThe bug took longer to find than to fix.\n\nThe lesson: in production, an LLM is not the feature.\nThe checked output is.\n\nWhat do you trust more in your own stack: the model, or the guardrail after it?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-22T10:19:25.776Z",
+    "topic": "Multi-Agent Orchestration",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "d91305645ac68acd",
+    "content": "CrewAI felt fun.\nLangGraph felt boring.\nOnly one shipped cleanly.\n\nI was wiring a small multi-agent workflow for a client project: one agent to read incoming text, one to classify it, one to draft the next step, and one to verify the output before it moved on.\n\nCrewAI made that feel quick.\nIt gives you role-based agents and simple handoffs, so I had a first pass running in a few hours.\n\nLangGraph was slower to set up.\nIt uses a graph — a map of steps and branches — so every transition has to be explicit.\n\nThat extra structure saved me later.\n\nWith CrewAI, the flow looked elegant until a retry happened.\nThen the same step ran twice, and I had to chase a duplicate action through logs.\n\nWith LangGraph, the retry path was visible from day one.\nI could see where state moved, where it paused, and where a branch could stop safely.\n\nThe difference showed up in debugging time.\nCrewAI got me moving fast.\nLangGraph kept the system understandable after day 3.\n\nMy lesson: for multi-agent orchestration, choose the tool that makes failure obvious, not the one that looks nicest in a demo.\n\nI now reach for LangGraph when the workflow has real state and retries.\nCrewAI is fine for sketches.\nLangGraph is the one I trust to ship.\n\nWhich orchestration style do you trust when retries start piling up?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
