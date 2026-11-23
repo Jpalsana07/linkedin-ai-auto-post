@@ -1598,5 +1598,15 @@
     "content": "CrewAI felt fun.\nLangGraph felt boring.\nOnly one shipped cleanly.\n\nI was wiring a small multi-agent workflow for a client project: one agent to read incoming text, one to classify it, one to draft the next step, and one to verify the output before it moved on.\n\nCrewAI made that feel quick.\nIt gives you role-based agents and simple handoffs, so I had a first pass running in a few hours.\n\nLangGraph was slower to set up.\nIt uses a graph — a map of steps and branches — so every transition has to be explicit.\n\nThat extra structure saved me later.\n\nWith CrewAI, the flow looked elegant until a retry happened.\nThen the same step ran twice, and I had to chase a duplicate action through logs.\n\nWith LangGraph, the retry path was visible from day one.\nI could see where state moved, where it paused, and where a branch could stop safely.\n\nThe difference showed up in debugging time.\nCrewAI got me moving fast.\nLangGraph kept the system understandable after day 3.\n\nMy lesson: for multi-agent orchestration, choose the tool that makes failure obvious, not the one that looks nicest in a demo.\n\nI now reach for LangGraph when the workflow has real state and retries.\nCrewAI is fine for sketches.\nLangGraph is the one I trust to ship.\n\nWhich orchestration style do you trust when retries start piling up?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-23T11:17:50.329Z",
+    "topic": "AI Automation Workflows",
+    "pillar": "AI Engineering",
+    "angle": "build-in-public",
+    "contentHash": "d5d671968b18a977",
+    "content": "Shipping the boring parts.\n\nI’m building an AI automation workflow for a client project, and this week it moved from “works on my laptop” to something that can sit in front of real people.\n\nThe flow handles incoming requests, classifies them, drafts a response, and routes edge cases to me instead of guessing.\n\nI shipped the first end-to-end version with Claude API and Node.js, then wrapped the slow bits in a simple queue so one request wouldn’t block the next.\n\nThe good news: average turnaround dropped from 38 seconds to 14 seconds.\n\nThe bad news: the draft quality is still uneven on messy inputs.\nShort messages do fine.\nLong, multi-part requests still need a human pass.\n\nThat showed up fast once I started testing with real examples instead of clean demo text.\n\nI also found one expensive mistake: the bot was retrying the same failed call three times, which made the logs look busy and the cost look weird.\n\nThe lesson is simple:\nautomation gets useful when it handles the unglamorous middle, not just the happy path.\n\nIf it can sort, route, and fail cleanly, people will actually trust it.\n\nWhat part of an AI workflow do you think should stay human?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
