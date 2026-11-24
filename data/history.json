@@ -1608,5 +1608,15 @@
     "content": "Shipping the boring parts.\n\nI’m building an AI automation workflow for a client project, and this week it moved from “works on my laptop” to something that can sit in front of real people.\n\nThe flow handles incoming requests, classifies them, drafts a response, and routes edge cases to me instead of guessing.\n\nI shipped the first end-to-end version with Claude API and Node.js, then wrapped the slow bits in a simple queue so one request wouldn’t block the next.\n\nThe good news: average turnaround dropped from 38 seconds to 14 seconds.\n\nThe bad news: the draft quality is still uneven on messy inputs.\nShort messages do fine.\nLong, multi-part requests still need a human pass.\n\nThat showed up fast once I started testing with real examples instead of clean demo text.\n\nI also found one expensive mistake: the bot was retrying the same failed call three times, which made the logs look busy and the cost look weird.\n\nThe lesson is simple:\nautomation gets useful when it handles the unglamorous middle, not just the happy path.\n\nIf it can sort, route, and fail cleanly, people will actually trust it.\n\nWhat part of an AI workflow do you think should stay human?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-24T12:56:31.397Z",
+    "topic": "VLMs and Computer Vision",
+    "pillar": "AI Engineering",
+    "angle": "tradeoff-breakdown",
+    "contentHash": "43039e897a3de9a8",
+    "content": "A smaller model saved the project.\n\nWe were building a vision step that had to look at uploaded images and return one simple answer.\nIf it was slow, the whole app felt broken.\nIf it was expensive, it would not survive real use.\n\nThe decision was whether to send every image to a large vision-language model, or shrink the image first and let a lighter pipeline do the first pass.\n\nA vision-language model, or VLM, is the part that reads an image and explains it in text.\nThe tradeoff looked obvious at first.\nThe larger model gave better answers on messy inputs.\nThe smaller pipeline was faster, cheaper, and easier to run repeatedly when users retried the same image.\n\nI chose the smaller path with PyTorch for the vision step and FastAPI for the API around it.\nThe real constraint was not raw accuracy.\nIt was latency plus cost on repeated requests.\nA 2-second response felt acceptable once.\nIt felt bad ten times in a row.\n\nSo I kept the heavy model for fallback only.\n\nThat worked because most images were clear enough after resizing and cleanup.\nIt would not be the right choice if every image were blurry, crowded, or taken in bad light.\n\nThe lesson: choose for the repeat path, not the perfect path.\n\nWhere have you seen the “best” model lose to the one that just ships faster?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
