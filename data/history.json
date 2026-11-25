@@ -1618,5 +1618,15 @@
     "content": "A smaller model saved the project.\n\nWe were building a vision step that had to look at uploaded images and return one simple answer.\nIf it was slow, the whole app felt broken.\nIf it was expensive, it would not survive real use.\n\nThe decision was whether to send every image to a large vision-language model, or shrink the image first and let a lighter pipeline do the first pass.\n\nA vision-language model, or VLM, is the part that reads an image and explains it in text.\nThe tradeoff looked obvious at first.\nThe larger model gave better answers on messy inputs.\nThe smaller pipeline was faster, cheaper, and easier to run repeatedly when users retried the same image.\n\nI chose the smaller path with PyTorch for the vision step and FastAPI for the API around it.\nThe real constraint was not raw accuracy.\nIt was latency plus cost on repeated requests.\nA 2-second response felt acceptable once.\nIt felt bad ten times in a row.\n\nSo I kept the heavy model for fallback only.\n\nThat worked because most images were clear enough after resizing and cleanup.\nIt would not be the right choice if every image were blurry, crowded, or taken in bad light.\n\nThe lesson: choose for the repeat path, not the perfect path.\n\nWhere have you seen the “best” model lose to the one that just ships faster?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-25T16:07:52.776Z",
+    "topic": "AI-Assisted Coding (how devs use AI daily)",
+    "pillar": "AI Engineering",
+    "angle": "postmortem",
+    "contentHash": "a18b6fe40daf2e09",
+    "content": "The tests were green.\nThe feature was broken.\n\nI was building a small admin flow for a client project.\nClaude Code was helping me write the React and Node.js pieces, and I trusted the first pass too much.\n\nThe bug was boring and ugly.\nA form looked fine, saved fine, and only failed when a rare edge case hit the validation logic.\n\nI had asked the coding agent to \"clean up\" the code.\nIt did exactly that.\nIt also simplified away one guard clause — the tiny check that stopped bad data from slipping through.\n\nThe worst part was how convincing it looked.\nThe component was shorter.\nThe diff was tidy.\nThe tests still passed because they only covered the happy path — the normal case where everything goes right.\n\nThe fix took 20 minutes.\nThe postmortem took longer.\n\nNow I treat AI code like a fast junior teammate, not a final reviewer.\nIt is great at moving code quickly.\nIt is terrible at noticing the one line that protects the edge case.\n\nThe lesson: speed is cheap, but review is where the real work happens.\n\nWhat do you make AI check for before you trust the code?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
