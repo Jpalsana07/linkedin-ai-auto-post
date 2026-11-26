@@ -1628,5 +1628,15 @@
     "content": "The tests were green.\nThe feature was broken.\n\nI was building a small admin flow for a client project.\nClaude Code was helping me write the React and Node.js pieces, and I trusted the first pass too much.\n\nThe bug was boring and ugly.\nA form looked fine, saved fine, and only failed when a rare edge case hit the validation logic.\n\nI had asked the coding agent to \"clean up\" the code.\nIt did exactly that.\nIt also simplified away one guard clause — the tiny check that stopped bad data from slipping through.\n\nThe worst part was how convincing it looked.\nThe component was shorter.\nThe diff was tidy.\nThe tests still passed because they only covered the happy path — the normal case where everything goes right.\n\nThe fix took 20 minutes.\nThe postmortem took longer.\n\nNow I treat AI code like a fast junior teammate, not a final reviewer.\nIt is great at moving code quickly.\nIt is terrible at noticing the one line that protects the edge case.\n\nThe lesson: speed is cheap, but review is where the real work happens.\n\nWhat do you make AI check for before you trust the code?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-26T11:29:29.897Z",
+    "topic": "AI Coding Hype vs Reality",
+    "pillar": "AI Engineering",
+    "angle": "contrarian-take",
+    "contentHash": "9139c87faf9e9353",
+    "content": "AI coding is overrated.\n\nEveryone says the agent should write most of the code now.\nThe fantasy is simple: describe the app, watch it ship, move on.\n\nI use Claude Code every day, and the reality is messier.\nIt’s great for boring scaffolding, test cases, and small refactors.\nIt gets shaky when the work has hidden rules, weird state, or one tiny mistake can break the whole flow.\n\nLast week I asked it to help with a feature that touched React, Node.js, and PostgreSQL.\nThe first pass looked polished.\nBut it missed one schema change and two edge cases.\nFixing those took 20 minutes.\nUntangling the wrong assumption would have taken much longer.\n\nThat’s the part people skip.\nAI coding doesn’t remove the engineer.\nIt moves the job from typing to judging.\n\nThe strongest counterargument is obvious: for greenfield code, the speedup is real.\nI agree.\nFor a fresh component or a simple API route, it saves time.\n\nBut the more valuable the code path, the less I trust autopilot.\nMy hot take is simple: AI is best at accelerating known work, not inventing safe software.\n\nWhat parts of coding do you think AI actually speeds up, and where does it still fail?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
