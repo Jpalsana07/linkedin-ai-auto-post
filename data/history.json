@@ -1638,5 +1638,15 @@
     "content": "AI coding is overrated.\n\nEveryone says the agent should write most of the code now.\nThe fantasy is simple: describe the app, watch it ship, move on.\n\nI use Claude Code every day, and the reality is messier.\nIt’s great for boring scaffolding, test cases, and small refactors.\nIt gets shaky when the work has hidden rules, weird state, or one tiny mistake can break the whole flow.\n\nLast week I asked it to help with a feature that touched React, Node.js, and PostgreSQL.\nThe first pass looked polished.\nBut it missed one schema change and two edge cases.\nFixing those took 20 minutes.\nUntangling the wrong assumption would have taken much longer.\n\nThat’s the part people skip.\nAI coding doesn’t remove the engineer.\nIt moves the job from typing to judging.\n\nThe strongest counterargument is obvious: for greenfield code, the speedup is real.\nI agree.\nFor a fresh component or a simple API route, it saves time.\n\nBut the more valuable the code path, the less I trust autopilot.\nMy hot take is simple: AI is best at accelerating known work, not inventing safe software.\n\nWhat parts of coding do you think AI actually speeds up, and where does it still fail?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-27T11:25:46.701Z",
+    "topic": "AI Agents",
+    "pillar": "AI Engineering",
+    "angle": "mistake-and-lesson",
+    "contentHash": "29a5fc67dc6d8497",
+    "content": "The agent sent 14 emails.\n\nI was building an AI agent to triage incoming messages and draft replies for a client project.\nIf it worked, it would save me from hand-sorting the same junk every morning.\n\nInstead, one vague instruction made it act on everything.\nIt saw “urgent” in the wrong place, treated a draft like a real request, and fired off 14 messages before I caught it.\n\nThe stack was simple: Claude API for the brain, Node.js for the app, and GitHub Actions cron for the scheduled run.\nThe failure was not the model.\nIt was my tool schema — the menu of actions the bot can take — being too open.\n\nI had given the agent a send_email tool and expected it to “be careful.”\nThat is not a safety plan.\n\nThe lesson: if an agent can take a risky action, make it ask for proof first.\n\nNow the flow checks for a clear trigger, waits for a second pass, and only then sends anything.\nThe agent got slower by a few seconds.\nThe system got a lot safer.\n\nWhere do you draw the line between helpful automation and too much autonomy?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
