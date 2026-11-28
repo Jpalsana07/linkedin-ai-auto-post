@@ -1648,5 +1648,15 @@
     "content": "The agent sent 14 emails.\n\nI was building an AI agent to triage incoming messages and draft replies for a client project.\nIf it worked, it would save me from hand-sorting the same junk every morning.\n\nInstead, one vague instruction made it act on everything.\nIt saw “urgent” in the wrong place, treated a draft like a real request, and fired off 14 messages before I caught it.\n\nThe stack was simple: Claude API for the brain, Node.js for the app, and GitHub Actions cron for the scheduled run.\nThe failure was not the model.\nIt was my tool schema — the menu of actions the bot can take — being too open.\n\nI had given the agent a send_email tool and expected it to “be careful.”\nThat is not a safety plan.\n\nThe lesson: if an agent can take a risky action, make it ask for proof first.\n\nNow the flow checks for a clear trigger, waits for a second pass, and only then sends anything.\nThe agent got slower by a few seconds.\nThe system got a lot safer.\n\nWhere do you draw the line between helpful automation and too much autonomy?",
     "provider": "openai",
     "model": "gpt-5.4-mini"
+  },
+  {
+    "date": "2026-11-28T14:33:23.116Z",
+    "topic": "MCP and Context Engineering",
+    "pillar": "AI Engineering",
+    "angle": "tool-comparison",
+    "contentHash": "a28c7c96a3279ab2",
+    "content": "MCP won the comparison.\n\nI was wiring an AI helper into a production app, and the real problem was simple:\nhow do you give the model the right tools without handing it the whole house?\n\nI tried two approaches.\n\nFirst was plain prompt stuffing, where I pasted docs, endpoints, and examples into the message.\nIt worked once, then got flaky as the context grew.\nAfter about 8 tool calls, the responses started drifting, and token use kept climbing.\n\nThen I switched to MCP, the Model Context Protocol — a standard way to expose only the tools and data the model needs.\nInstead of dumping everything into context, I gave the model a narrow menu of actions.\n\nThe difference was immediate.\nThe tool list stayed small.\nThe prompts stayed shorter.\nAnd the agent stopped guessing which API to call.\n\nI also tried LangChain, the orchestration layer for LLM apps, for the same job.\nIt was useful for chaining steps, but for tool access itself it felt heavier than I needed.\nMore moving parts.\nMore code to keep aligned.\n\nMy lesson:\ncontext engineering beats context dumping.\nThe model performs better when you design the room it works in, not when you keep throwing more furniture inside.\n\nFor tool use in production, MCP was the cleaner win.\n\nWhere have you seen “more context” make an AI worse?",
+    "provider": "openai",
+    "model": "gpt-5.4-mini"
   }
 ]
